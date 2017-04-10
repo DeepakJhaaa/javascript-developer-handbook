@@ -1,0 +1,10 @@
+.card.console {
+  margin: 1% 2%;
+  position: absolute;
+  bottom: 0px;
+  width:96%;
+}
+
+.console .card-block {
+  height: 200px;
+}
