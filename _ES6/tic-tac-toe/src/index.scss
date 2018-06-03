@@ -1,0 +1,45 @@
+body {
+    p {
+        color: red;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#root {
+    background: #f1f1f1;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+.plot {
+    font-size: 0px;
+    display: inline-block;
+}
+
+.row {
+    border: 1px solid #ddd;
+    display: block;
+}
+
+.slot {
+    border: 1px solid #ddd;
+    height: 100px;
+    width: 100px;
+    float: left;
+    text-align: center;
+}
+
+.plot .slot {
+    font-size: 36px;
+}
+
+.slot .x {
+    font-size: 20px;
+}
+
+.slot .o {
+    font-size: 20px;
+}

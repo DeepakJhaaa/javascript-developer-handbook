@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="style.css" rel="stylesheet" type="text/css"></link>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <!-- Bootstrap Core CSS -->
+
+</head>
+
+<body>
+    <div id="fkart">
+        <!-- Filters List -->
+        <div id="filters" class="filters">
+            <h2>Filters</h2>
+            <div class="price-filter" id="priceFilter">
+                <h3>PRICE</h3>
+            </div>
+            <div class="brand-filter">
+                <h3>BRAND</h3>
+                <div class="search">
+                    <input type="search" placeholder="Search Brand" onkeyup="brandSearch(this.value)">
+                </div>
+                <div id="brandFilter"></div>
+            </div>
+            <div class="color-filter">
+                <h3>COLOR</h3>
+                <div id="colorFilter"></div>
+            </div>
+            <div id="prodFilterGrid"></div>
+        </div>
+
+        <!-- product Grid -->
+        <div id="" class="product-grid">
+            <div class="search-results">
+                <h2>Showing 666 results for "shoes"</h2>
+            </div>
+            <div class="sorting">
+                <span>Sort By</span>
+                <a onclick="relevance()">Relevance</a>
+                <a onclick="lowToHigh()">Price - Low to High</a>
+                <a onclick="highToLow()">Price - High to Low</a>
+            </div>
+            <div id="productsGrid">
+            </div>
+        </div>
+    </div>
+    Transformed code using Babel
+    <strong id="version"></strong>:
+    <pre id="output">Loading...</pre>
+    <script>
+        // this must run before any babel-compiled modules, so should probably
+        // be the first script in your page
+        window.exports = window;
+    </script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel" src="index.js"></script>
+</body>
+
+</html>
