@@ -726,7 +726,7 @@ Removefirst()
 
 Removeat(index)
 
-### \#. Deque 
+### \#. Deque
 
 **Deque (Double-ended queue)**: The Double-ended queue is basically like a
 queue, except that you can add or remove from either side. Now that you are a
@@ -1423,7 +1423,7 @@ has no parent.
 Average
 
 | Access | Search | Insertion | Deletion |
-|--------|--------|-----------|----------|
+| ------ | ------ | --------- | -------- |
 | O(n)   | O(n)   | O(n)      | O(n)     |
 
 #### \#. Binary Search Tree:
@@ -1452,14 +1452,14 @@ Average
     (unsorted) array, but slower than the corresponding operations on hash
     tables
 
-Binary search time complexity  
-╔═══════════╦══════════╦════════════╗  
-║ Algorithm ║ Average ║ Worst Case ║  
-╠═══════════╬══════════╬════════════╣  
-║ Space ║ O(n) ║ O(n) ║  
-║ Search ║ O(log n) ║ O(n) ║  
-║ Insert ║ O(log n) ║ O(n) ║  
-║ Delete ║ O(log n) ║ O(n) ║  
+Binary search time complexity
+╔═══════════╦══════════╦════════════╗
+║ Algorithm ║ Average  ║ Worst Case ║
+╠═══════════╬══════════╬════════════╣
+║ Space     ║ O(n)     ║ O(n)       ║
+║ Search    ║ O(log n) ║ O(n)       ║
+║ Insert    ║ O(log n) ║ O(n)       ║
+║ Delete    ║ O(log n) ║ O(n)       ║
 ╚═══════════╩══════════╩════════════╝
 
 ### \#. Trie
