@@ -1,0 +1,53 @@
+{
+  "name": "es6-starter",
+  "version": "1.0.0",
+  "description": "Boilerplate for ES6 client-based library. Uses Babel and webpack for transpiling and building, Karma and Jasmine for unit testing, and Istanbul for code coverage.",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dcroitoru/es6-karma-jasmine-webpack-istanbul-boilerplate"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --hot --inline",
+    "build": "webpack --env development",
+    "build:prod": "webpack -p --env production",
+    "test": "karma start",
+    "coverage": "karma start --single-run --no-auto-watch --coverage=true || echo done"
+  },
+  "eslintConfig": {
+    "env": {
+      "jasmine": true,
+      "node": true
+    }
+  },
+  "keywords": [
+    "es6",
+    "babel",
+    "webpack",
+    "webpack 2",
+    "jasmine",
+    "karma",
+    "istanbul",
+    "boilerplate"
+  ],
+  "author": "Denis Croitoru",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babel-preset-es2015": "^6.24.0",
+    "html-webpack-plugin": "^2.30.1",
+    "istanbul-instrumenter-loader": "^2.0.0",
+    "jasmine": "^2.99.0",
+    "jasmine-core": "^2.99.1",
+    "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-coverage": "^1.1.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^2.0.13",
+    "webpack": "^2.7.0",
+    "webpack-dev-server": "^2.11.2"
+  }
+}
