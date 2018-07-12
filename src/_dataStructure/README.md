@@ -1310,6 +1310,7 @@ head.previous = null;
 
 **\#. Remove Last:** Description: Removes the last item.
 
+```
 this.RemoveLast = function () {
 
 if (head) {
@@ -1337,7 +1338,7 @@ count--;
 }
 
 }
-
+```
 **\#. Remove At:** Description: Removes an item from a specific index
 
 ![https://www.codeproject.com/KB/recipes/669131/dlist_remove.png](media/c2275c5736f8836bc380bff70b5aa16b.png)
