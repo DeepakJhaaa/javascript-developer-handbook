@@ -1310,7 +1310,7 @@ head.previous = null;
 
 **\#. Remove Last:** Description: Removes the last item.
 
-```
+```js
 this.RemoveLast = function () {
 
 if (head) {
