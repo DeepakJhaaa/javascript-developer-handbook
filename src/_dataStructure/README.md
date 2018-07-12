@@ -1,10 +1,9 @@
-\#. Data Structures in JavaScript
----------------------------------
+## \#. Data Structures in JavaScript
 
 According to Wikipedia:
 
-*"In computer science, a data structure is a particular way of storing and
-organizing data in a computer so that it can be used efficiently."*
+**_"In computer science, a data structure is a particular way of storing and
+organizing data in a computer so that it can be used efficiently."_**
 
 In this article, we will be using some structures which, personally, look like
 the most basic ones. I know that, through Arrays you can have a greater
@@ -14,26 +13,26 @@ code.
 ### \#. Types of data structures:
 
 1.  Stack
-
 2.  Queue
-
 3.  Deque
-
 4.  Linked list
-
 5.  Doubly linked list
 
-### \#. Stack 
+### \#. Stack
+
+<p align="center">
+  <img width="460" height="300" src="http://www.fillmurray.com/460/300">
+</p>
 
 ![A stack image](media/9c231542d1741f1c06c434348458e96a.png)
 
--   A stack is a particular data type or collection in which the main operations
-    are the addition of an item, known as push, and removal of it, known as pop.
+- A stack is a particular data type or collection in which the main operations
+  are the addition of an item, known as push, and removal of it, known as pop.
 
--   Stacks implement a LIFO (Last in First Out) structure which means that the
-    last element added to the structure must be the first one to be removed.
+- Stacks implement a LIFO (Last in First Out) structure which means that the
+  last element added to the structure must be the first one to be removed.
 
-It will have the following initial code: 
+It will have the following initial code:
 
 function Stack(){
 
@@ -203,7 +202,7 @@ return arr;
 
 }
 
-}  
+}
 
 So, there are four methods of stack
 
@@ -215,7 +214,7 @@ Peek()
 
 DisplayAll()
 
-### \#. Queue 
+### \#. Queue
 
 ![A stack image](media/e8e2353e1209f445fffc9539bcef3a58.png)
 
@@ -1280,65 +1279,44 @@ this.AddLast(data);
 
 **\#. Remove First:** Description: Removes the first item.
 
-this.RemoveFirst = function () {
+```js
+this.RemoveFirst = function() {
+  if (head) {
+    head = head.next;
 
-if (head) {
+    count--;
 
-head = head.next;
+    //there was only one item
 
-count--;
+    if (count === 0) {
+      tail = null;
+    } else {
+      //Don't forget about the previous node. It also needs the reference set to null.
 
-//there was only one item
-
-if (count === 0) {
-
-tail = null;
-
-}
-
-else {
-
-//Don't forget about the previous node. It also needs the reference set to null.
-
-head.previous = null;
-
-}
-
-}
-
-}
+      head.previous = null;
+    }
+  }
+};
+```
 
 **\#. Remove Last:** Description: Removes the last item.
 
 ```js
-this.RemoveLast = function () {
-
-if (head) {
-
-//there is only one item
-
-if (count === 1) {
-
-head = null;
-
-tail = null;
-
-}
-
-else {
-
-tail.previous.next = null;
-
-tail = tail.previous;
-
-}
-
-count--;
-
-}
-
-}
+this.RemoveLast = function() {
+  if (head) {
+    //there is only one item
+    if (count === 1) {
+      head = null;
+      tail = null;
+    } else {
+      tail.previous.next = null;
+      tail = tail.previous;
+    }
+    count--;
+  }
+};
 ```
+
 **\#. Remove At:** Description: Removes an item from a specific index
 
 ![https://www.codeproject.com/KB/recipes/669131/dlist_remove.png](media/c2275c5736f8836bc380bff70b5aa16b.png)
@@ -1429,39 +1407,38 @@ Average
 
 #### \#. Binary Search Tree:
 
--   Binary search trees (BST), sometimes called ordered or sorted binary trees,
-    are a particular type of container: data structures that store "items" (such
-    as numbers, names etc.) in memory.
+- Binary search trees (BST), sometimes called ordered or sorted binary trees,
+  are a particular type of container: data structures that store "items" (such
+  as numbers, names etc.) in memory.
 
--   They allow fast lookup, addition and removal of items, and can be used to
-    implement either dynamic sets of items, or lookup tables that allow finding
-    an item by its key (e.g., finding the phone number of a person by name).
+- They allow fast lookup, addition and removal of items, and can be used to
+  implement either dynamic sets of items, or lookup tables that allow finding
+  an item by its key (e.g., finding the phone number of a person by name).
 
--   Binary search trees keep their keys in sorted order, so that lookup and
-    other operations can use the principle of binary search: when looking for a
-    key in a tree (or a place to insert a new key), they traverse the tree from
-    root to leaf, making comparisons to keys stored in the nodes of the tree and
-    deciding, on the basis of the comparison, to continue searching in the left
-    or right subtrees.
+- Binary search trees keep their keys in sorted order, so that lookup and
+  other operations can use the principle of binary search: when looking for a
+  key in a tree (or a place to insert a new key), they traverse the tree from
+  root to leaf, making comparisons to keys stored in the nodes of the tree and
+  deciding, on the basis of the comparison, to continue searching in the left
+  or right subtrees.
 
--   On average, this means that each comparison allows the operations to skip
-    about half of the tree, so that each lookup, insertion or deletion takes
-    time proportional to the logarithm of the number of items stored in the
-    tree.
+- On average, this means that each comparison allows the operations to skip
+  about half of the tree, so that each lookup, insertion or deletion takes
+  time proportional to the logarithm of the number of items stored in the
+  tree.
 
--   This is much better than the linear time required to find items by key in an
-    (unsorted) array, but slower than the corresponding operations on hash
-    tables
+- This is much better than the linear time required to find items by key in an
+  (unsorted) array, but slower than the corresponding operations on hash
+  tables
 
-Binary search time complexity
-╔═══════════╦══════════╦════════════╗
-║ Algorithm ║ Average  ║ Worst Case ║
-╠═══════════╬══════════╬════════════╣
-║ Space     ║ O(n)     ║ O(n)       ║
-║ Search    ║ O(log n) ║ O(n)       ║
-║ Insert    ║ O(log n) ║ O(n)       ║
-║ Delete    ║ O(log n) ║ O(n)       ║
-╚═══════════╩══════════╩════════════╝
+**Binary search time complexity**
+
+| Algorithm | Average  | Worst Case |
+| --------- | -------- | ---------- |
+| Space     | O(n)     | O(n)       |
+| Search    | O(log n) | O(n)       |
+| Insert    | O(log n) | O(n)       |
+| Delete    | O(log n) | O(n)       |
 
 ### \#. Trie
 
