@@ -1,5 +1,7 @@
 # Design Patterns in JavaScript
 
+## 1. Creational Pattern
+
 ### 1.1 Module Pattern:
 
 JavaScript `modules pattern` are the most prevalently used design patterns for keeping particular pieces of code independent of other components. This provides loose coupling to support well-structured code.
@@ -165,3 +167,79 @@ console.log(badSingleA.getRandomNumber() !== badSingleB.getRandomNumber()); // t
 ```
 
 **Note:** as we are working with random numbers, there is a mathematical possibility both numbers will be the same, however unlikely. The above example should otherwise still be valid.
+
+## 2. Prototype Design Pattern
+
+### 2.1 Decorator
+
+The Decorator pattern extends (decorates) an object’s behavior dynamically. The ability to add new behavior at runtime is accomplished by a Decorator object which ‘wraps itself’ around the original object. Multiple decorators can add or override functionality to the original object. Decorators are a structural design pattern that aim to promote code re-use.
+
+Decorators provide flexibility to statically typed languages by allowing runtime changes as opposed to inheritance which takes place at compile time. JavaScript, however, is a dynamic language and the ability to extend an object at runtime is baked into the language itself.
+
+For this reason, the Decorator pattern is less relevant to JavaScript developers. In JavaScript the Extend and Mixin patterns subsume the Decorator pattern.
+
+**The objects participating in this pattern are:**
+
+- Client -- In sample code: the run() function
+- maintains a reference to the decorated Component
+- Component -- In sample code: User
+- object to which additional functionality is added
+- Decorator -- In sample code: DecoratedUser
+- 'wraps around' Component by maintaining a reference to it
+- defines an interface that conforms to Component's interface
+- implements the additional functionality (addedMembers in diagram)
+
+**Sample code in JavaScript:**
+
+In the example code a User object is decorated (enhanced) by a DecoratedUser object. It extends the User with several address-based properties. The original interface must stay the same, which explains why user.name is assigned to this.name. Also, the say method of DecoratedUser hides the say method of User.
+
+JavaScript itself is far more effective in dynamically extending objects with additional data and behavior. The log function is a helper which collects and displays results.
+
+```js
+var User = function(name) {
+  this.name = name;
+
+  this.say = function() {
+    log.add('User: ' + this.name);
+  };
+};
+
+var DecoratedUser = function(user, street, city) {
+  this.user = user;
+  this.name = user.name; // ensures interface stays the same
+  this.street = street;
+  this.city = city;
+
+  this.say = function() {
+    log.add(
+      'Decorated User: ' + this.name + ', ' + this.street + ', ' + this.city
+    );
+  };
+};
+
+// logging helper
+
+var log = (function() {
+  var log = '';
+
+  return {
+    add: function(msg) {
+      log += msg + '\n';
+    },
+    show: function() {
+      alert(log);
+      log = '';
+    }
+  };
+})();
+
+function run() {
+  var user = new User('Kelly');
+  user.say();
+
+  var decorated = new DecoratedUser(user, 'Broadway', 'New York');
+  decorated.say();
+
+  log.show();
+}
+```
