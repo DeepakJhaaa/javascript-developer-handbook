@@ -300,332 +300,524 @@ One way to fix the stoleSecretIdentity() function is as follows:
 var stoleSecretIdentity = hero.getSecretIdentity.bind(hero);
 ```
 
-#. Create a function that,
-Given a DOM Element on the page, will visit the element itself and all of its descendants (not just its immediate children). For each element visited, the function should pass that element to a provided callback function. The arguments to the function should be:
-• A DOM element
-• A callback function (that takes a DOM element as its argument)
-Answer: Visiting all elements in a tree (DOM) is a classic Depth-First-Search algorithm application. Here’s an example solution:
-function Traverse(p_element,p_callback) {
-p_callback(p_element);
-var list = p_element.children;
-for (var i = 0; i < list.length; i++) {
-Traverse(list[i],p_callback); // recursive call
+### Create a function for the below problem:
+
+For a given a DOM Element on the page, will visit the element itself and all of its descendants (not just its immediate children). For each element visited, the function should pass that element to a provided callback function. The arguments to the function should be:
+
+- A DOM element
+- A callback function (that takes a DOM element as its argument)
+
+**Ans:**
+Visiting all elements in a tree (DOM) is a classic Depth-First-Search algorithm application. Here’s an example solution:
+
+```js
+function Traverse(p_element, p_callback) {
+  p_callback(p_element);
+  var list = p_element.children;
+  for (var i = 0; i < list.length; i++) {
+    Traverse(list[i], p_callback); // recursive call
+  }
 }
-}
-#. What is the output of the following code?
+```
+
+### What is the output of the following code?
+
+```js
 var length = 10;
 function fn() {
-console.log(this.length);
+  console.log(this.length);
 }
 
 var obj = {
-length: 5,
-method: function(fn) {
-fn();
-arguments[0]();
-}
+  length: 5,
+  method: function(fn) {
+    fn();
+    arguments[0]();
+  },
 };
 
 obj.method(fn, 1);
+```
+
 Answer: Output
-10
-2
-Why isn’t it 10 and 5?
-Answer:
-• In the first place, as fn is passed as a parameter to the function method, the scope (this) of the function fn is window.var length = 10; is declared at the window level.
-• It also can be accessed as window.length or length or this.length (when this === window.) method is bound to Object obj, and obj.method is called with parameters fn and 1.
-• Though method is accepting only one parameter, while invoking it has passed two parameters; the first is a function callback and other is just a number.
-• When fn() is called inside method, which was passed the function as a parameter at the global level, this.length will have access to var length = 10 (declared globally) not length = 5 as defined in Object obj.
-Now, we know that we can access any number of arguments in a JavaScript function using the arguments[] array.
-Hence arguments[0]() is nothing but calling fn(). Inside fn now, the scope of this function becomes the arguments array, and logging the length of arguments[] will return 2. Hence the output will be as above.
-#. Consider the following code. What will the output be, and why?
-(function () {
-try {
-throw new Error();
-} catch (x) {
-var x = 1, y = 2;
-console.log(x);
-}
-console.log(x);
-console.log(y);
+
+```js
+10;
+2;
+```
+
+**- Why isn’t it 10 and 5?**
+
+- In the first place, as fn is passed as a parameter to the function method, the scope (this) of the function fn is window.var length = 10; is declared at the window level.
+- It also can be accessed as window.length or length or this.length (when this === window.) method is bound to Object obj, and obj.method is called with parameters fn and 1.
+- Though method is accepting only one parameter, while invoking it has passed two parameters; the first is a function callback and other is just a number.
+- When fn() is called inside method, which was passed the function as a parameter at the global level, this.length will have access to var length = 10 (declared globally) not length = 5 as defined in Object obj.
+- Now, we know that we can access any number of arguments in a JavaScript function using the arguments[] array.
+- Hence `arguments[0]()` is nothing but calling fn(). Inside fn now, the scope of this function becomes the arguments array, and logging the length of arguments[] will return 2. Hence the output will be as above.
+
+### Consider the following code. What will the output be, and why?
+
+```js
+(function() {
+  try {
+    throw new Error();
+  } catch (x) {
+    var x = 1,
+      y = 2;
+    console.log(x);
+  }
+  console.log(x);
+  console.log(y);
 })();
+```
+
 Answer:
-1
-undefined
-2
+
+```js
+1;
+undefined;
+2;
+```
+
 var statements are hoisted (without their value initialization) to the top of the global or function scope it belongs to, even when it’s inside a with or catch block. However, the error’s identifier is only visible inside the catch block. It is equivalent to:
+
+```js
 (function () {
-var x, y; // outer and hoisted
-try {
-throw new Error();
-} catch (x /_ inner _/) {
-x = 1; // inner x, not the outer one
-y = 2; // there is only one y, which is in the outer scope
-console.log(x /_ inner _/);
-}
-console.log(x);
-console.log(y);
+  var x, y; // outer and hoisted
+  try {
+    throw new Error();
+  } catch (x /_ inner _/) {
+    x = 1; // inner x, not the outer one
+    y = 2; // there is only one y, which is in the outer scope
+    console.log(x /_ inner _/);
+  }
+  console.log(x);
+  console.log(y);
 })();
-#. What will be the output of this code?
+```
+
+### What will be the output of this code?
+
+```js
 var x = 21;
-var girl = function () {
-console.log(x);
-var x = 20;
+var girl = function() {
+  console.log(x);
+  var x = 20;
 };
-girl ();
-Answer:
-Neither 21, nor 20, the result is undefined
+girl();
+```
+
+**Ans:**
+
+Neither 21, nor 20, the result is undefined.
+
 It’s because JavaScript initialization is not hoisted.
-(Why doesn’t it show the global value of 21? The reason is that when the function is executed, it checks that there’s a local x variable present but doesn’t yet declare it, so it won’t look for global one.)
-#. Consider the following code snippet:
+
+**Why doesn’t it show the global value of 21?**
+
+The reason is that when the function is executed, it checks that there’s a local x variable present but doesn’t yet declare it, so it won’t look for global one.)
+
+### Consider the following code snippet:
+
+```js
 for (var i = 0; i < 5; i++) {
-var btn = document.createElement('button');
+  var btn = document.createElement('button');
 
-btn.appendChild(document.createTextNode('Button ' + i));
-btn.addEventListener('click', function(){ console.log(i); });
+  btn.appendChild(document.createTextNode('Button ' + i));
+  btn.addEventListener('click', function() {
+    console.log(i);
+  });
 
-document.body.appendChild(btn);
+  document.body.appendChild(btn);
 }
-(a) What gets logged to the console when the user clicks on “Button 4” and why?
-(b) Provide one or more alternate implementations that will work as expected.
-Answer:
-(a) No matter what button the user clicks the number 5 will always be logged to the console. This is because, at the point that the onclick method is invoked (for any of the buttons), the for loop has already completed and the variable i already has a value of 5.
+```
+
+(A) What gets logged to the console when the user clicks on “Button 4” and why?
+
+(B) Provide one or more alternate implementations that will work as expected.
+
+**Ans:**
+
+(A) - No matter what button the user clicks the number 5 will always be logged to the console. This is because, at the point that the onclick method is invoked (for any of the buttons), the for loop has already completed and the variable i already has a value of 5.
 (Bonus points for the interviewee if they know enough to talk about how execution contexts, variable objects, activation objects, and the internal “scope” property contribute to the closure behavior.)
 
-(b) The key to making this work is to capture the value of i at each pass through the for loop by passing it into a newly created function object. Here are four possible ways to accomplish this:
+(B) - The key to making this work is to capture the value of i at each pass through the for loop by passing it into a newly created function object. Here are four possible ways to accomplish this:
+
+```js
 for (var i = 0; i < 5; i++) {
-var btn = document.createElement('button');
+  var btn = document.createElement('button');
 
-btn.appendChild(document.createTextNode('Button ' + i));
-btn.addEventListener('click', (function(i) {
-return function() { console.log(i); };
-})(i));
+  btn.appendChild(document.createTextNode('Button ' + i));
+  btn.addEventListener(
+    'click',
+    (function(i) {
+      return function() {
+        console.log(i);
+      };
+    })(i),
+  );
 
-document.body.appendChild(btn);
+  document.body.appendChild(btn);
 }
+```
+
 Alternatively, you could wrap the entire call to btn.addEventListener in the new anonymous function:
 
+```js
 for (var i = 0; i < 5; i++) {
-var btn = document.createElement('button');
+  var btn = document.createElement('button');
 
-btn.appendChild(document.createTextNode('Button ' + i));
-(function (i) {
-btn.addEventListener('click', function() { console.log(i); });
-})(i);
+  btn.appendChild(document.createTextNode('Button ' + i));
+  (function(i) {
+    btn.addEventListener('click', function() {
+      console.log(i);
+    });
+  })(i);
 
-document.body.appendChild(btn);
+  document.body.appendChild(btn);
 }
+```
+
 Or, we could replace the for loop with a call to the array object’s native forEach method:
-['a', 'b', 'c', 'd', 'e'].forEach(function (value, i) {
-var btn = document.createElement('button');
 
-btn.appendChild(document.createTextNode('Button ' + i));
-btn.addEventListener('click', function() { console.log(i); });
+```js
+['a', 'b', 'c', 'd', 'e'].forEach(function(value, i) {
+  var btn = document.createElement('button');
 
-document.body.appendChild(btn);
+  btn.appendChild(document.createTextNode('Button ' + i));
+  btn.addEventListener('click', function() {
+    console.log(i);
+  });
+
+  document.body.appendChild(btn);
 });
+```
+
 Lastly, the simplest solution, if you’re in an ES6/ES2015 context, is to use let i instead of var i:
+
+```js
 for (let i = 0; i < 5; i++) {
-var btn = document.createElement('button');
+  var btn = document.createElement('button');
 
-btn.appendChild(document.createTextNode('Button ' + i));
-btn.addEventListener('click', function(){ console.log(i); });
+  btn.appendChild(document.createTextNode('Button ' + i));
+  btn.addEventListener('click', function() {
+    console.log(i);
+  });
 
-document.body.appendChild(btn);
+  document.body.appendChild(btn);
 }
+```
 
-#. Assuming d is an “empty” object in scope, say:
+### Assuming d is an “empty” object in scope, say:
+
+```js
 var d = {};
+```
+
 …what is accomplished using the following code?
-[ 'zebra', 'horse' ].forEach(function(k) {
-d[k] = undefined;
+
+```js
+['zebra', 'horse'].forEach(function(k) {
+  d[k] = undefined;
 });
-Answer:
-• The snippet of code shown above sets two properties on the object d. ideally, any lookup performed on a JavaScript object with an unset key evaluates to undefined. But running this code marks those properties as “own properties” of the object.
-• This is a useful strategy for ensuring that an object has a given set of properties.
-• Passing this object to Object.keys will return an array with those set keys as well (even if their values are undefined).
-#. What will the code below output to the console and why?
-var arr1 = "john".split('');
+```
+
+**Ans:**
+
+- The snippet of code shown above sets two properties on the object d. ideally, any lookup performed on a JavaScript object with an unset key evaluates to undefined. But running this code marks those properties as “own properties” of the object.
+- This is a useful strategy for ensuring that an object has a given set of properties.
+- Passing this object to Object.keys will return an array with those set keys as well (even if their values are undefined).
+
+### What will the code below output to the console and why?
+
+```js
+var arr1 = 'john'.split('');
 var arr2 = arr1.reverse();
-var arr3 = "jones".split('');
+var arr3 = 'jones'.split('');
 arr2.push(arr3);
-console.log("array 1: length=" + arr1.length + " last=" + arr1.slice(-1));
-console.log("array 2: length=" + arr2.length + " last=" + arr2.slice(-1));
-Answer: The logged output will be:
-"array 1: length=5 last=j,o,n,e,s"
-"array 2: length=5 last=j,o,n,e,s"
-arr1 and arr2 are the same (i.e. ['n','h','o','j', ['j','o','n','e','s'] ]) after the above code is executed for the following reasons:
-• Calling an array object’s reverse() method doesn’t only return the array in reverse order, it also reverses the order of the array itself (i.e., in this case, arr1).
-• The reverse() method returns a reference to the array itself (i.e., in this case, arr1).
-• As a result, arr2 is simply a reference to (rather than a copy of) arr1. Therefore, when anything is done to arr2 (i.e., when we invoke arr2.push(arr3)), arr1 will be affected as well since arr1 and arr2 are simply references to the same object.
-And a couple of side points here that can sometimes trip someone up in answering this question:
-• Passing an array to the push() method of another array pushes that entire array as a single element onto the end of the array.
-• As a result, the statement arr2.push(arr3); adds arr3 in its entirety as a single element to the end of arr2 (i.e., it does notconcatenate the two arrays, that’s what the concat() method is for).
-• Like Python, JavaScript honors negative subscripts in calls to array methods like slice() as a way of referencing elements at the end of the array; e.g., a subscript of -1 indicates the last element in the array, and so on.
-#. What will the code below output to the console and why ?
-console.log(1 + "2" + "2");
-console.log(1 + +"2" + "2");
-console.log(1 + -"1" + "2");
-console.log(+"1" + "1" + "2");
-console.log( "A" - "B" + "2");
-console.log( "A" - "B" + 2);
-Answer: The above code will output the following to the console:
-"122"
-"32"
-"02"
-"112"
-"NaN2"
-NaN
+console.log('array 1: length=' + arr1.length + ' last=' + arr1.slice(-1));
+console.log('array 2: length=' + arr2.length + ' last=' + arr2.slice(-1));
+```
+
+**Ans:** The logged output will be:
+
+```js
+'array 1: length=5 last=j,o,n,e,s';
+'array 2: length=5 last=j,o,n,e,s';
+```
+
+`arr1` and `arr2` are the same (i.e. ['n','h','o','j', ['j','o','n','e','s'] ]) after the above code is executed for the following reasons:
+
+- Calling an array object’s reverse() method doesn’t only return the array in reverse order, it also reverses the order of the array itself (i.e., in this case, arr1).
+- The reverse() method returns a reference to the array itself (i.e., in this case, arr1).
+- As a result, arr2 is simply a reference to (rather than a copy of) arr1. Therefore, when anything is done to arr2 (i.e., when we invoke arr2.push(arr3)), arr1 will be affected as well since arr1 and arr2 are simply references to the same object.
+- And a couple of side points here that can sometimes trip someone up in answering this question:
+- Passing an array to the push() method of another array pushes that entire array as a single element onto the end of the array.
+- As a result, the statement arr2.push(arr3); adds arr3 in its entirety as a single element to the end of arr2 (i.e., it does notconcatenate the two arrays, that’s what the concat() method is for).
+- Like Python, JavaScript honors negative subscripts in calls to array methods like slice() as a way of referencing elements at the end of the array; e.g., a subscript of -1 indicates the last element in the array, and so on.
+
+### What will the code below output to the console and why ?
+
+```js
+console.log(1 + '2' + '2');
+console.log(1 + +'2' + '2');
+console.log(1 + -'1' + '2');
+console.log(+'1' + '1' + '2');
+console.log('A' - 'B' + '2');
+console.log('A' - 'B' + 2);
+```
+
+**Ans:** The above code will output the following to the console:
+
+```js
+'122';
+'32';
+'02';
+'112';
+'NaN2';
+NaN;
+```
+
 Here’s why…
-• The fundamental issue here is that JavaScript (ECMAScript) is a loosely typed language and it performs automatic type conversion on values to accommodate the operation being performed. Let’s see how this plays out with each of the above examples.
-Example 1:
-1 + "2" + "2" Outputs: "122"
+
+- The fundamental issue here is that JavaScript (ECMAScript) is a loosely typed language and it performs automatic type conversion on values to accommodate the operation being performed. Let’s see how this plays out with each of the above examples.
+
+**Example 1:**
+
+`1 + "2" + "2" Outputs: "122"`
+
 Explanation: The first operation to be performed in 1 + "2". Since one of the operands ("2") is a string, JavaScript assumes it needs to perform string concatenation and therefore converts the type of 1 to "1", 1 + "2"yields "12".
 Then, "12" + "2" yields "122".
-Example 2:
+
+**Example 2:**
+
 1 + +"2" + "2" Outputs: "32"
+
 Explanation: Based on order of operations, the first operation to be performed is +"2" (the extra + before the first "2" is treated as a unary operator). Thus, JavaScript converts the type of "2" to numeric and then applies the unary + sign to it (i.e., treats it as a positive number). As a result, the next operation is now 1 + 2 which of course yields 3.
 But then, we have an operation between a number and a string (i.e., 3 and "2"), so once again JavaScript converts the type of the numeric value to a string and performs string concatenation, yielding "32".
-Example 3:
+
+**Example 3:**
+
 1 + -"1" + "2" Outputs: "02"
+
 Explanation: The explanation here is identical to the prior example, except the unary operator is - rather than +. So "1" becomes 1, which then becomes -1 when the - is applied, which is then added to 1yielding 0, which is then converted to a string and concatenated with the final "2" operand, yielding "02".
-Example 4:
+
+**Example 4:**
+
 +"1" + "1" + "2" Outputs: "112"
-Explanation: Although the first "1" operand is typecast to a numeric value based on the unary + operator that precedes it, it is then immediately converted back to a string when it is concatenated with the second "1"operand, which is then concatenated with the final "2" operand, yielding the string "112".
-Example 5:
+
+Explanation: Although the first "1" operand is typecast to a numeric
+
+value based on the unary + operator that precedes it, it is then immediately converted back to a string when it is concatenated with the second "1"operand, which is then concatenated with the final "2" operand, yielding the string "112".
+
+**Example 5:**
+
 "A" - "B" + "2" Outputs: "NaN2"
+
 Explanation: Since the - operator cannot be applied to strings, and since neither "A"nor "B" can be converted to numeric values, "A" - "B" yields NaN which is then concatenated with the string "2" to yield “NaN2”.
-Example 6:
+
+**Example 6:**
+
 "A" - "B" + 2 Outputs: NaN
+
 Explanation: As explained in the previous example, "A" - "B" yields NaN. But any operator applied to NaN with any other numeric operand will still yield NaN.
-#.The following recursive code will cause a stack overflow if the array list is too large. How can you fix this and still retain the recursive pattern?
+
+### The following recursive code will cause a stack overflow if the array list is too large. How can you fix this and still retain the recursive pattern?
+
+```js
 var list = readHugeList();
 
 var nextListItem = function() {
-var item = list.pop();
+  var item = list.pop();
 
-    if (item) {
-        // process the list item...
-        nextListItem();
-    }
-
+  if (item) {
+    // process the list item...
+    nextListItem();
+  }
 };
-Answer: The potential stack overflow can be avoided by modifying the nextListItem function as follows:
+```
+
+**Ans:**
+
+The potential stack overflow can be avoided by modifying the nextListItem function as follows:
+
+```js
 var list = readHugeList();
 
 var nextListItem = function() {
-var item = list.pop();
+  var item = list.pop();
 
-    if (item) {
-        // process the list item...
-        setTimeout( nextListItem, 0);
-    }
-
+  if (item) {
+    // process the list item...
+    setTimeout(nextListItem, 0);
+  }
 };
-• The stack overflow is eliminated because the event loop handles the recursion, not the call stack.
-• When nextListItem runs, if item is not null, the timeout function (nextListItem) is pushed to the event queue and the function exits, thereby leaving the call stack clear.
-• When the event queue runs its timed-out event, the next item is processed and a timer is set to again invoke nextListItem.
-• Accordingly, the method is processed from start to finish without a direct recursive call, so the call stack remains clear, regardless of the number of iterations.
-#. In what order will the numbers 1-4 be logged to the console when the code below is executed? Why?
+```
+
+- The stack overflow is eliminated because the event loop handles the recursion, not the call stack.
+- When nextListItem runs, if item is not null, the timeout function (nextListItem) is pushed to the event queue and the function exits, thereby leaving the call stack clear.
+- When the event queue runs its timed-out event, the next item is processed and a timer is set to again invoke nextListItem.
+- Accordingly, the method is processed from start to finish without a direct recursive call, so the call stack remains clear, regardless of the number of iterations.
+
+### In what order will the numbers 1-4 be logged to the console when the code below is executed? Why?
+
+```js
 (function() {
-console.log(1);
-setTimeout(function(){console.log(2)}, 1000);
-setTimeout(function(){console.log(3)}, 0);
-console.log(4);
+  console.log(1);
+  setTimeout(function() {
+    console.log(2);
+  }, 1000);
+  setTimeout(function() {
+    console.log(3);
+  }, 0);
+  console.log(4);
 })();
-Answer: The values will be logged in the following order:
-1
-4
-3
-2
-Let’s first explain the parts of this that are presumably more obvious:
-• 1 and 4 are displayed first since they are logged by simple calls to console.log() without any delay.
-• 2 is displayed after 3 because 2 is being logged after a delay of 1000 msecs (i.e., 1 second) whereas 3 is being logged after a delay of 0 msecs.
-• OK, fine. But if 3 is being logged after a delay of 0 msecs, doesn’t that mean that it is being logged right away? And, if so, shouldn’t it be logged before 4, since 4 is being logged by a later line of code?
-• The answer has to do with properly understanding JavaScript events and timing.
-• The browser has an event loop which checks the event queue and processes pending events. For example, if an event happens in the background (e.g., a script onload event) while the browser is busy (e.g., processing an onclick), the event gets appended to the queue.
-• When the onclick handler is complete, the queue is checked and the event is then handled (e.g., the onload script is executed).
-• Similarly, setTimeout() also puts execution of its referenced function into the event queue if the browser is busy.
-• When a value of zero is passed as the second argument to setTimeout(), it attempts to execute the specified function “as soon as possible”.
-• Specifically, execution of the function is placed on the event queue to occur on the next timer tick.
-• Note, though, that this is not immediate; the function is not executed until the next tick.
-• That’s why in the above example, the call to console.log(4) occurs before the call to console.log(3) (since the call to console.log(3) is invoked via setTimeout, so it is slightly delayed).
+```
 
-#. What will the code below output to the console and why?
+**Ans:** The values will be logged in the following order:
+
+```js
+1;
+4;
+3;
+2;
+```
+
+Let’s first explain the parts of this that are presumably more obvious:
+
+- 1 and 4 are displayed first since they are logged by simple calls to console.log() without any delay.
+- 2 is displayed after 3 because 2 is being logged after a delay of 1000 msecs (i.e., 1 second) whereas 3 is being logged after a delay of 0 msecs.
+- OK, fine. But if 3 is being logged after a delay of 0 msecs, doesn’t that mean that it is being logged right away? And, if so, shouldn’t it be logged before 4, since 4 is being logged by a later line of code?
+- The answer has to do with properly understanding JavaScript events and timing.
+- The browser has an event loop which checks the event queue and processes pending events. For example, if an event happens in the background (e.g., a script onload event) while the browser is busy (e.g., processing an onclick), the event gets appended to the queue.
+- When the onclick handler is complete, the queue is checked and the event is then handled (e.g., the onload script is executed).
+- Similarly, setTimeout() also puts execution of its referenced function into the event queue if the browser is busy.
+- When a value of zero is passed as the second argument to setTimeout(), it attempts to execute the specified function “as soon as possible”.
+- Specifically, execution of the function is placed on the event queue to occur on the next timer tick.
+- Note, though, that this is not immediate; the function is not executed until the next tick.
+- That’s why in the above example, the call to console.log(4) occurs before the call to console.log(3) (since the call to console.log(3) is invoked via setTimeout, so it is slightly delayed).
+
+### What will the code below output to the console and why?
+
+```js
 var myObject = {
-foo: "bar",
-func: function() {
-var self = this;
-console.log("outer func: this.foo = " + this.foo);
-console.log("outer func: self.foo = " + self.foo);
-(function() {
-console.log("inner func: this.foo = " + this.foo);
-console.log("inner func: self.foo = " + self.foo);
-}());
-}
+  foo: 'bar',
+  func: function() {
+    var self = this;
+    console.log('outer func: this.foo = ' + this.foo);
+    console.log('outer func: self.foo = ' + self.foo);
+    (function() {
+      console.log('inner func: this.foo = ' + this.foo);
+      console.log('inner func: self.foo = ' + self.foo);
+    })();
+  },
 };
 myObject.func();
-Answer: The above code will output the following to the console:
+```
+
+**Ans:**
+
+The above code will output the following to the console:
+
+```js
 outer func: this.foo = bar
 outer func: self.foo = bar
 inner func: this.foo = undefined
 inner func: self.foo = bar
-• In the outer function, both this and self-refer to myObject and therefore both can properly reference and access foo.
-• In the inner function, though, this no longer refers to myObject. As a result, this.foo is undefined in the inner function, whereas the reference to the local variable self remains in scope and is accessible there.
-#. Variable Hoisting
+```
+
+- In the outer function, both this and self-refer to myObject and therefore both can properly reference and access foo.
+- In the inner function, though, this no longer refers to myObject. As a result, this.foo is undefined in the inner function, whereas the reference to the local variable self remains in scope and is accessible there.
+
+### Variable Hoisting
+
+```js
 console.log(employeeId);
-Ans: ReferenceError: employeeId is not defined
+// Ans: ReferenceError: employeeId is not defined
 
 console.log(employeeId);
 var employeeId = '19000';
-Ans: undefined
+// Ans: undefined
 
 var employeeId = '1234abe';
-(function(){
-console.log(employeeId);
-var employeeId = '122345';
+(function() {
+  console.log(employeeId);
+  var employeeId = '122345';
 })();
-Ans : undefined
+// Ans : undefined
+```
 
-#. What will be output of the below code:
-(function(){
-var a = b = 3;
+### What will be output of the below code:
+
+```js
+(function() {
+  var a = (b = 3);
 })();
-console.log("a defined? " + (typeof a !== 'undefined'));
-console.log("b defined? " + (typeof b !== 'undefined'));
-Ans:
+console.log('a defined? ' + (typeof a !== 'undefined'));
+console.log('b defined? ' + (typeof b !== 'undefined'));
+```
+
+**Ans:**
+
 Since both a and b are defined within the enclosing scope of the function, and since the line they are on begins with the var keyword, most JavaScript developers would expect typeof a and typeof b to both be undefined in the above example.
+
 However, that is not the case. The issue here is that most developers incorrectly understand the statement var a = b = 3; to be shorthand for:
+
+```js
 var b = 3;
 var a = b;
-But in fact, var a = b = 3; is actually shorthand for:
+```
+
+But in fact, `var a = b = 3;` is actually shorthand for:
+
+```js
 b = 3;
 var a = b;
+```
+
 As a result (if you are not using strict mode), the output of the code snippet would be:
+
+```js
 a defined? false
 b defined? true
-But how can b be defined outside of the scope of the enclosing function? Well, since the statement var a = b = 3; is shorthand for the statements b = 3; and var a = b; b ends up being a global variable (since it is not preceded by the var keyword) and is therefore still in scope even outside of the enclosing function.
-Note that, in strict mode (i.e., with use strict), the statement var a = b = 3; will generate a runtime error of ReferenceError: b is not defined, thereby avoiding any head fakes/bugs that might otherwise result. (Yet another prime example of why you should use use strict as a matter of course in your code!)
+```
 
-#. Create a for loop that iterates up to 100 while outputting "fizz" at multiples of 3, "buzz" at multiples of 5 and "fizzbuzz" at multiples of 3 and 5.
+But how can b be defined outside of the scope of the enclosing function?
 
+Well, since the statement `var a = b = 3;` is shorthand for the statements b = 3; and var a = b; b ends up being a global variable (since it is not preceded by the var keyword) and is therefore still in scope even outside of the enclosing function.
+
+Note that, in strict mode (i.e., with use strict), the statement var a = b = 3; will generate a runtime error of ReferenceError: b is not defined, thereby avoiding any head fakes/bugs that might otherwise result.
+
+(Yet another prime example of why you should use use strict as a matter of course in your code!)
+
+### Create a for loop that iterates up to 100 while outputting "fizz" at multiples of 3, "buzz" at multiples of 5 and "fizzbuzz" at multiples of 3 and 5.
+
+```js
 function fizzbuzz() {
-for (let i = 1; i <= 100; i++) {
-if (i % 3 == 0 && i % 5 == 0) {
-console.log("i = " + i + " : fizzbuzz");
-} else if (i % 3 == 0) {
-console.log("i = " + i + " : fizz");
-} else if (i % 5 == 0) {
-console.log("i = " + i + " : buzz");
-}
-}
+  for (let i = 1; i <= 100; i++) {
+    if (i % 3 == 0 && i % 5 == 0) {
+      console.log('i = ' + i + ' : fizzbuzz');
+    } else if (i % 3 == 0) {
+      console.log('i = ' + i + ' : fizz');
+    } else if (i % 5 == 0) {
+      console.log('i = ' + i + ' : buzz');
+    }
+  }
 }
 
 fizzbuzz();
+```
 
-#. Explain the difference between mutable and immutable objects?
+### Explain the difference between mutable and immutable objects?
 
-#. Explain the difference between synchronous and asynchronous functions.
-Synchronous functions are blocking while asynchronous functions are not. In synchronous functions, statements complete before the next statement is run. In this case, the program is evaluated exactly in order of the statements and execution of the program is paused if one of the statements take a very long time.
+### Explain the difference between synchronous and asynchronous functions.
 
-Asynchronous functions usually accept a callback as a parameter and execution continue on the next line immediately after the asynchronous function is invoked. The callback is only invoked when the asynchronous operation is complete and the call stack is empty. Heavy duty operations such as loading data from a web server or querying a database should be done asynchronously so that the main thread can continue executing other operations instead of blocking until that long operation to complete (in the case of browsers, the UI will freeze).
+**Synchronous functions** are blocking while asynchronous functions are not. In synchronous functions, statements complete before the next statement is run.
+
+In this case, the program is evaluated exactly in order of the statements and execution of the program is paused if one of the statements take a very long time.
+
+**Asynchronous functions** usually accept a callback as a parameter and execution continue on the next line immediately after the asynchronous function is invoked.
+
+The callback is only invoked when the asynchronous operation is complete and the call stack is empty.
+
+Heavy duty operations such as loading data from a web server or querying a database should be done asynchronously so that the main thread can continue executing other operations instead of blocking until that long operation to complete (in the case of browsers, the UI will freeze).
