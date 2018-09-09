@@ -1,4 +1,3 @@
-
 <h1>JavaScript Developer Handbook</h1>
 
 <div align="center">
@@ -12,48 +11,40 @@
   </p>
 </div>
 
-# ES6 Karma Jasmine Webpack Istanbul Boilerplate
+## Part-I: JavaScript - Basics to Advanced
 
-[![devDependency Status](https://david-dm.org/dcroitoru/es6-karma-jasmine-webpack-istanbul-boilerplate/dev-status.svg)](https://david-dm.org/dcroitoru/es6-karma-jasmine-webpack-istanbul-boilerplate?type=dev)
+- Basics of JavaScript
+- Object Orient JavaScript
+- Advanced JavaScript
+- ECMAScript 2015/ES6
+- Design Patterns in JavaScript
+- Data Structure in JavaScript
+- Algorithms in JavaScript
 
-Boilerplate for building a client-based JavaScript library in ES6 using the following components:
+## Part-II: CSS - Cascaded Style sheet
 
-- [Babel](https://babeljs.io/)
-- [Webpack 2](https://webpack.github.io/)
-- [Jasmine](http://jasmine.github.io/)
-- [Karma](http://karma-runner.github.io/)
-- [Istanbul](https://github.com/deepsweet/istanbul-instrumenter-loader)
+- Basics of CSS
+- Box Model
+- Flex Box
+- Bootstrap
 
-### Setup
+## Part-III: HTML - HTML5 Features
 
-```
-npm install
-```
+- HTML Features
+- Audio and Video
+- Canvas and SVG
+- HTML5 API's
 
-### Dev Server
+## Contributing
 
-```
-npm start
-```
+### Code of Conduct
 
-Open browser at **localhost:8080**. Should display a welcome message.
+We have adopted the same Code of Conduct as Facebook that we expect project participants to adhere to. Please read [the full text](https://code.facebook.com/codeofconduct) so that you can understand what actions will and will not be tolerated.
 
-### Tests
+### Contributing Guide
 
-```
-npm test
-```
+Read our [contributing guide](/CONTRIBUTING.md) to learn about how you can contribute, how to propose improvements or if you are interested in translating the content.
 
-Will open a chrome window and watch for changes.
+## License
 
-### Coverage
-
-```
-npm run coverage
-```
-
-Will generate coverage report.
-
-## Credits
-
-- https://github.com/zyml/es6-karma-jasmine-webpack-boilerplate
+All projects and packages in this repository are [MIT licensed](/LICENSE).
