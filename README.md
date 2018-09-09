@@ -1,5 +1,5 @@
 
-<h1 align="center">Front End Interview Handbook</h1>
+<h1>JavaScript Developer Handbook</h1>
 
 <div align="center">
   <a href="https://dribbble.com/shots/4263961-Front-End-Interview-Scroll">
