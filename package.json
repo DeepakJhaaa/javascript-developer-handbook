@@ -48,6 +48,6 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^2.0.13",
     "webpack": "^2.7.0",
-    "webpack-dev-server": "^2.11.2"
+    "webpack-dev-server": "^2.11.5"
   }
 }
