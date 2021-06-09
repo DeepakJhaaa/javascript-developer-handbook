@@ -5,6 +5,12 @@
   - [1.4. Discuss possible ways to write a function `isInteger(x)` that determines if x is an integer.](#14-discuss-possible-ways-to-write-a-function-isintegerx-that-determines-if-x-is-an-integer)
   - [1.5. What will the code below output to the console and why ?](#15-what-will-the-code-below-output-to-the-console-and-why-)
   - [1.6. What would the following lines of code output to the console?](#16-what-would-the-following-lines-of-code-output-to-the-console)
+  - [1.7. What is the value of typeof `undefined == typeof NULL`?](#17-what-is-the-value-of-typeof-undefined--typeof-null)
+  - [1.8. What do the following lines output, and why?](#18-what-do-the-following-lines-output-and-why)
+  - [1.9. What would following code return?](#19-what-would-following-code-return)
+  - [1.10. What will be the output of the following code?](#110-what-will-be-the-output-of-the-following-code)
+  - [1.11. What will be the output of the following code?](#111-what-will-be-the-output-of-the-following-code)
+  - [1.12. What will be the output of the following code?](#112-what-will-be-the-output-of-the-following-code)
 - [2. Object:](#2-object)
   - [2.1. What are the way by which we can create object in JavaScript?](#21-what-are-the-way-by-which-we-can-create-object-in-javascript)
   - [2.2. What is the output out of the following code? Explain your answer.](#22-what-is-the-output-out-of-the-following-code-explain-your-answer)
@@ -14,14 +20,20 @@
   - [2.6. How we can prevent modification of object in JavaScript?](#26-how-we-can-prevent-modification-of-object-in-javascript)
   - [2.7. Write a function called deepClone which takes an object and creates an object copy of it.](#27-write-a-function-called-deepclone-which-takes-an-object-and-creates-an-object-copy-of-it)
   - [2.8. Write code for merge two JavaScript Object dynamically.](#28-write-code-for-merge-two-javascript-object-dynamically)
+  - [2.9. What will the code below output to the console and why?](#29-what-will-the-code-below-output-to-the-console-and-why)
 - [3. Array:](#3-array)
   - [3.1. How do you add an element at the beginning of an array? How do you add one at the end?](#31-how-do-you-add-an-element-at-the-beginning-of-an-array-how-do-you-add-one-at-the-end)
   - [3.2. What will the code below output to the console and why?](#32-what-will-the-code-below-output-to-the-console-and-why)
+  - [3.3. Imagine you have this code](#33-imagine-you-have-this-code)
 - [4. Scope:](#4-scope)
   - [4.1. Explain why the following doesn't work as an IIFE?](#41-explain-why-the-following-doesnt-work-as-an-iife)
   - [4.2. What is JavaScript Self-Invoking anonymous function or Self-Executing anonymous function?](#42-what-is-javascript-self-invoking-anonymous-function-or-self-executing-anonymous-function)
   - [4.3. What is the significance of, and reason for, wrapping the entire content of a JavaScript source file in a function block?](#43-what-is-the-significance-of-and-reason-for-wrapping-the-entire-content-of-a-javascript-source-file-in-a-function-block)
   - [4.4. What is the drawback of creating true private in JavaScript?](#44-what-is-the-drawback-of-creating-true-private-in-javascript)
+  - [4.5. What will this code print?](#45-what-will-this-code-print)
+  - [4.6. What will the following code output and why?](#46-what-will-the-following-code-output-and-why)
+  - [4.7. What will be the output of the following code](#47-what-will-be-the-output-of-the-following-code)
+  - [4.8. In what order will the numbers 1-4 be logged to the console when the code below is executed? Why?](#48-in-what-order-will-the-numbers-1-4-be-logged-to-the-console-when-the-code-below-is-executed-why)
 - [5. Call, Apply and Bind:](#5-call-apply-and-bind)
 - [6. Clousers:](#6-clousers)
   - [6.1. What is “closure” in JavaScript? Provide an example?](#61-what-is-closure-in-javascript-provide-an-example)
@@ -39,1068 +51,32 @@
   - [11.3. How to add response of two HTTP calls, after both calls complete? , OR](#113-how-to-add-response-of-two-http-calls-after-both-calls-complete--or)
   - [11.4. How to wait until multiple GET requests are successfully processed?](#114-how-to-wait-until-multiple-get-requests-are-successfully-processed)
   - [11.5. Explain the difference between synchronous and asynchronous functions.](#115-explain-the-difference-between-synchronous-and-asynchronous-functions)
-
-
-### 0.1. Program: What will be the output ?
-
-### 0.2. What will this code print?
-
-```js
-for (let i = 0; i < 5; i++) {
-  setTimeout(function() {
-    console.log(i);
-  }, i * 1000);
-}
-```
-
-**Ans:**
-
-- It will print 0 1 2 3 4, because we use let instead of var here.
-- The variable i is only seen in the for loop’s block scope.
-
-### 0.3. What do the following lines output, and why?
-
-```js
-console.log(1 < 2 < 3);
-console.log(3 > 2 > 1);
-```
-
-**Ans:**
-
-The first statement returns true which is as expected.
-
-- The second returns false because of how the engine works regarding operator associativity for < and >.
-- It compares left to right, so 3 > 2 > 1 JavaScript translates to true > 1. true has value 1, so it then compares 1 > 1, which is false.
-
-
-### 0.4. Imagine you have this code
-
-```js
-var a = [1, 2, 3];
-
-// a) Will this result in a crash?
-a[10] = 99;
-
-// b) What will this output?
-console.log(a[6]);
-```
-
-**Ans:**
-
-**(a)** - It will not crash. The JavaScript engine will make array slots 3 through 99 be “empty slots.”
-
-**(b)** - Here, a[6] will output undefined, but the slot still remains empty rather than filled with undefined.
-
-This may be an important nuance in some cases. For example, when using map(), empty slots will remain empty in map()’s output, but undefined slots will be remapped using the function passed to it:
-
-```js
-var b = [undefined];
-b[2] = 1;
-
-console.log(b); // (3) [undefined, empty × 1, 1]
-console.log(b.map(e => 7)); // (3) [7, empty × 1, 7]
-```
-
-### 0.5. What is the value of typeof `undefined == typeof NULL`?
-
-The expression will be evaluated to true, since NULL will be treated as any other undefined variable.
-
-Note: JavaScript is case-sensitive and here we are using NULL instead of null.
-
-### 0.6. What would following code return?
-
-```js
-console.log(typeof typeof 1);
-// Ans:
-string;
-
-// typeof 1 will return "number" and typeof "number" will return string.
-```
-
-#. What will the following code output and why?
-
-```js
-var b = 1;
-function outer() {
-  var b = 2;
-  function inner() {
-    b++;
-    var b = 3;
-    console.log(b);
-  }
-  inner();
-}
-outer();
-```
-
-**Ans:**
-
-Output to the console will be “3”.
-
-- There are three closures in the example, each with its own `var b` declaration.
-- When a variable is invoked closures will be checked in order from local to global until an instance is found.
-- Since the inner closure has a b variable of its own, that is what will be output.
-
-Furthermore, due to hoisting the code in inner will be interpreted as follows:
-
-```js
-function inner() {
-  var b; // b is undefined
-  b++; // b is NaN
-  b = 3; // b is 3
-  console.log(b); // output "3"
-}
-```
-
-#. What will be the output of the following code
-
-```js
-for (var i = 0; i < 5; i++) {
-  setTimeout(function() { console.log(i); }, i _ 1000 );
-}
-```
-
-Explain your answer. How could the use of closures help here?
-
-**Ans:**
-
-- The code sample shown will not display the values 0, 1, 2, 3, and 4 as might be expected; rather, it will display 5, 5, 5, 5, and 5.
-- The reason for this is that each function executed within the loop will be executed after the entire loop has completed and all will therefore reference the last value stored in i, which was 5.
-- Closures can be used to prevent this problem by creating a unique scope for each iteration, storing each unique value of the variable within its scope, as follows:
-
-```js
-for (var i = 0; i < 5; i++) {
-  (function(x) {
-    setTimeout(function() { console.log(x); }, x \_ 1000 );
-  })(i);
-}
-```
-
-This will produce the presumably desired result of logging 0, 1, 2, 3, and 4 to the console.
-In an ES2015 context, you can simply use let instead of var in the original code:
-
-```js
-for (let i = 0; i < 5; i++) {
-  setTimeout(function() { console.log(i); }, i \* 1000 );
-}
-```
-
-
-
-### 0.7. What will the following code output to the console:
-
-```js
-console.log(
-  (function f(n) {
-    return n > 1 ? n * f(n - 1) : n;
-  })(10),
-);
-```
-
-Answer: The code will output the value of 10 factorial (i.e., 10!, or 3,628,800).
-Here’s why: The named function f() calls itself recursively, until it gets down to calling f(1) which simply returns 1. Here, therefore, is what this does:
-
-```js
-f(1): returns n, which is 1
-f(2): returns 2 _ f(1), which is 2
-f(3): returns 3 _ f(2), which is 6
-f(4): returns 4 _ f(3), which is 24
-f(5): returns 5 _ f(4), which is 120
-f(6): returns 6 _ f(5), which is 720
-f(7): returns 7 _ f(6), which is 5040
-f(8): returns 8 _ f(7), which is 40320
-f(9): returns 9 _ f(8), which is 362880
-f(10): returns 10 _ f(9), which is 3628800
-```
-
-### 0.8. Consider the code snippet below. What will the console output be and why?
-
-```js
-(function(x) {
-  return (function(y) {
-    console.log(x);
-  })(2);
-})(1);
-```
-
-**Ans:**
-
-The output will be 1, even though the value of x is never set in the inner function. Here’s why:
-
-- As explained in our JavaScript Hiring Guide, a closure is a function, along with all variables or functions that were in-scope at the time that the closure was created.
-- In JavaScript, a closure is implemented as an “inner function”; i.e., a function defined within the body of another function. An important feature of closures is that an inner function still has access to the outer function’s variables.
-- Therefore, in this example, since x is not defined in the inner function, the scope of the outer function is searched for a defined variable x, which is found to have a value of 1.
-
-### 0.9. What will the following code output to the console and why:
-
-```js
-var hero = {
-  _name: 'John Doe',
-  getSecretIdentity: function() {
-    return this._name;
-  },
-};
-
-var stoleSecretIdentity = hero.getSecretIdentity;
-
-console.log(stoleSecretIdentity());
-console.log(hero.getSecretIdentity());
-```
-
-What is the issue with this code and how can it be fixed.
-
-**Ans:** The code will output:
-
-```js
-undefined
-John Doe
-```
-
-- The first console.log prints undefined because we are extracting the method from the hero object, so stoleSecretIdentity() is being invoked in the global context (i.e., the window object) where the \_name property does not exist.
-
-One way to fix the stoleSecretIdentity() function is as follows:
-
-```js
-var stoleSecretIdentity = hero.getSecretIdentity.bind(hero);
-```
-
-### 0.10. Create a function for the below problem:
-
-For a given a DOM Element on the page, will visit the element itself and all of its descendants (not just its immediate children). For each element visited, the function should pass that element to a provided callback function. The arguments to the function should be:
-
-- A DOM element
-- A callback function (that takes a DOM element as its argument)
-
-**Ans:**
-Visiting all elements in a tree (DOM) is a classic Depth-First-Search algorithm application. Here’s an example solution:
-
-```js
-function Traverse(p_element, p_callback) {
-  p_callback(p_element);
-  var list = p_element.children;
-  for (var i = 0; i < list.length; i++) {
-    Traverse(list[i], p_callback); // recursive call
-  }
-}
-```
-
-### 0.11. What is the output of the following code?
-
-```js
-var length = 10;
-function fn() {
-  console.log(this.length);
-}
-
-var obj = {
-  length: 5,
-  method: function(fn) {
-    fn();
-    arguments[0]();
-  },
-};
-
-obj.method(fn, 1);
-```
-
-Answer: Output
-
-```js
-10;
-2;
-```
-
-**- Why isn’t it 10 and 5?**
-
-- In the first place, as fn is passed as a parameter to the function method, the scope (this) of the function fn is window.var length = 10; is declared at the window level.
-- It also can be accessed as window.length or length or this.length (when this === window.) method is bound to Object obj, and obj.method is called with parameters fn and 1.
-- Though method is accepting only one parameter, while invoking it has passed two parameters; the first is a function callback and other is just a number.
-- When fn() is called inside method, which was passed the function as a parameter at the global level, this.length will have access to var length = 10 (declared globally) not length = 5 as defined in Object obj.
-- Now, we know that we can access any number of arguments in a JavaScript function using the arguments[] array.
-- Hence `arguments[0]()` is nothing but calling fn(). Inside fn now, the scope of this function becomes the arguments array, and logging the length of arguments[] will return 2. Hence the output will be as above.
-
-### 0.12. Consider the following code. What will the output be, and why?
-
-```js
-(function() {
-  try {
-    throw new Error();
-  } catch (x) {
-    var x = 1,
-      y = 2;
-    console.log(x);
-  }
-  console.log(x);
-  console.log(y);
-})();
-```
-
-Answer:
-
-```js
-1;
-undefined;
-2;
-```
-
-var statements are hoisted (without their value initialization) to the top of the global or function scope it belongs to, even when it’s inside a with or catch block. However, the error’s identifier is only visible inside the catch block. It is equivalent to:
-
-```js
-(function () {
-  var x, y; // outer and hoisted
-  try {
-    throw new Error();
-  } catch (x /_ inner _/) {
-    x = 1; // inner x, not the outer one
-    y = 2; // there is only one y, which is in the outer scope
-    console.log(x /_ inner _/);
-  }
-  console.log(x);
-  console.log(y);
-})();
-```
-
-### 0.13. What will be the output of this code?
-
-```js
-var x = 21;
-var girl = function() {
-  console.log(x);
-  var x = 20;
-};
-girl();
-```
-
-**Ans:**
-
-Neither 21, nor 20, the result is undefined.
-
-It’s because JavaScript initialization is not hoisted.
-
-**Why doesn’t it show the global value of 21?**
-
-The reason is that when the function is executed, it checks that there’s a local x variable present but doesn’t yet declare it, so it won’t look for global one.)
-
-### 0.14. Consider the following code snippet:
-
-```js
-for (var i = 0; i < 5; i++) {
-  var btn = document.createElement('button');
-
-  btn.appendChild(document.createTextNode('Button ' + i));
-  btn.addEventListener('click', function() {
-    console.log(i);
-  });
-
-  document.body.appendChild(btn);
-}
-```
-
-(A) What gets logged to the console when the user clicks on “Button 4” and why?
-
-(B) Provide one or more alternate implementations that will work as expected.
-
-**Ans:**
-
-(A) - No matter what button the user clicks the number 5 will always be logged to the console. This is because, at the point that the onclick method is invoked (for any of the buttons), the for loop has already completed and the variable i already has a value of 5.
-(Bonus points for the interviewee if they know enough to talk about how execution contexts, variable objects, activation objects, and the internal “scope” property contribute to the closure behavior.)
-
-(B) - The key to making this work is to capture the value of i at each pass through the for loop by passing it into a newly created function object. Here are four possible ways to accomplish this:
-
-```js
-for (var i = 0; i < 5; i++) {
-  var btn = document.createElement('button');
-
-  btn.appendChild(document.createTextNode('Button ' + i));
-  btn.addEventListener(
-    'click',
-    (function(i) {
-      return function() {
-        console.log(i);
-      };
-    })(i),
-  );
-
-  document.body.appendChild(btn);
-}
-```
-
-Alternatively, you could wrap the entire call to btn.addEventListener in the new anonymous function:
-
-```js
-for (var i = 0; i < 5; i++) {
-  var btn = document.createElement('button');
-
-  btn.appendChild(document.createTextNode('Button ' + i));
-  (function(i) {
-    btn.addEventListener('click', function() {
-      console.log(i);
-    });
-  })(i);
-
-  document.body.appendChild(btn);
-}
-```
-
-Or, we could replace the for loop with a call to the array object’s native forEach method:
-
-```js
-['a', 'b', 'c', 'd', 'e'].forEach(function(value, i) {
-  var btn = document.createElement('button');
-
-  btn.appendChild(document.createTextNode('Button ' + i));
-  btn.addEventListener('click', function() {
-    console.log(i);
-  });
-
-  document.body.appendChild(btn);
-});
-```
-
-Lastly, the simplest solution, if you’re in an ES6/ES2015 context, is to use let i instead of var i:
-
-```js
-for (let i = 0; i < 5; i++) {
-  var btn = document.createElement('button');
-
-  btn.appendChild(document.createTextNode('Button ' + i));
-  btn.addEventListener('click', function() {
-    console.log(i);
-  });
-
-  document.body.appendChild(btn);
-}
-```
-
-**Ans:**
-
-- The snippet of code shown above sets two properties on the object d. ideally, any lookup performed on a JavaScript object with an unset key evaluates to undefined. But running this code marks those properties as “own properties” of the object.
-- This is a useful strategy for ensuring that an object has a given set of properties.
-- Passing this object to Object.keys will return an array with those set keys as well (even if their values are undefined).
-
-
-### 0.15. In what order will the numbers 1-4 be logged to the console when the code below is executed? Why?
-
-```js
-(function() {
-  console.log(1);
-  setTimeout(function() {
-    console.log(2);
-  }, 1000);
-  setTimeout(function() {
-    console.log(3);
-  }, 0);
-  console.log(4);
-})();
-```
-
-**Ans:** The values will be logged in the following order:
-
-```js
-1;
-4;
-3;
-2;
-```
-
-Let’s first explain the parts of this that are presumably more obvious:
-
-- 1 and 4 are displayed first since they are logged by simple calls to console.log() without any delay.
-- 2 is displayed after 3 because 2 is being logged after a delay of 1000 msecs (i.e., 1 second) whereas 3 is being logged after a delay of 0 msecs.
-- OK, fine. But if 3 is being logged after a delay of 0 msecs, doesn’t that mean that it is being logged right away? And, if so, shouldn’t it be logged before 4, since 4 is being logged by a later line of code?
-- The answer has to do with properly understanding JavaScript events and timing.
-- The browser has an event loop which checks the event queue and processes pending events. For example, if an event happens in the background (e.g., a script onload event) while the browser is busy (e.g., processing an onclick), the event gets appended to the queue.
-- When the onclick handler is complete, the queue is checked and the event is then handled (e.g., the onload script is executed).
-- Similarly, setTimeout() also puts execution of its referenced function into the event queue if the browser is busy.
-- When a value of zero is passed as the second argument to setTimeout(), it attempts to execute the specified function “as soon as possible”.
-- Specifically, execution of the function is placed on the event queue to occur on the next timer tick.
-- Note, though, that this is not immediate; the function is not executed until the next tick.
-- That’s why in the above example, the call to console.log(4) occurs before the call to console.log(3) (since the call to console.log(3) is invoked via setTimeout, so it is slightly delayed).
-
-### 0.16. What will the code below output to the console and why?
-
-```js
-var myObject = {
-  foo: 'bar',
-  func: function() {
-    var self = this;
-    console.log('outer func: this.foo = ' + this.foo);
-    console.log('outer func: self.foo = ' + self.foo);
-    (function() {
-      console.log('inner func: this.foo = ' + this.foo);
-      console.log('inner func: self.foo = ' + self.foo);
-    })();
-  },
-};
-myObject.func();
-```
-
-**Ans:**
-
-The above code will output the following to the console:
-
-```js
-outer func: this.foo = bar
-outer func: self.foo = bar
-inner func: this.foo = undefined
-inner func: self.foo = bar
-```
-
-- In the outer function, both this and self-refer to myObject and therefore both can properly reference and access foo.
-- In the inner function, though, this no longer refers to myObject. As a result, this.foo is undefined in the inner function, whereas the reference to the local variable self remains in scope and is accessible there.
-
-### 0.17. Variable Hoisting
-
-```js
-console.log(employeeId);
-// Ans: ReferenceError: employeeId is not defined
-
-console.log(employeeId);
-var employeeId = '19000';
-// Ans: undefined
-
-var employeeId = '1234abe';
-(function() {
-  console.log(employeeId);
-  var employeeId = '122345';
-})();
-// Ans : undefined
-```
-
-### 0.18. What will be output of the below code:
-
-```js
-(function() {
-  var a = (b = 3);
-})();
-console.log('a defined? ' + (typeof a !== 'undefined'));
-console.log('b defined? ' + (typeof b !== 'undefined'));
-```
-
-**Ans:**
-
-Since both a and b are defined within the enclosing scope of the function, and since the line they are on begins with the var keyword, most JavaScript developers would expect typeof a and typeof b to both be undefined in the above example.
-
-However, that is not the case. The issue here is that most developers incorrectly understand the statement var a = b = 3; to be shorthand for:
-
-```js
-var b = 3;
-var a = b;
-```
-
-But in fact, `var a = b = 3;` is actually shorthand for:
-
-```js
-b = 3;
-var a = b;
-```
-
-As a result (if you are not using strict mode), the output of the code snippet would be:
-
-```js
-a defined? false
-b defined? true
-```
-
-But how can b be defined outside of the scope of the enclosing function?
-
-Well, since the statement `var a = b = 3;` is shorthand for the statements b = 3; and var a = b; b ends up being a global variable (since it is not preceded by the var keyword) and is therefore still in scope even outside of the enclosing function.
-
-Note that, in strict mode (i.e., with use strict), the statement var a = b = 3; will generate a runtime error of ReferenceError: b is not defined, thereby avoiding any head fakes/bugs that might otherwise result.
-
-(Yet another prime example of why you should use use strict as a matter of course in your code!)
-
-### 0.19. Create a for loop that iterates up to 100 while outputting "fizz" at multiples of 3, "buzz" at multiples of 5 and "fizzbuzz" at multiples of 3 and 5.
-
-```js
-function fizzbuzz() {
-  for (let i = 1; i <= 100; i++) {
-    if (i % 3 == 0 && i % 5 == 0) {
-      console.log('i = ' + i + ' : fizzbuzz');
-    } else if (i % 3 == 0) {
-      console.log('i = ' + i + ' : fizz');
-    } else if (i % 5 == 0) {
-      console.log('i = ' + i + ' : buzz');
-    }
-  }
-}
-
-fizzbuzz();
-```
-
-### 0.20. Explain the difference between mutable and immutable objects?
-
-
-
-### 0.21. What will be the output of the following code?
-
-```js
-var y = 1;
-if (function f() {}) {
-  y += typeof f;
-}
-console.log(y);
-```
-
-- Above code would give output `1undefined`. If condition statement evaluate using eval, so `eval(function f() {})` which return `function f() {}` which is true so inside if statement code execute.
-
-- `typeof f` return undefined because if statement code execute at run time, so statement inside if condition evaluated at run time.
-
-```js
-var k = 1;
-if (1) {
-  eval(function foo() {});
-  k += typeof foo;
-}
-console.log(k);
-
-// Above code will also output 1undefined.
-var k = 1;
-if (1) {
-  function foo() {}
-  k += typeof foo;
-}
-console.log(k); // output 1function
-```
-
-### 0.22. What will be the output of the following code?
-
-```js
-var output = (function(x) {
-  delete x;
-  return x;
-})(0);
-
-console.log(output);
-```
-
-Above code will output `0` as output. `delete` operator is used to delete a property from an object. Here x is not an object it's local variable. delete operator doesn't affect local variable.
-
-```js
-var x = 1;
-var output = (function() {
-  delete x;
-  return x;
-})();
-
-console.log(output);
-```
-
-Above code will output 1 as output. delete operator is used to delete property from object. Here x is not an object it's global variable of type number.
-
-```js
-var x = { foo: 1 };
-var output = (function() {
-  delete x.foo;
-  return x.foo;
-})();
-
-console.log(output);
-```
-
-Above code will output `undefined` as output. delete operator is used to delete a property from an object.
-
-Here `x` is an object which has foo as a property and from self-invoking function we are deleting foo property of object x and after deletion we are trying to reference deleted property foo which result undefined.
-
-```js
-var Employee = {
-  company: 'xyz',
-};
-var emp1 = Object.create(Employee);
-delete emp1.company;
-console.log(emp1.company);
-```
-
-Above code will output `xyz` as output. Here `emp1` object got company as prototype property. delete operator doesn't delete prototype property.
-
-### 0.23. What is the difference between declaring a function in below format?
-
-```js
-var foo = function() {
-  // Some code
-};
-
-function bar() {
-  // Some code
-}
-```
-
-The main difference is function foo is defined at run-time whereas function bar is defined at parse time. For understanding it in better way let see below code:
-
-```js
-// Run-Time function declaration
-foo(); // Call foo function here, It will give an error
-var foo = function() {
-  console.log('Hi I am inside Foo');
-};
-
-// Parse-Time function declaration
-
-bar(); // Call bar function here, It will not give an Error
-function bar() {
-  console.log('Hi I am inside Foo');
-}
-```
-
-Another advantage of first-one way of declaration that you can declare function based on certain condition for example:
-
-```js
-<script>
-if(testCondition) { // If testCondition is true then
-  function foo() {
-    console.log("inside Foo with testCondition True value");
-  };
- } else {
-  function foo() {
-    console.log("inside Foo with testCondition false value");
-  };
- }
- </script>
-```
-
-But if you try to run similar code in the following format, it would give an error
-
-```js
-if (testCondition) {
-  // If testCondition is true then
-  var foo = function() {
-    console.log('inside Foo with testCondition True value');
-  };
-} else {
-  var foo = function() {
-    console.log('inside Foo with testCondition false value');
-  };
-}
-```
-
-### 0.24. How to check if an object is an array or not?
-
-### 0.25. What will be the output of the following code?
-
-```js
-var bar = true;
-console.log(bar + 0); // Output 1
-console.log(bar + 'xyz'); // truexyz
-console.log(bar + true); // 2
-console.log(bar + false); // 1
-```
-
-- Number + Number -> Addition
-- Boolean + Number -> Addition
-- Number + String -> Concatenation
-- String + Boolean -> Concatenation
-- String + String -> Concatenation
-
-### 0.26. What will be the output of the following code?
-
-```js
-var z = 1,
-  y = (z = typeof y);
-console.log(y);
-```
-
-Above code will output `undefined` as output.
-
-- According to associativity rule operator with the same precedence are processed based on their associativity property of operator.
-
-- Here associativity of the assignment operator is Right to Left so first typeof y will evaluate first which is undefined and assigned to z and then y would be assigned the value of z and then z would be assign value 1.
-
-### 0.27. What will be the output of the following code?
-
-```js
-var salary = '1000$';
-
-(function() {
-  console.log('Original salary was ' + salary);
-
-  var salary = '5000$';
-
-  console.log('My New Salary ' + salary);
-})();
-```
-
-Above code will output: `undefined, 5000$`.
-
-- JavaScript has hoisting concept where newbie gets tricked. In above code, you might be expecting salary to retain it values from outer scope until the point that salary was re-declared in the inner scope.
-
-- But due to hoisting salary value was undefined instead. To understand it better have a look of the following code, here salary variable is hoisted and declared at the top in function scope and while doing `console.log()` it's result undefined and after that it's been re-declared and assigned 5000$.
-
-```js
-var salary = '1000$';
-
-(function() {
-  var salary = undefined;
-  console.log('Original salary was ' + salary);
-
-  salary = '5000$';
-
-  console.log('My New Salary ' + salary);
-})();
-```
-
-
-### 0.28. What is the difference between a method and a function in JavaScript?
-
-A function is a piece of code that is called by name and function itself not associated with any object and not defined inside any object. It can be passed data to operate on (i.e. parameter) and can optionally return data (the return value).
-
-```js
-// Function definition
-function myFunc() {
-  // Do some stuff;
-}
-
-// Calling function
-myFunc();
-```
-
-Here myFunc() function call is not associated with object hence not invoked through any object.
-
-A function can be self-invoking anonymous function or named self-invoking function
-
-```js
-// Named Self-invoking Function
-(function myFunc() {
-  // Do some stuff;
-})();
-
-// Anonymous Self-invoking Function
-(function() {
-  // Do some stuff;
-})();
-```
-
-In a case of named self-invoking anonymous function or anonymous self-invoking function, there is no need of call function explicitly.
-
-- A method is a piece of code that is called by name and that is associated with the object. In most respects it is identical to function call except for some key difference:
-- It is implicitly passed for the object for which it was called.
-- It is able to operate on data that is contained within the class (remembering that an object is an instance of a class- the class is the definition, the object is an instance of that)
-- Method call is always associated with object
-
-```js
-var methodObject = {
-  attribute: 'xyz',
-  display: function() {
-    // Method
-    console.log(this.attribute);
-  },
-};
-
-// Call method
-methodObject.display();
-```
-
-Here methodObject is an object and display is a method which is associated with methodObject.
-
-
-
-### 0.29. What is non-enumerable property in JavaScript and how can create?
-
-Object can have properties that don't show up when you iterate through object using `for...in` loop or using `Object.keys()` to get an array of property names. This properties is known as non-enumerable properties.
-
-Let say we have following object:
-
-```js
-var person = {
-  name: 'John',
-};
-person.salary = '10000$';
-person['country'] = 'USA';
-
-console.log(Object.keys(person)); // ['name', 'salary', 'country']
-```
-
-As we know that person object properties name, salary ,country are enumerable hence it's shown up when we called `Object.keys(person)`.
-
-To create a non-enumerable property we have to use `Object.defineProperty()`. This is a special method for creating non-enumerable property in JavaScript.
-
-```js
-var person = {
-  name: 'John',
-};
-person.salary = '10000$';
-person['country'] = 'USA';
-
-// Create non-enumerable property
-Object.defineProperty(person, 'phoneNo', {
-  value: '8888888888',
-  enumerable: false,
-});
-
-Object.keys(person); // ['name', 'salary', 'country']
-```
-
-In above example phoneNo property didn't show up because we made it non-enumerable by setting `enumerable:false`.
-
-Now let's try to change value of phoneNo.
-
-```js
-person.phoneNo = '7777777777';
-```
-
-Changing non-enumerable property value will return error in strict mode.
-
-In non-strict mode it won't through any error but it won't change the value of phoneNo.
-
-**Bonus:** `Object.defineProperty()` is also let you create read-only properties as we saw above, we are not able to modify phoneNo value of a person object.
-
-
-### 0.30. What is the significance, and what are the benefits, of including 'use strict' at the beginning of a JavaScript source file?
-
-The short and most important answer here is that use strict is a way to voluntarily enforce stricter parsing and error handling on your JavaScript code at runtime.
-
-Code errors that would otherwise have been ignored or would have failed silently will now generate errors or throw exceptions.
-
-In general, it is a good practice. Some of the key benefits of strict mode include:
-
-1. Makes debugging easier.
-2. Code errors that would otherwise have been ignored or would have failed silently will now generate errors or throw exceptions, alerting you sooner to problems in your code and directing you more quickly to their source.
-3. Prevents accidental global. Without strict mode, assigning a value to an undeclared variable automatically creates a global variable with that name. This is one of the most common errors in JavaScript. In strict mode, attempting to do so throws an error.
-4. Eliminates this coercion. Without strict mode, a reference to this value of null or undefined is automatically coerced to the global. This can cause many headfakes and pull-out-your-hair kind of bugs. In strict mode, referencing this value of null or undefined throws an error.
-5. Disallows duplicate parameter values. Strict mode throws an error when it detects a duplicate named argument for a function (e.g., function foo(val1, val2, val1){}), thereby catching what is almost certainly a bug in your code that you might otherwise have wasted lots of time tracking down.
-6. Note: It used to be (in ECMAScript 5) that strict mode would disallow duplicate property names (e.g. var object = {foo: "bar", foo: "baz"};) but as of ECMAScript 2015 this is no longer the case.
-7. Makes eval() safer. There are some differences in the way eval() behaves in strict mode and in non-strict mode. Most significantly, in strict mode, variables and functions declared inside of an eval() statement are not created in the containing scope (they are created in the containing scope in non-strict mode, which can also be a common source of problems).
-8. Throws error on invalid usage of delete. The delete operator (used to remove properties from objects) cannot be used on non-configurable properties of the object. Non-strict code will fail silently when an attempt is made to delete a non-configurable property, whereas strict mode will throw an error in such a case.
-
-
-
-### 0.31. Consider the two functions below. Will they both return the same thing? Why or why not?
-
-```js
-function foo1() {
-  return {
-    bar: 'hello',
-  };
-}
-
-function foo2() {
-  return;
-  {
-    bar: 'hello';
-  }
-}
-```
-
-**Ans:**
-
-Surprisingly, these two functions will not return the same thing. Rather:
-
-```js
-console.log("foo1 returns:");
-console.log(foo1());
-console.log("foo2 returns:");
-console.log(foo2());
-
-//will yield:
-
-// foo1 returns:
-Object {bar: "hello"}
-// foo2 returns:
-undefined
-```
-
-- Not only is this surprising, but what makes this particularly gnarly is that `foo2()` returns `undefined` without any error being thrown.
-
-* The reason for this has to do with the fact that semicolons are technically optional in JavaScript (although omitting them is generally really bad form).
-
-* As a result, when the line containing the return statement (with nothing else on the line) is encountered in foo2(), a semicolon is automatically inserted immediately after the return statement.
-
-- No error is thrown since the remainder of the code is perfectly valid, even though it doesn’t ever get invoked or do anything (it is simply an unused code block that defines a property bar which is equal to the string "hello").
-
-- This behavior also argues for following the convention of placing an opening curly brace at the end of a line in JavaScript, rather than on the beginning of a new line. As shown here, this becomes more than just a stylistic preference in JavaScript.
-
-
-### 0.32. Write a simple function that returns a boolean indicating whether or not a string is a palindrome?
-
-The following one line function will return true if str is a palindrome; otherwise, it returns false.
-
-```js
-function isPalindrome(str) {
-  str = str.replace(/\W/g, '').toLowerCase();
-  return (
-    str ==
-    str
-      .split('')
-      .reverse()
-      .join('')
-  );
-}
-
-// for example:
-console.log(isPalindrome('level')); // logs 'true'
-console.log(isPalindrome('levels')); // logs 'false'
-console.log(isPalindrome('A car, a man, a maraca')); // logs 'true'
-```
-
-
-
-### 0.33. What is a “closure” in JavaScript? Provide an example.
-
-A closure is an inner function that has access to the variables in the outer (enclosing) function’s scope chain.
-
-The closure has access to variables in three scopes; specifically: (1) variable in its own scope, (2) variables in the enclosing function’s scope, and (3) global variables.
-
-Here is an example:
-
-```js
-var globalVar = 'xyz';
-
-(function outerFunc(outerArg) {
-  var outerVar = 'a';
-
-  (function innerFunc(innerArg) {
-    var innerVar = 'b';
-
-    console.log(
-      'outerArg = ' +
-        outerArg +
-        '\n' +
-        'innerArg = ' +
-        innerArg +
-        '\n' +
-        'outerVar = ' +
-        outerVar +
-        '\n' +
-        'innerVar = ' +
-        innerVar +
-        '\n' +
-        'globalVar = ' +
-        globalVar,
-    );
-  })(456);
-})(123);
-```
-
-In the above example, variables from `innerFunc`, `outerFunc`, and the global namespace are all in scope in the `innerFunc`. The above code will therefore produce the following output:
-
-```js
-outerArg = 123;
-innerArg = 456;
-outerVar = a;
-innerVar = b;
-globalVar = xyz;
-```
-
-
-### 0.34. Explain event delegation:
-
-Event delegation is a technique involving adding event listeners to a parent element instead of adding them to the descendant elements. The listener will fire whenever the event is triggered on the descendant elements due to event bubbling up the DOM.
-
-The benefits of this technique are:
-
-- Memory footprint goes down because only one single handler is needed on the parent element, rather than having to attach event handlers on each descendant.
-- There is no need to unbind the handler from elements that are removed and to bind the event for new elements.
-
-### 0.35. Explain how this works in JavaScript
-
-There's no simple explanation for this; it is one of the most confusing concepts in JavaScript. A hand-wavey explanation is that the value of this depends on how the function is called.
-
-1. If the new keyword is used when calling the function, this inside the function is a brand new object.
-2. If apply, call, or bind are used to call/create a function, this inside the function is the object that is passed in as the argument.
-3. If a function is called as a method, such as obj.method() — this is the object that the function is a property of.
-4. If a function is invoked as a free function invocation, meaning it was invoked without any of the conditions present above, this is the global object.
-5. In a browser, it is the window object. If in strict mode ('use strict'), this will be undefined instead of the global object.
-6. If multiple of the above rules apply, the rule that is higher wins and will set this value.
-7. If the function is an ES2015 arrow function, it ignores all the rules above and receives this value of its surrounding scope at the time it is created.
+- [12. Others](#12-others)
+  - [12.1. Program: What will be the output ?](#121-program-what-will-be-the-output-)
+  - [12.2. What will the following code output to the console:](#122-what-will-the-following-code-output-to-the-console)
+  - [12.3. Consider the code snippet below. What will the console output be and why?](#123-consider-the-code-snippet-below-what-will-the-console-output-be-and-why)
+  - [12.4. What will the following code output to the console and why:](#124-what-will-the-following-code-output-to-the-console-and-why)
+  - [12.5. Create a function for the below problem:](#125-create-a-function-for-the-below-problem)
+  - [12.6. What is the output of the following code?](#126-what-is-the-output-of-the-following-code)
+  - [12.7. Consider the following code. What will the output be, and why?](#127-consider-the-following-code-what-will-the-output-be-and-why)
+  - [12.8. What will be the output of this code?](#128-what-will-be-the-output-of-this-code)
+  - [12.9. Consider the following code snippet:](#129-consider-the-following-code-snippet)
+  - [12.10. Variable Hoisting](#1210-variable-hoisting)
+  - [12.11. What will be output of the below code:](#1211-what-will-be-output-of-the-below-code)
+  - [12.12. Create a for loop that iterates up to 100 while outputting "fizz" at multiples of 3, "buzz" at multiples of 5 and "fizzbuzz" at multiples of 3 and 5.](#1212-create-a-for-loop-that-iterates-up-to-100-while-outputting-fizz-at-multiples-of-3-buzz-at-multiples-of-5-and-fizzbuzz-at-multiples-of-3-and-5)
+  - [12.13. Explain the difference between mutable and immutable objects?](#1213-explain-the-difference-between-mutable-and-immutable-objects)
+  - [12.14. What will be the output of the following code?](#1214-what-will-be-the-output-of-the-following-code)
+  - [12.15. What will be the output of the following code?](#1215-what-will-be-the-output-of-the-following-code)
+  - [12.16. What is the difference between declaring a function in below format?](#1216-what-is-the-difference-between-declaring-a-function-in-below-format)
+  - [12.17. How to check if an object is an array or not?](#1217-how-to-check-if-an-object-is-an-array-or-not)
+  - [12.18. What is the difference between a method and a function in JavaScript?](#1218-what-is-the-difference-between-a-method-and-a-function-in-javascript)
+  - [12.19. What is non-enumerable property in JavaScript and how can create?](#1219-what-is-non-enumerable-property-in-javascript-and-how-can-create)
+  - [12.20. What is the significance, and what are the benefits, of including 'use strict' at the beginning of a JavaScript source file?](#1220-what-is-the-significance-and-what-are-the-benefits-of-including-use-strict-at-the-beginning-of-a-javascript-source-file)
+  - [12.21. Consider the two functions below. Will they both return the same thing? Why or why not?](#1221-consider-the-two-functions-below-will-they-both-return-the-same-thing-why-or-why-not)
+  - [12.22. Write a simple function that returns a boolean indicating whether or not a string is a palindrome?](#1222-write-a-simple-function-that-returns-a-boolean-indicating-whether-or-not-a-string-is-a-palindrome)
+  - [12.23. What is a “closure” in JavaScript? Provide an example.](#1223-what-is-a-closure-in-javascript-provide-an-example)
+  - [12.24. Explain event delegation:](#1224-explain-event-delegation)
+  - [12.25. Explain how this works in JavaScript](#1225-explain-how-this-works-in-javascript)
 
 
 
@@ -1363,6 +339,100 @@ Explain your answer.
 - However, the interesting thing with the && operator is that when an expression is evaluated as “true”, then the expression itself is returned.
 - This is fine, since it counts as “true” in logical expressions, but also can be used to return that value when you care to do so.
 - This explains why, somewhat surprisingly, 1 && 2 returns 2 (whereas you might it expect it to return true or 1).
+
+### 1.7. What is the value of typeof `undefined == typeof NULL`?
+
+The expression will be evaluated to true, since NULL will be treated as any other undefined variable.
+
+Note: JavaScript is case-sensitive and here we are using NULL instead of null.
+
+### 1.8. What do the following lines output, and why?
+
+```js
+console.log(1 < 2 < 3);
+console.log(3 > 2 > 1);
+```
+
+**Ans:**
+
+The first statement returns true which is as expected.
+
+- The second returns false because of how the engine works regarding operator associativity for < and >.
+- It compares left to right, so 3 > 2 > 1 JavaScript translates to true > 1. true has value 1, so it then compares 1 > 1, which is false.
+
+### 1.9. What would following code return?
+
+```js
+console.log(typeof typeof 1);
+// Ans:
+string;
+
+// typeof 1 will return "number" and typeof "number" will return string.
+```
+
+### 1.10. What will be the output of the following code?
+
+```js
+var bar = true;
+console.log(bar + 0); // Output 1
+console.log(bar + 'xyz'); // truexyz
+console.log(bar + true); // 2
+console.log(bar + false); // 1
+```
+
+- Number + Number -> Addition
+- Boolean + Number -> Addition
+- Number + String -> Concatenation
+- String + Boolean -> Concatenation
+- String + String -> Concatenation
+
+### 1.11. What will be the output of the following code?
+
+```js
+var z = 1,
+  y = (z = typeof y);
+console.log(y);
+```
+
+Above code will output `undefined` as output.
+
+- According to associativity rule operator with the same precedence are processed based on their associativity property of operator.
+
+- Here associativity of the assignment operator is Right to Left so first typeof y will evaluate first which is undefined and assigned to z and then y would be assigned the value of z and then z would be assign value 1.
+
+### 1.12. What will be the output of the following code?
+
+```js
+var salary = '1000$';
+
+(function() {
+  console.log('Original salary was ' + salary);
+
+  var salary = '5000$';
+
+  console.log('My New Salary ' + salary);
+})();
+```
+
+Above code will output: `undefined, 5000$`.
+
+- JavaScript has hoisting concept where newbie gets tricked. In above code, you might be expecting salary to retain it values from outer scope until the point that salary was re-declared in the inner scope.
+
+- But due to hoisting salary value was undefined instead. To understand it better have a look of the following code, here salary variable is hoisted and declared at the top in function scope and while doing `console.log()` it's result undefined and after that it's been re-declared and assigned 5000$.
+
+```js
+var salary = '1000$';
+
+(function() {
+  var salary = undefined;
+  console.log('Original salary was ' + salary);
+
+  salary = '5000$';
+
+  console.log('My New Salary ' + salary);
+})();
+```
+
 
 ## 2. Object:
 ### 2.1. What are the way by which we can create object in JavaScript?
@@ -1690,6 +760,38 @@ function merge(toObj, fromObj) {
 }
 ```
 
+### 2.9. What will the code below output to the console and why?
+
+```js
+var myObject = {
+  foo: 'bar',
+  func: function() {
+    var self = this;
+    console.log('outer func: this.foo = ' + this.foo);
+    console.log('outer func: self.foo = ' + self.foo);
+    (function() {
+      console.log('inner func: this.foo = ' + this.foo);
+      console.log('inner func: self.foo = ' + self.foo);
+    })();
+  },
+};
+myObject.func();
+```
+
+**Ans:**
+
+The above code will output the following to the console:
+
+```js
+outer func: this.foo = bar
+outer func: self.foo = bar
+inner func: this.foo = undefined
+inner func: self.foo = bar
+```
+
+- In the outer function, both this and self-refer to myObject and therefore both can properly reference and access foo.
+- In the inner function, though, this no longer refers to myObject. As a result, this.foo is undefined in the inner function, whereas the reference to the local variable self remains in scope and is accessible there.
+
 
 ## 3. Array:
 ### 3.1. How do you add an element at the beginning of an array? How do you add one at the end?
@@ -1737,6 +839,36 @@ console.log('array 2: length=' + arr2.length + ' last=' + arr2.slice(-1));
 - Passing an array to the push() method of another array pushes that entire array as a single element onto the end of the array.
 - As a result, the statement arr2.push(arr3); adds arr3 in its entirety as a single element to the end of arr2 (i.e., it does notconcatenate the two arrays, that’s what the concat() method is for).
 - Like Python, JavaScript honors negative subscripts in calls to array methods like slice() as a way of referencing elements at the end of the array; e.g., a subscript of -1 indicates the last element in the array, and so on.
+
+
+### 3.3. Imagine you have this code
+
+```js
+var a = [1, 2, 3];
+
+// a) Will this result in a crash?
+a[10] = 99;
+
+// b) What will this output?
+console.log(a[6]);
+```
+
+**Ans:**
+
+**(a)** - It will not crash. The JavaScript engine will make array slots 3 through 99 be “empty slots.”
+
+**(b)** - Here, a[6] will output undefined, but the slot still remains empty rather than filled with undefined.
+
+This may be an important nuance in some cases. For example, when using map(), empty slots will remain empty in map()’s output, but undefined slots will be remapped using the function passed to it:
+
+```js
+var b = [undefined];
+b[2] = 1;
+
+console.log(b); // (3) [undefined, empty × 1, 1]
+console.log(b.map(e => 7)); // (3) [7, empty × 1, 7]
+```
+
 
 ## 4. Scope:
 ### 4.1. Explain why the following doesn't work as an IIFE?
@@ -1816,6 +948,130 @@ testCallBack(display); // Here display function is being passed as callback
 One of the drawback of creating a true private method in JavaScript is that they are very memory inefficient because a new copy of the method would be created for each instance.
 
 So as recommendation don't go for a private method unless it's necessary.
+
+### 4.5. What will this code print?
+
+```js
+for (let i = 0; i < 5; i++) {
+  setTimeout(function() {
+    console.log(i);
+  }, i * 1000);
+}
+```
+
+**Ans:**
+
+- It will print 0 1 2 3 4, because we use let instead of var here.
+- The variable i is only seen in the for loop’s block scope.
+
+
+### 4.6. What will the following code output and why?
+
+```js
+var b = 1;
+function outer() {
+  var b = 2;
+  function inner() {
+    b++;
+    var b = 3;
+    console.log(b);
+  }
+  inner();
+}
+outer();
+```
+
+**Ans:**
+
+Output to the console will be “3”.
+
+- There are three closures in the example, each with its own `var b` declaration.
+- When a variable is invoked closures will be checked in order from local to global until an instance is found.
+- Since the inner closure has a b variable of its own, that is what will be output.
+
+Furthermore, due to hoisting the code in inner will be interpreted as follows:
+
+```js
+function inner() {
+  var b; // b is undefined
+  b++; // b is NaN
+  b = 3; // b is 3
+  console.log(b); // output "3"
+}
+```
+
+### 4.7. What will be the output of the following code
+
+```js
+for (var i = 0; i < 5; i++) {
+  setTimeout(function() { console.log(i); }, i _ 1000 );
+}
+```
+
+Explain your answer. How could the use of closures help here?
+
+**Ans:**
+
+- The code sample shown will not display the values 0, 1, 2, 3, and 4 as might be expected; rather, it will display 5, 5, 5, 5, and 5.
+- The reason for this is that each function executed within the loop will be executed after the entire loop has completed and all will therefore reference the last value stored in i, which was 5.
+- Closures can be used to prevent this problem by creating a unique scope for each iteration, storing each unique value of the variable within its scope, as follows:
+
+```js
+for (var i = 0; i < 5; i++) {
+  (function(x) {
+    setTimeout(function() { console.log(x); }, x \_ 1000 );
+  })(i);
+}
+```
+
+This will produce the presumably desired result of logging 0, 1, 2, 3, and 4 to the console.
+In an ES2015 context, you can simply use let instead of var in the original code:
+
+```js
+for (let i = 0; i < 5; i++) {
+  setTimeout(function() { console.log(i); }, i \* 1000 );
+}
+```
+
+
+### 4.8. In what order will the numbers 1-4 be logged to the console when the code below is executed? Why?
+
+```js
+(function() {
+  console.log(1);
+  setTimeout(function() {
+    console.log(2);
+  }, 1000);
+  setTimeout(function() {
+    console.log(3);
+  }, 0);
+  console.log(4);
+})();
+```
+
+**Ans:** The values will be logged in the following order:
+
+```js
+1;
+4;
+3;
+2;
+```
+
+Let’s first explain the parts of this that are presumably more obvious:
+
+- 1 and 4 are displayed first since they are logged by simple calls to console.log() without any delay.
+- 2 is displayed after 3 because 2 is being logged after a delay of 1000 msecs (i.e., 1 second) whereas 3 is being logged after a delay of 0 msecs.
+- OK, fine. But if 3 is being logged after a delay of 0 msecs, doesn’t that mean that it is being logged right away? And, if so, shouldn’t it be logged before 4, since 4 is being logged by a later line of code?
+- The answer has to do with properly understanding JavaScript events and timing.
+- The browser has an event loop which checks the event queue and processes pending events. For example, if an event happens in the background (e.g., a script onload event) while the browser is busy (e.g., processing an onclick), the event gets appended to the queue.
+- When the onclick handler is complete, the queue is checked and the event is then handled (e.g., the onload script is executed).
+- Similarly, setTimeout() also puts execution of its referenced function into the event queue if the browser is busy.
+- When a value of zero is passed as the second argument to setTimeout(), it attempts to execute the specified function “as soon as possible”.
+- Specifically, execution of the function is placed on the event queue to occur on the next timer tick.
+- Note, though, that this is not immediate; the function is not executed until the next tick.
+- That’s why in the above example, the call to console.log(4) occurs before the call to console.log(3) (since the call to console.log(3) is invoked via setTimeout, so it is slightly delayed).
+
 
 
 ## 5. Call, Apply and Bind:
@@ -2113,3 +1369,796 @@ In this case, the program is evaluated exactly in order of the statements and ex
 The callback is only invoked when the asynchronous operation is complete and the call stack is empty.
 
 Heavy duty operations such as loading data from a web server or querying a database should be done asynchronously so that the main thread can continue executing other operations instead of blocking until that long operation to complete (in the case of browsers, the UI will freeze).
+
+## 12. Others
+
+### 12.1. Program: What will be the output ?
+
+
+
+
+
+
+
+### 12.2. What will the following code output to the console:
+
+```js
+console.log(
+  (function f(n) {
+    return n > 1 ? n * f(n - 1) : n;
+  })(10),
+);
+```
+
+Answer: The code will output the value of 10 factorial (i.e., 10!, or 3,628,800).
+Here’s why: The named function f() calls itself recursively, until it gets down to calling f(1) which simply returns 1. Here, therefore, is what this does:
+
+```js
+f(1): returns n, which is 1
+f(2): returns 2 _ f(1), which is 2
+f(3): returns 3 _ f(2), which is 6
+f(4): returns 4 _ f(3), which is 24
+f(5): returns 5 _ f(4), which is 120
+f(6): returns 6 _ f(5), which is 720
+f(7): returns 7 _ f(6), which is 5040
+f(8): returns 8 _ f(7), which is 40320
+f(9): returns 9 _ f(8), which is 362880
+f(10): returns 10 _ f(9), which is 3628800
+```
+
+### 12.3. Consider the code snippet below. What will the console output be and why?
+
+```js
+(function(x) {
+  return (function(y) {
+    console.log(x);
+  })(2);
+})(1);
+```
+
+**Ans:**
+
+The output will be 1, even though the value of x is never set in the inner function. Here’s why:
+
+- As explained in our JavaScript Hiring Guide, a closure is a function, along with all variables or functions that were in-scope at the time that the closure was created.
+- In JavaScript, a closure is implemented as an “inner function”; i.e., a function defined within the body of another function. An important feature of closures is that an inner function still has access to the outer function’s variables.
+- Therefore, in this example, since x is not defined in the inner function, the scope of the outer function is searched for a defined variable x, which is found to have a value of 1.
+
+### 12.4. What will the following code output to the console and why:
+
+```js
+var hero = {
+  _name: 'John Doe',
+  getSecretIdentity: function() {
+    return this._name;
+  },
+};
+
+var stoleSecretIdentity = hero.getSecretIdentity;
+
+console.log(stoleSecretIdentity());
+console.log(hero.getSecretIdentity());
+```
+
+What is the issue with this code and how can it be fixed.
+
+**Ans:** The code will output:
+
+```js
+undefined
+John Doe
+```
+
+- The first console.log prints undefined because we are extracting the method from the hero object, so stoleSecretIdentity() is being invoked in the global context (i.e., the window object) where the \_name property does not exist.
+
+One way to fix the stoleSecretIdentity() function is as follows:
+
+```js
+var stoleSecretIdentity = hero.getSecretIdentity.bind(hero);
+```
+
+### 12.5. Create a function for the below problem:
+
+For a given a DOM Element on the page, will visit the element itself and all of its descendants (not just its immediate children). For each element visited, the function should pass that element to a provided callback function. The arguments to the function should be:
+
+- A DOM element
+- A callback function (that takes a DOM element as its argument)
+
+**Ans:**
+Visiting all elements in a tree (DOM) is a classic Depth-First-Search algorithm application. Here’s an example solution:
+
+```js
+function Traverse(p_element, p_callback) {
+  p_callback(p_element);
+  var list = p_element.children;
+  for (var i = 0; i < list.length; i++) {
+    Traverse(list[i], p_callback); // recursive call
+  }
+}
+```
+
+### 12.6. What is the output of the following code?
+
+```js
+var length = 10;
+function fn() {
+  console.log(this.length);
+}
+
+var obj = {
+  length: 5,
+  method: function(fn) {
+    fn();
+    arguments[0]();
+  },
+};
+
+obj.method(fn, 1);
+```
+
+Answer: Output
+
+```js
+10;
+2;
+```
+
+**- Why isn’t it 10 and 5?**
+
+- In the first place, as fn is passed as a parameter to the function method, the scope (this) of the function fn is window.var length = 10; is declared at the window level.
+- It also can be accessed as window.length or length or this.length (when this === window.) method is bound to Object obj, and obj.method is called with parameters fn and 1.
+- Though method is accepting only one parameter, while invoking it has passed two parameters; the first is a function callback and other is just a number.
+- When fn() is called inside method, which was passed the function as a parameter at the global level, this.length will have access to var length = 10 (declared globally) not length = 5 as defined in Object obj.
+- Now, we know that we can access any number of arguments in a JavaScript function using the arguments[] array.
+- Hence `arguments[0]()` is nothing but calling fn(). Inside fn now, the scope of this function becomes the arguments array, and logging the length of arguments[] will return 2. Hence the output will be as above.
+
+### 12.7. Consider the following code. What will the output be, and why?
+
+```js
+(function() {
+  try {
+    throw new Error();
+  } catch (x) {
+    var x = 1,
+      y = 2;
+    console.log(x);
+  }
+  console.log(x);
+  console.log(y);
+})();
+```
+
+Answer:
+
+```js
+1;
+undefined;
+2;
+```
+
+var statements are hoisted (without their value initialization) to the top of the global or function scope it belongs to, even when it’s inside a with or catch block. However, the error’s identifier is only visible inside the catch block. It is equivalent to:
+
+```js
+(function () {
+  var x, y; // outer and hoisted
+  try {
+    throw new Error();
+  } catch (x /_ inner _/) {
+    x = 1; // inner x, not the outer one
+    y = 2; // there is only one y, which is in the outer scope
+    console.log(x /_ inner _/);
+  }
+  console.log(x);
+  console.log(y);
+})();
+```
+
+### 12.8. What will be the output of this code?
+
+```js
+var x = 21;
+var girl = function() {
+  console.log(x);
+  var x = 20;
+};
+girl();
+```
+
+**Ans:**
+
+Neither 21, nor 20, the result is undefined.
+
+It’s because JavaScript initialization is not hoisted.
+
+**Why doesn’t it show the global value of 21?**
+
+The reason is that when the function is executed, it checks that there’s a local x variable present but doesn’t yet declare it, so it won’t look for global one.)
+
+### 12.9. Consider the following code snippet:
+
+```js
+for (var i = 0; i < 5; i++) {
+  var btn = document.createElement('button');
+
+  btn.appendChild(document.createTextNode('Button ' + i));
+  btn.addEventListener('click', function() {
+    console.log(i);
+  });
+
+  document.body.appendChild(btn);
+}
+```
+
+(A) What gets logged to the console when the user clicks on “Button 4” and why?
+
+(B) Provide one or more alternate implementations that will work as expected.
+
+**Ans:**
+
+(A) - No matter what button the user clicks the number 5 will always be logged to the console. This is because, at the point that the onclick method is invoked (for any of the buttons), the for loop has already completed and the variable i already has a value of 5.
+(Bonus points for the interviewee if they know enough to talk about how execution contexts, variable objects, activation objects, and the internal “scope” property contribute to the closure behavior.)
+
+(B) - The key to making this work is to capture the value of i at each pass through the for loop by passing it into a newly created function object. Here are four possible ways to accomplish this:
+
+```js
+for (var i = 0; i < 5; i++) {
+  var btn = document.createElement('button');
+
+  btn.appendChild(document.createTextNode('Button ' + i));
+  btn.addEventListener(
+    'click',
+    (function(i) {
+      return function() {
+        console.log(i);
+      };
+    })(i),
+  );
+
+  document.body.appendChild(btn);
+}
+```
+
+Alternatively, you could wrap the entire call to btn.addEventListener in the new anonymous function:
+
+```js
+for (var i = 0; i < 5; i++) {
+  var btn = document.createElement('button');
+
+  btn.appendChild(document.createTextNode('Button ' + i));
+  (function(i) {
+    btn.addEventListener('click', function() {
+      console.log(i);
+    });
+  })(i);
+
+  document.body.appendChild(btn);
+}
+```
+
+Or, we could replace the for loop with a call to the array object’s native forEach method:
+
+```js
+['a', 'b', 'c', 'd', 'e'].forEach(function(value, i) {
+  var btn = document.createElement('button');
+
+  btn.appendChild(document.createTextNode('Button ' + i));
+  btn.addEventListener('click', function() {
+    console.log(i);
+  });
+
+  document.body.appendChild(btn);
+});
+```
+
+Lastly, the simplest solution, if you’re in an ES6/ES2015 context, is to use let i instead of var i:
+
+```js
+for (let i = 0; i < 5; i++) {
+  var btn = document.createElement('button');
+
+  btn.appendChild(document.createTextNode('Button ' + i));
+  btn.addEventListener('click', function() {
+    console.log(i);
+  });
+
+  document.body.appendChild(btn);
+}
+```
+
+**Ans:**
+
+- The snippet of code shown above sets two properties on the object d. ideally, any lookup performed on a JavaScript object with an unset key evaluates to undefined. But running this code marks those properties as “own properties” of the object.
+- This is a useful strategy for ensuring that an object has a given set of properties.
+- Passing this object to Object.keys will return an array with those set keys as well (even if their values are undefined).
+
+
+### 12.10. Variable Hoisting
+
+```js
+console.log(employeeId);
+// Ans: ReferenceError: employeeId is not defined
+
+console.log(employeeId);
+var employeeId = '19000';
+// Ans: undefined
+
+var employeeId = '1234abe';
+(function() {
+  console.log(employeeId);
+  var employeeId = '122345';
+})();
+// Ans : undefined
+```
+
+### 12.11. What will be output of the below code:
+
+```js
+(function() {
+  var a = (b = 3);
+})();
+console.log('a defined? ' + (typeof a !== 'undefined'));
+console.log('b defined? ' + (typeof b !== 'undefined'));
+```
+
+**Ans:**
+
+Since both a and b are defined within the enclosing scope of the function, and since the line they are on begins with the var keyword, most JavaScript developers would expect typeof a and typeof b to both be undefined in the above example.
+
+However, that is not the case. The issue here is that most developers incorrectly understand the statement var a = b = 3; to be shorthand for:
+
+```js
+var b = 3;
+var a = b;
+```
+
+But in fact, `var a = b = 3;` is actually shorthand for:
+
+```js
+b = 3;
+var a = b;
+```
+
+As a result (if you are not using strict mode), the output of the code snippet would be:
+
+```js
+a defined? false
+b defined? true
+```
+
+But how can b be defined outside of the scope of the enclosing function?
+
+Well, since the statement `var a = b = 3;` is shorthand for the statements b = 3; and var a = b; b ends up being a global variable (since it is not preceded by the var keyword) and is therefore still in scope even outside of the enclosing function.
+
+Note that, in strict mode (i.e., with use strict), the statement var a = b = 3; will generate a runtime error of ReferenceError: b is not defined, thereby avoiding any head fakes/bugs that might otherwise result.
+
+(Yet another prime example of why you should use use strict as a matter of course in your code!)
+
+### 12.12. Create a for loop that iterates up to 100 while outputting "fizz" at multiples of 3, "buzz" at multiples of 5 and "fizzbuzz" at multiples of 3 and 5.
+
+```js
+function fizzbuzz() {
+  for (let i = 1; i <= 100; i++) {
+    if (i % 3 == 0 && i % 5 == 0) {
+      console.log('i = ' + i + ' : fizzbuzz');
+    } else if (i % 3 == 0) {
+      console.log('i = ' + i + ' : fizz');
+    } else if (i % 5 == 0) {
+      console.log('i = ' + i + ' : buzz');
+    }
+  }
+}
+
+fizzbuzz();
+```
+
+### 12.13. Explain the difference between mutable and immutable objects?
+
+
+
+### 12.14. What will be the output of the following code?
+
+```js
+var y = 1;
+if (function f() {}) {
+  y += typeof f;
+}
+console.log(y);
+```
+
+- Above code would give output `1undefined`. If condition statement evaluate using eval, so `eval(function f() {})` which return `function f() {}` which is true so inside if statement code execute.
+
+- `typeof f` return undefined because if statement code execute at run time, so statement inside if condition evaluated at run time.
+
+```js
+var k = 1;
+if (1) {
+  eval(function foo() {});
+  k += typeof foo;
+}
+console.log(k);
+
+// Above code will also output 1undefined.
+var k = 1;
+if (1) {
+  function foo() {}
+  k += typeof foo;
+}
+console.log(k); // output 1function
+```
+
+### 12.15. What will be the output of the following code?
+
+```js
+var output = (function(x) {
+  delete x;
+  return x;
+})(0);
+
+console.log(output);
+```
+
+Above code will output `0` as output. `delete` operator is used to delete a property from an object. Here x is not an object it's local variable. delete operator doesn't affect local variable.
+
+```js
+var x = 1;
+var output = (function() {
+  delete x;
+  return x;
+})();
+
+console.log(output);
+```
+
+Above code will output 1 as output. delete operator is used to delete property from object. Here x is not an object it's global variable of type number.
+
+```js
+var x = { foo: 1 };
+var output = (function() {
+  delete x.foo;
+  return x.foo;
+})();
+
+console.log(output);
+```
+
+Above code will output `undefined` as output. delete operator is used to delete a property from an object.
+
+Here `x` is an object which has foo as a property and from self-invoking function we are deleting foo property of object x and after deletion we are trying to reference deleted property foo which result undefined.
+
+```js
+var Employee = {
+  company: 'xyz',
+};
+var emp1 = Object.create(Employee);
+delete emp1.company;
+console.log(emp1.company);
+```
+
+Above code will output `xyz` as output. Here `emp1` object got company as prototype property. delete operator doesn't delete prototype property.
+
+### 12.16. What is the difference between declaring a function in below format?
+
+```js
+var foo = function() {
+  // Some code
+};
+
+function bar() {
+  // Some code
+}
+```
+
+The main difference is function foo is defined at run-time whereas function bar is defined at parse time. For understanding it in better way let see below code:
+
+```js
+// Run-Time function declaration
+foo(); // Call foo function here, It will give an error
+var foo = function() {
+  console.log('Hi I am inside Foo');
+};
+
+// Parse-Time function declaration
+
+bar(); // Call bar function here, It will not give an Error
+function bar() {
+  console.log('Hi I am inside Foo');
+}
+```
+
+Another advantage of first-one way of declaration that you can declare function based on certain condition for example:
+
+```js
+<script>
+if(testCondition) { // If testCondition is true then
+  function foo() {
+    console.log("inside Foo with testCondition True value");
+  };
+ } else {
+  function foo() {
+    console.log("inside Foo with testCondition false value");
+  };
+ }
+ </script>
+```
+
+But if you try to run similar code in the following format, it would give an error
+
+```js
+if (testCondition) {
+  // If testCondition is true then
+  var foo = function() {
+    console.log('inside Foo with testCondition True value');
+  };
+} else {
+  var foo = function() {
+    console.log('inside Foo with testCondition false value');
+  };
+}
+```
+
+### 12.17. How to check if an object is an array or not?
+
+
+### 12.18. What is the difference between a method and a function in JavaScript?
+
+A function is a piece of code that is called by name and function itself not associated with any object and not defined inside any object. It can be passed data to operate on (i.e. parameter) and can optionally return data (the return value).
+
+```js
+// Function definition
+function myFunc() {
+  // Do some stuff;
+}
+
+// Calling function
+myFunc();
+```
+
+Here myFunc() function call is not associated with object hence not invoked through any object.
+
+A function can be self-invoking anonymous function or named self-invoking function
+
+```js
+// Named Self-invoking Function
+(function myFunc() {
+  // Do some stuff;
+})();
+
+// Anonymous Self-invoking Function
+(function() {
+  // Do some stuff;
+})();
+```
+
+In a case of named self-invoking anonymous function or anonymous self-invoking function, there is no need of call function explicitly.
+
+- A method is a piece of code that is called by name and that is associated with the object. In most respects it is identical to function call except for some key difference:
+- It is implicitly passed for the object for which it was called.
+- It is able to operate on data that is contained within the class (remembering that an object is an instance of a class- the class is the definition, the object is an instance of that)
+- Method call is always associated with object
+
+```js
+var methodObject = {
+  attribute: 'xyz',
+  display: function() {
+    // Method
+    console.log(this.attribute);
+  },
+};
+
+// Call method
+methodObject.display();
+```
+
+Here methodObject is an object and display is a method which is associated with methodObject.
+
+
+
+### 12.19. What is non-enumerable property in JavaScript and how can create?
+
+Object can have properties that don't show up when you iterate through object using `for...in` loop or using `Object.keys()` to get an array of property names. This properties is known as non-enumerable properties.
+
+Let say we have following object:
+
+```js
+var person = {
+  name: 'John',
+};
+person.salary = '10000$';
+person['country'] = 'USA';
+
+console.log(Object.keys(person)); // ['name', 'salary', 'country']
+```
+
+As we know that person object properties name, salary ,country are enumerable hence it's shown up when we called `Object.keys(person)`.
+
+To create a non-enumerable property we have to use `Object.defineProperty()`. This is a special method for creating non-enumerable property in JavaScript.
+
+```js
+var person = {
+  name: 'John',
+};
+person.salary = '10000$';
+person['country'] = 'USA';
+
+// Create non-enumerable property
+Object.defineProperty(person, 'phoneNo', {
+  value: '8888888888',
+  enumerable: false,
+});
+
+Object.keys(person); // ['name', 'salary', 'country']
+```
+
+In above example phoneNo property didn't show up because we made it non-enumerable by setting `enumerable:false`.
+
+Now let's try to change value of phoneNo.
+
+```js
+person.phoneNo = '7777777777';
+```
+
+Changing non-enumerable property value will return error in strict mode.
+
+In non-strict mode it won't through any error but it won't change the value of phoneNo.
+
+**Bonus:** `Object.defineProperty()` is also let you create read-only properties as we saw above, we are not able to modify phoneNo value of a person object.
+
+
+### 12.20. What is the significance, and what are the benefits, of including 'use strict' at the beginning of a JavaScript source file?
+
+The short and most important answer here is that use strict is a way to voluntarily enforce stricter parsing and error handling on your JavaScript code at runtime.
+
+Code errors that would otherwise have been ignored or would have failed silently will now generate errors or throw exceptions.
+
+In general, it is a good practice. Some of the key benefits of strict mode include:
+
+1. Makes debugging easier.
+2. Code errors that would otherwise have been ignored or would have failed silently will now generate errors or throw exceptions, alerting you sooner to problems in your code and directing you more quickly to their source.
+3. Prevents accidental global. Without strict mode, assigning a value to an undeclared variable automatically creates a global variable with that name. This is one of the most common errors in JavaScript. In strict mode, attempting to do so throws an error.
+4. Eliminates this coercion. Without strict mode, a reference to this value of null or undefined is automatically coerced to the global. This can cause many headfakes and pull-out-your-hair kind of bugs. In strict mode, referencing this value of null or undefined throws an error.
+5. Disallows duplicate parameter values. Strict mode throws an error when it detects a duplicate named argument for a function (e.g., function foo(val1, val2, val1){}), thereby catching what is almost certainly a bug in your code that you might otherwise have wasted lots of time tracking down.
+6. Note: It used to be (in ECMAScript 5) that strict mode would disallow duplicate property names (e.g. var object = {foo: "bar", foo: "baz"};) but as of ECMAScript 2015 this is no longer the case.
+7. Makes eval() safer. There are some differences in the way eval() behaves in strict mode and in non-strict mode. Most significantly, in strict mode, variables and functions declared inside of an eval() statement are not created in the containing scope (they are created in the containing scope in non-strict mode, which can also be a common source of problems).
+8. Throws error on invalid usage of delete. The delete operator (used to remove properties from objects) cannot be used on non-configurable properties of the object. Non-strict code will fail silently when an attempt is made to delete a non-configurable property, whereas strict mode will throw an error in such a case.
+
+
+
+### 12.21. Consider the two functions below. Will they both return the same thing? Why or why not?
+
+```js
+function foo1() {
+  return {
+    bar: 'hello',
+  };
+}
+
+function foo2() {
+  return;
+  {
+    bar: 'hello';
+  }
+}
+```
+
+**Ans:**
+
+Surprisingly, these two functions will not return the same thing. Rather:
+
+```js
+console.log("foo1 returns:");
+console.log(foo1());
+console.log("foo2 returns:");
+console.log(foo2());
+
+//will yield:
+
+// foo1 returns:
+Object {bar: "hello"}
+// foo2 returns:
+undefined
+```
+
+- Not only is this surprising, but what makes this particularly gnarly is that `foo2()` returns `undefined` without any error being thrown.
+
+* The reason for this has to do with the fact that semicolons are technically optional in JavaScript (although omitting them is generally really bad form).
+
+* As a result, when the line containing the return statement (with nothing else on the line) is encountered in foo2(), a semicolon is automatically inserted immediately after the return statement.
+
+- No error is thrown since the remainder of the code is perfectly valid, even though it doesn’t ever get invoked or do anything (it is simply an unused code block that defines a property bar which is equal to the string "hello").
+
+- This behavior also argues for following the convention of placing an opening curly brace at the end of a line in JavaScript, rather than on the beginning of a new line. As shown here, this becomes more than just a stylistic preference in JavaScript.
+
+
+### 12.22. Write a simple function that returns a boolean indicating whether or not a string is a palindrome?
+
+The following one line function will return true if str is a palindrome; otherwise, it returns false.
+
+```js
+function isPalindrome(str) {
+  str = str.replace(/\W/g, '').toLowerCase();
+  return (
+    str ==
+    str
+      .split('')
+      .reverse()
+      .join('')
+  );
+}
+
+// for example:
+console.log(isPalindrome('level')); // logs 'true'
+console.log(isPalindrome('levels')); // logs 'false'
+console.log(isPalindrome('A car, a man, a maraca')); // logs 'true'
+```
+
+
+
+### 12.23. What is a “closure” in JavaScript? Provide an example.
+
+A closure is an inner function that has access to the variables in the outer (enclosing) function’s scope chain.
+
+The closure has access to variables in three scopes; specifically: (1) variable in its own scope, (2) variables in the enclosing function’s scope, and (3) global variables.
+
+Here is an example:
+
+```js
+var globalVar = 'xyz';
+
+(function outerFunc(outerArg) {
+  var outerVar = 'a';
+
+  (function innerFunc(innerArg) {
+    var innerVar = 'b';
+
+    console.log(
+      'outerArg = ' +
+        outerArg +
+        '\n' +
+        'innerArg = ' +
+        innerArg +
+        '\n' +
+        'outerVar = ' +
+        outerVar +
+        '\n' +
+        'innerVar = ' +
+        innerVar +
+        '\n' +
+        'globalVar = ' +
+        globalVar,
+    );
+  })(456);
+})(123);
+```
+
+In the above example, variables from `innerFunc`, `outerFunc`, and the global namespace are all in scope in the `innerFunc`. The above code will therefore produce the following output:
+
+```js
+outerArg = 123;
+innerArg = 456;
+outerVar = a;
+innerVar = b;
+globalVar = xyz;
+```
+
+
+### 12.24. Explain event delegation:
+
+Event delegation is a technique involving adding event listeners to a parent element instead of adding them to the descendant elements. The listener will fire whenever the event is triggered on the descendant elements due to event bubbling up the DOM.
+
+The benefits of this technique are:
+
+- Memory footprint goes down because only one single handler is needed on the parent element, rather than having to attach event handlers on each descendant.
+- There is no need to unbind the handler from elements that are removed and to bind the event for new elements.
+
+### 12.25. Explain how this works in JavaScript
+
+There's no simple explanation for this; it is one of the most confusing concepts in JavaScript. A hand-wavey explanation is that the value of this depends on how the function is called.
+
+1. If the new keyword is used when calling the function, this inside the function is a brand new object.
+2. If apply, call, or bind are used to call/create a function, this inside the function is the object that is passed in as the argument.
+3. If a function is called as a method, such as obj.method() — this is the object that the function is a property of.
+4. If a function is invoked as a free function invocation, meaning it was invoked without any of the conditions present above, this is the global object.
+5. In a browser, it is the window object. If in strict mode ('use strict'), this will be undefined instead of the global object.
+6. If multiple of the above rules apply, the rule that is higher wins and will set this value.
+7. If the function is an ES2015 arrow function, it ignores all the rules above and receives this value of its surrounding scope at the time it is created.
+
