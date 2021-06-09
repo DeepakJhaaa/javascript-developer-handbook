@@ -1,72 +1,73 @@
 - [1. Program: What will be the output ?](#1-program-what-will-be-the-output-)
-  - [1.1. What will this code print?](#11-what-will-this-code-print)
-  - [1.2. What do the following lines output, and why?](#12-what-do-the-following-lines-output-and-why)
-  - [1.3. How do you add an element at the beginning of an array? How do you add one at the end?](#13-how-do-you-add-an-element-at-the-beginning-of-an-array-how-do-you-add-one-at-the-end)
-  - [1.4. Imagine you have this code](#14-imagine-you-have-this-code)
-  - [1.5. What is the value of typeof `undefined == typeof NULL`?](#15-what-is-the-value-of-typeof-undefined--typeof-null)
-  - [1.6. What would following code return?](#16-what-would-following-code-return)
-  - [1.7. What would the following lines of code output to the console?](#17-what-would-the-following-lines-of-code-output-to-the-console)
-  - [1.8. What will be the output when the following code is executed? Explain.](#18-what-will-be-the-output-when-the-following-code-is-executed-explain)
-  - [1.9. What is the output out of the following code? Explain your answer.](#19-what-is-the-output-out-of-the-following-code-explain-your-answer)
-  - [1.10. What will the following code output to the console:](#110-what-will-the-following-code-output-to-the-console)
-  - [1.11. Consider the code snippet below. What will the console output be and why?](#111-consider-the-code-snippet-below-what-will-the-console-output-be-and-why)
-  - [1.12. What will the following code output to the console and why:](#112-what-will-the-following-code-output-to-the-console-and-why)
-  - [1.13. Create a function for the below problem:](#113-create-a-function-for-the-below-problem)
-  - [1.14. What is the output of the following code?](#114-what-is-the-output-of-the-following-code)
-  - [1.15. Consider the following code. What will the output be, and why?](#115-consider-the-following-code-what-will-the-output-be-and-why)
-  - [1.16. What will be the output of this code?](#116-what-will-be-the-output-of-this-code)
-  - [1.17. Consider the following code snippet:](#117-consider-the-following-code-snippet)
-  - [1.18. Assuming d is an “empty” object in scope, say:](#118-assuming-d-is-an-empty-object-in-scope-say)
-  - [1.19. What will the code below output to the console and why?](#119-what-will-the-code-below-output-to-the-console-and-why)
-  - [1.20. What will the code below output to the console and why ?](#120-what-will-the-code-below-output-to-the-console-and-why-)
-  - [1.21. The following recursive code will cause a stack overflow if the array list is too large. How can you fix this and still retain the recursive pattern?](#121-the-following-recursive-code-will-cause-a-stack-overflow-if-the-array-list-is-too-large-how-can-you-fix-this-and-still-retain-the-recursive-pattern)
-  - [1.22. In what order will the numbers 1-4 be logged to the console when the code below is executed? Why?](#122-in-what-order-will-the-numbers-1-4-be-logged-to-the-console-when-the-code-below-is-executed-why)
-  - [1.23. What will the code below output to the console and why?](#123-what-will-the-code-below-output-to-the-console-and-why)
-  - [1.24. Variable Hoisting](#124-variable-hoisting)
-  - [1.25. What will be output of the below code:](#125-what-will-be-output-of-the-below-code)
-  - [1.26. Create a for loop that iterates up to 100 while outputting "fizz" at multiples of 3, "buzz" at multiples of 5 and "fizzbuzz" at multiples of 3 and 5.](#126-create-a-for-loop-that-iterates-up-to-100-while-outputting-fizz-at-multiples-of-3-buzz-at-multiples-of-5-and-fizzbuzz-at-multiples-of-3-and-5)
-  - [1.27. Explain the difference between mutable and immutable objects?](#127-explain-the-difference-between-mutable-and-immutable-objects)
-  - [1.28. Explain the difference between synchronous and asynchronous functions.](#128-explain-the-difference-between-synchronous-and-asynchronous-functions)
-  - [1.29. How to handle multiple Http Request? , OR](#129-how-to-handle-multiple-http-request--or)
-  - [1.30. How to add response of two HTTP calls, after both calls complete? , OR](#130-how-to-add-response-of-two-http-calls-after-both-calls-complete--or)
-  - [1.31. How to wait until multiple GET requests are successfully processed?](#131-how-to-wait-until-multiple-get-requests-are-successfully-processed)
-  - [1.32. Cancel previous Http/Ajax request?](#132-cancel-previous-httpajax-request)
-  - [1.33. Modify `console.log()` method and add more property to default JavaScript methods?](#133-modify-consolelog-method-and-add-more-property-to-default-javascript-methods)
-  - [1.34. What will be the output of the following code?](#134-what-will-be-the-output-of-the-following-code)
-  - [1.35. What is the drawback of creating true private in JavaScript?](#135-what-is-the-drawback-of-creating-true-private-in-javascript)
-  - [1.36. What is “closure” in JavaScript? Provide an example?](#136-what-is-closure-in-javascript-provide-an-example)
-  - [1.37. Write a mul function which will invoked as below syntax.](#137-write-a-mul-function-which-will-invoked-as-below-syntax)
-  - [1.38. What will be the output of the following code?](#138-what-will-be-the-output-of-the-following-code)
-  - [1.39. What is the difference between declaring a function in below format?](#139-what-is-the-difference-between-declaring-a-function-in-below-format)
-  - [1.40. How to check if an object is an array or not?](#140-how-to-check-if-an-object-is-an-array-or-not)
-  - [1.41. What will be the output of the following code?](#141-what-will-be-the-output-of-the-following-code)
-  - [1.42. What will be the output of the following code?](#142-what-will-be-the-output-of-the-following-code)
-  - [1.43. What will be the output of the following code?](#143-what-will-be-the-output-of-the-following-code)
-  - [1.44. What are the way by which we can create object in JavaScript?](#144-what-are-the-way-by-which-we-can-create-object-in-javascript)
-  - [1.45. What is the difference between a method and a function in JavaScript?](#145-what-is-the-difference-between-a-method-and-a-function-in-javascript)
-  - [1.46. Write a function called deepClone which takes an object and creates an object copy of it.](#146-write-a-function-called-deepclone-which-takes-an-object-and-creates-an-object-copy-of-it)
-  - [1.47. How we can prevent modification of object in JavaScript?](#147-how-we-can-prevent-modification-of-object-in-javascript)
-  - [1.48. Write code for merge two JavaScript Object dynamically.](#148-write-code-for-merge-two-javascript-object-dynamically)
-  - [1.49. What is non-enumerable property in JavaScript and how can create?](#149-what-is-non-enumerable-property-in-javascript-and-how-can-create)
-  - [1.50. What is JavaScript Self-Invoking anonymous function or Self-Executing anonymous function?](#150-what-is-javascript-self-invoking-anonymous-function-or-self-executing-anonymous-function)
-  - [1.51. What is the significance of, and reason for, wrapping the entire content of a JavaScript source file in a function block?](#151-what-is-the-significance-of-and-reason-for-wrapping-the-entire-content-of-a-javascript-source-file-in-a-function-block)
-  - [1.52. What is the significance, and what are the benefits, of including 'use strict' at the beginning of a JavaScript source file?](#152-what-is-the-significance-and-what-are-the-benefits-of-including-use-strict-at-the-beginning-of-a-javascript-source-file)
-  - [1.53. What is a potential pitfall with using typeof bar === "object" to determine if bar is an object? How can this pitfall be avoided?](#153-what-is-a-potential-pitfall-with-using-typeof-bar--object-to-determine-if-bar-is-an-object-how-can-this-pitfall-be-avoided)
-  - [1.54. What will the code below output? Explain your answer.](#154-what-will-the-code-below-output-explain-your-answer)
-  - [1.55. Consider the two functions below. Will they both return the same thing? Why or why not?](#155-consider-the-two-functions-below-will-they-both-return-the-same-thing-why-or-why-not)
-  - [1.56. What is NaN? What is its type? How can you reliably test if a value is equal to NaN?](#156-what-is-nan-what-is-its-type-how-can-you-reliably-test-if-a-value-is-equal-to-nan)
-  - [1.57. Discuss possible ways to write a function `isInteger(x)` that determines if x is an integer.](#157-discuss-possible-ways-to-write-a-function-isintegerx-that-determines-if-x-is-an-integer)
-  - [1.58. Write a simple function that returns a boolean indicating whether or not a string is a palindrome?](#158-write-a-simple-function-that-returns-a-boolean-indicating-whether-or-not-a-string-is-a-palindrome)
-  - [1.59. Write a sum method which will work properly when invoked using either syntax below.](#159-write-a-sum-method-which-will-work-properly-when-invoked-using-either-syntax-below)
-  - [1.60. What is a “closure” in JavaScript? Provide an example.](#160-what-is-a-closure-in-javascript-provide-an-example)
-  - [1.61. How do you clone an object?](#161-how-do-you-clone-an-object)
-  - [1.62. Explain event delegation:](#162-explain-event-delegation)
-  - [1.63. Explain how this works in JavaScript](#163-explain-how-this-works-in-javascript)
-  - [1.64. Explain why the following doesn't work as an IIFE?](#164-explain-why-the-following-doesnt-work-as-an-iife)
-  - [1.65. What's the difference between a variable that is: `null`, `undefined` or `undeclared`?](#165-whats-the-difference-between-a-variable-that-is-null-undefined-or-undeclared)
-## 1. Program: What will be the output ?
+- [2. What will this code print?](#2-what-will-this-code-print)
+- [3. What do the following lines output, and why?](#3-what-do-the-following-lines-output-and-why)
+- [4. How do you add an element at the beginning of an array? How do you add one at the end?](#4-how-do-you-add-an-element-at-the-beginning-of-an-array-how-do-you-add-one-at-the-end)
+- [5. Imagine you have this code](#5-imagine-you-have-this-code)
+- [6. What is the value of typeof `undefined == typeof NULL`?](#6-what-is-the-value-of-typeof-undefined--typeof-null)
+- [7. What would following code return?](#7-what-would-following-code-return)
+- [8. What would the following lines of code output to the console?](#8-what-would-the-following-lines-of-code-output-to-the-console)
+- [10. What is the output out of the following code? Explain your answer.](#10-what-is-the-output-out-of-the-following-code-explain-your-answer)
+- [11. What will the following code output to the console:](#11-what-will-the-following-code-output-to-the-console)
+- [12. Consider the code snippet below. What will the console output be and why?](#12-consider-the-code-snippet-below-what-will-the-console-output-be-and-why)
+- [13. What will the following code output to the console and why:](#13-what-will-the-following-code-output-to-the-console-and-why)
+- [14. Create a function for the below problem:](#14-create-a-function-for-the-below-problem)
+- [15. What is the output of the following code?](#15-what-is-the-output-of-the-following-code)
+- [16. Consider the following code. What will the output be, and why?](#16-consider-the-following-code-what-will-the-output-be-and-why)
+- [17. What will be the output of this code?](#17-what-will-be-the-output-of-this-code)
+- [18. Consider the following code snippet:](#18-consider-the-following-code-snippet)
+- [19. Assuming d is an “empty” object in scope, say:](#19-assuming-d-is-an-empty-object-in-scope-say)
+- [20. What will the code below output to the console and why?](#20-what-will-the-code-below-output-to-the-console-and-why)
+- [21. What will the code below output to the console and why ?](#21-what-will-the-code-below-output-to-the-console-and-why-)
+- [22. The following recursive code will cause a stack overflow if the array list is too large. How can you fix this and still retain the recursive pattern?](#22-the-following-recursive-code-will-cause-a-stack-overflow-if-the-array-list-is-too-large-how-can-you-fix-this-and-still-retain-the-recursive-pattern)
+- [23. In what order will the numbers 1-4 be logged to the console when the code below is executed? Why?](#23-in-what-order-will-the-numbers-1-4-be-logged-to-the-console-when-the-code-below-is-executed-why)
+- [24. What will the code below output to the console and why?](#24-what-will-the-code-below-output-to-the-console-and-why)
+- [25. Variable Hoisting](#25-variable-hoisting)
+- [26. What will be output of the below code:](#26-what-will-be-output-of-the-below-code)
+- [27. Create a for loop that iterates up to 100 while outputting "fizz" at multiples of 3, "buzz" at multiples of 5 and "fizzbuzz" at multiples of 3 and 5.](#27-create-a-for-loop-that-iterates-up-to-100-while-outputting-fizz-at-multiples-of-3-buzz-at-multiples-of-5-and-fizzbuzz-at-multiples-of-3-and-5)
+- [28. Explain the difference between mutable and immutable objects?](#28-explain-the-difference-between-mutable-and-immutable-objects)
+- [29. Explain the difference between synchronous and asynchronous functions.](#29-explain-the-difference-between-synchronous-and-asynchronous-functions)
+- [30. How to handle multiple Http Request? , OR](#30-how-to-handle-multiple-http-request--or)
+- [31. How to add response of two HTTP calls, after both calls complete? , OR](#31-how-to-add-response-of-two-http-calls-after-both-calls-complete--or)
+- [32. How to wait until multiple GET requests are successfully processed?](#32-how-to-wait-until-multiple-get-requests-are-successfully-processed)
+- [33. Cancel previous Http/Ajax request?](#33-cancel-previous-httpajax-request)
+- [34. Modify `console.log()` method and add more property to default JavaScript methods?](#34-modify-consolelog-method-and-add-more-property-to-default-javascript-methods)
+- [35. What will be the output of the following code?](#35-what-will-be-the-output-of-the-following-code)
+- [36. What is the drawback of creating true private in JavaScript?](#36-what-is-the-drawback-of-creating-true-private-in-javascript)
+- [37. What is “closure” in JavaScript? Provide an example?](#37-what-is-closure-in-javascript-provide-an-example)
+- [38. Write a mul function which will invoked as below syntax.](#38-write-a-mul-function-which-will-invoked-as-below-syntax)
+- [39. What will be the output of the following code?](#39-what-will-be-the-output-of-the-following-code)
+- [40. What is the difference between declaring a function in below format?](#40-what-is-the-difference-between-declaring-a-function-in-below-format)
+- [41. How to check if an object is an array or not?](#41-how-to-check-if-an-object-is-an-array-or-not)
+- [42. What will be the output of the following code?](#42-what-will-be-the-output-of-the-following-code)
+- [43. What will be the output of the following code?](#43-what-will-be-the-output-of-the-following-code)
+- [44. What will be the output of the following code?](#44-what-will-be-the-output-of-the-following-code)
+- [45. What are the way by which we can create object in JavaScript?](#45-what-are-the-way-by-which-we-can-create-object-in-javascript)
+- [46. What is the difference between a method and a function in JavaScript?](#46-what-is-the-difference-between-a-method-and-a-function-in-javascript)
+- [47. Write a function called deepClone which takes an object and creates an object copy of it.](#47-write-a-function-called-deepclone-which-takes-an-object-and-creates-an-object-copy-of-it)
+- [48. How we can prevent modification of object in JavaScript?](#48-how-we-can-prevent-modification-of-object-in-javascript)
+- [49. Write code for merge two JavaScript Object dynamically.](#49-write-code-for-merge-two-javascript-object-dynamically)
+- [50. What is non-enumerable property in JavaScript and how can create?](#50-what-is-non-enumerable-property-in-javascript-and-how-can-create)
+- [51. What is JavaScript Self-Invoking anonymous function or Self-Executing anonymous function?](#51-what-is-javascript-self-invoking-anonymous-function-or-self-executing-anonymous-function)
+- [52. What is the significance of, and reason for, wrapping the entire content of a JavaScript source file in a function block?](#52-what-is-the-significance-of-and-reason-for-wrapping-the-entire-content-of-a-javascript-source-file-in-a-function-block)
+- [53. What is the significance, and what are the benefits, of including 'use strict' at the beginning of a JavaScript source file?](#53-what-is-the-significance-and-what-are-the-benefits-of-including-use-strict-at-the-beginning-of-a-javascript-source-file)
+- [54. What is a potential pitfall with using typeof bar === "object" to determine if bar is an object? How can this pitfall be avoided?](#54-what-is-a-potential-pitfall-with-using-typeof-bar--object-to-determine-if-bar-is-an-object-how-can-this-pitfall-be-avoided)
+- [55. What will the code below output? Explain your answer.](#55-what-will-the-code-below-output-explain-your-answer)
+- [56. Consider the two functions below. Will they both return the same thing? Why or why not?](#56-consider-the-two-functions-below-will-they-both-return-the-same-thing-why-or-why-not)
+- [57. What is NaN? What is its type? How can you reliably test if a value is equal to NaN?](#57-what-is-nan-what-is-its-type-how-can-you-reliably-test-if-a-value-is-equal-to-nan)
+- [58. Discuss possible ways to write a function `isInteger(x)` that determines if x is an integer.](#58-discuss-possible-ways-to-write-a-function-isintegerx-that-determines-if-x-is-an-integer)
+- [59. Write a simple function that returns a boolean indicating whether or not a string is a palindrome?](#59-write-a-simple-function-that-returns-a-boolean-indicating-whether-or-not-a-string-is-a-palindrome)
+- [60. Write a sum method which will work properly when invoked using either syntax below.](#60-write-a-sum-method-which-will-work-properly-when-invoked-using-either-syntax-below)
+- [61. What is a “closure” in JavaScript? Provide an example.](#61-what-is-a-closure-in-javascript-provide-an-example)
+- [62. How do you clone an object?](#62-how-do-you-clone-an-object)
+- [63. Explain event delegation:](#63-explain-event-delegation)
+- [64. Explain how this works in JavaScript](#64-explain-how-this-works-in-javascript)
+- [65. Explain why the following doesn't work as an IIFE?](#65-explain-why-the-following-doesnt-work-as-an-iife)
+- [66. What's the difference between a variable that is: `null`, `undefined` or `undeclared`?](#66-whats-the-difference-between-a-variable-that-is-null-undefined-or-undeclared)
 
-### 1.1. What will this code print?
+
+### 1. Program: What will be the output ?
+
+### 2. What will this code print?
 
 ```js
 for (let i = 0; i < 5; i++) {
@@ -81,7 +82,7 @@ for (let i = 0; i < 5; i++) {
 - It will print 0 1 2 3 4, because we use let instead of var here.
 - The variable i is only seen in the for loop’s block scope.
 
-### 1.2. What do the following lines output, and why?
+### 3. What do the following lines output, and why?
 
 ```js
 console.log(1 < 2 < 3);
@@ -95,7 +96,7 @@ The first statement returns true which is as expected.
 - The second returns false because of how the engine works regarding operator associativity for < and >.
 - It compares left to right, so 3 > 2 > 1 JavaScript translates to true > 1. true has value 1, so it then compares 1 > 1, which is false.
 
-### 1.3. How do you add an element at the beginning of an array? How do you add one at the end?
+### 4. How do you add an element at the beginning of an array? How do you add one at the end?
 
 ```js
 var myArray = ['a', 'b', 'c', 'd'];
@@ -113,7 +114,7 @@ myArray = [...myArray, 'end'];
 myArray = ['start', ...myArray, 'end'];
 ```
 
-### 1.4. Imagine you have this code
+### 5. Imagine you have this code
 
 ```js
 var a = [1, 2, 3];
@@ -141,13 +142,13 @@ console.log(b); // (3) [undefined, empty × 1, 1]
 console.log(b.map(e => 7)); // (3) [7, empty × 1, 7]
 ```
 
-### 1.5. What is the value of typeof `undefined == typeof NULL`?
+### 6. What is the value of typeof `undefined == typeof NULL`?
 
 The expression will be evaluated to true, since NULL will be treated as any other undefined variable.
 
 Note: JavaScript is case-sensitive and here we are using NULL instead of null.
 
-### 1.6. What would following code return?
+### 7. What would following code return?
 
 ```js
 console.log(typeof typeof 1);
@@ -225,7 +226,7 @@ for (let i = 0; i < 5; i++) {
 }
 ```
 
-### 1.7. What would the following lines of code output to the console?
+### 8. What would the following lines of code output to the console?
 
 ```js
 console.log('0 || 1 = ' + (0 || 1));
@@ -257,20 +258,7 @@ Explain your answer.
 - This is fine, since it counts as “true” in logical expressions, but also can be used to return that value when you care to do so.
 - This explains why, somewhat surprisingly, 1 && 2 returns 2 (whereas you might it expect it to return true or 1).
 
-### 1.8. What will be the output when the following code is executed? Explain.
-
-```js
-console.log(false == '0'); // true
-console.log(false === '0'); // false
-```
-
-- In JavaScript, there are two sets of equality operators.
-- The triple-equal operator === behaves like any traditional equality operator would: evaluates to true if the two expressions on either of its sides have the same type and the same value.
-- The double-equal operator, however, tries to coerce the values before comparing them.
-- It is therefore generally good practice to use the === rather than ==.
-- The same holds true for !== vs !=.
-
-### 1.9. What is the output out of the following code? Explain your answer.
+### 10. What is the output out of the following code? Explain your answer.
 
 ```js
 var a = {},
@@ -289,7 +277,7 @@ Answer: The output of this code will be 456 (not 123).
 - In this case, since b and c are both objects, they will both be converted to "[object Object]".
 - As a result, a[b] and a[c] are both equivalent to a["[object Object]"] and can be used interchangeably. Therefore, setting or referencing a[c] is precisely the same as setting or referencing a[b].
 
-### 1.10. What will the following code output to the console:
+### 11. What will the following code output to the console:
 
 ```js
 console.log(
@@ -315,7 +303,7 @@ f(9): returns 9 _ f(8), which is 362880
 f(10): returns 10 _ f(9), which is 3628800
 ```
 
-### 1.11. Consider the code snippet below. What will the console output be and why?
+### 12. Consider the code snippet below. What will the console output be and why?
 
 ```js
 (function(x) {
@@ -333,7 +321,7 @@ The output will be 1, even though the value of x is never set in the inner funct
 - In JavaScript, a closure is implemented as an “inner function”; i.e., a function defined within the body of another function. An important feature of closures is that an inner function still has access to the outer function’s variables.
 - Therefore, in this example, since x is not defined in the inner function, the scope of the outer function is searched for a defined variable x, which is found to have a value of 1.
 
-### 1.12. What will the following code output to the console and why:
+### 13. What will the following code output to the console and why:
 
 ```js
 var hero = {
@@ -366,7 +354,7 @@ One way to fix the stoleSecretIdentity() function is as follows:
 var stoleSecretIdentity = hero.getSecretIdentity.bind(hero);
 ```
 
-### 1.13. Create a function for the below problem:
+### 14. Create a function for the below problem:
 
 For a given a DOM Element on the page, will visit the element itself and all of its descendants (not just its immediate children). For each element visited, the function should pass that element to a provided callback function. The arguments to the function should be:
 
@@ -386,7 +374,7 @@ function Traverse(p_element, p_callback) {
 }
 ```
 
-### 1.14. What is the output of the following code?
+### 15. What is the output of the following code?
 
 ```js
 var length = 10;
@@ -421,7 +409,7 @@ Answer: Output
 - Now, we know that we can access any number of arguments in a JavaScript function using the arguments[] array.
 - Hence `arguments[0]()` is nothing but calling fn(). Inside fn now, the scope of this function becomes the arguments array, and logging the length of arguments[] will return 2. Hence the output will be as above.
 
-### 1.15. Consider the following code. What will the output be, and why?
+### 16. Consider the following code. What will the output be, and why?
 
 ```js
 (function() {
@@ -462,7 +450,7 @@ var statements are hoisted (without their value initialization) to the top of th
 })();
 ```
 
-### 1.16. What will be the output of this code?
+### 17. What will be the output of this code?
 
 ```js
 var x = 21;
@@ -483,7 +471,7 @@ It’s because JavaScript initialization is not hoisted.
 
 The reason is that when the function is executed, it checks that there’s a local x variable present but doesn’t yet declare it, so it won’t look for global one.)
 
-### 1.17. Consider the following code snippet:
+### 18. Consider the following code snippet:
 
 ```js
 for (var i = 0; i < 5; i++) {
@@ -574,7 +562,7 @@ for (let i = 0; i < 5; i++) {
 }
 ```
 
-### 1.18. Assuming d is an “empty” object in scope, say:
+### 19. Assuming d is an “empty” object in scope, say:
 
 ```js
 var d = {};
@@ -594,7 +582,7 @@ var d = {};
 - This is a useful strategy for ensuring that an object has a given set of properties.
 - Passing this object to Object.keys will return an array with those set keys as well (even if their values are undefined).
 
-### 1.19. What will the code below output to the console and why?
+### 20. What will the code below output to the console and why?
 
 ```js
 var arr1 = 'john'.split('');
@@ -622,7 +610,7 @@ console.log('array 2: length=' + arr2.length + ' last=' + arr2.slice(-1));
 - As a result, the statement arr2.push(arr3); adds arr3 in its entirety as a single element to the end of arr2 (i.e., it does notconcatenate the two arrays, that’s what the concat() method is for).
 - Like Python, JavaScript honors negative subscripts in calls to array methods like slice() as a way of referencing elements at the end of the array; e.g., a subscript of -1 indicates the last element in the array, and so on.
 
-### 1.20. What will the code below output to the console and why ?
+### 21. What will the code below output to the console and why ?
 
 ```js
 console.log(1 + '2' + '2');
@@ -688,7 +676,7 @@ Explanation: Since the - operator cannot be applied to strings, and since neithe
 
 Explanation: As explained in the previous example, "A" - "B" yields NaN. But any operator applied to NaN with any other numeric operand will still yield NaN.
 
-### 1.21. The following recursive code will cause a stack overflow if the array list is too large. How can you fix this and still retain the recursive pattern?
+### 22. The following recursive code will cause a stack overflow if the array list is too large. How can you fix this and still retain the recursive pattern?
 
 ```js
 var list = readHugeList();
@@ -725,7 +713,7 @@ var nextListItem = function() {
 - When the event queue runs its timed-out event, the next item is processed and a timer is set to again invoke nextListItem.
 - Accordingly, the method is processed from start to finish without a direct recursive call, so the call stack remains clear, regardless of the number of iterations.
 
-### 1.22. In what order will the numbers 1-4 be logged to the console when the code below is executed? Why?
+### 23. In what order will the numbers 1-4 be logged to the console when the code below is executed? Why?
 
 ```js
 (function() {
@@ -763,7 +751,7 @@ Let’s first explain the parts of this that are presumably more obvious:
 - Note, though, that this is not immediate; the function is not executed until the next tick.
 - That’s why in the above example, the call to console.log(4) occurs before the call to console.log(3) (since the call to console.log(3) is invoked via setTimeout, so it is slightly delayed).
 
-### 1.23. What will the code below output to the console and why?
+### 24. What will the code below output to the console and why?
 
 ```js
 var myObject = {
@@ -795,7 +783,7 @@ inner func: self.foo = bar
 - In the outer function, both this and self-refer to myObject and therefore both can properly reference and access foo.
 - In the inner function, though, this no longer refers to myObject. As a result, this.foo is undefined in the inner function, whereas the reference to the local variable self remains in scope and is accessible there.
 
-### 1.24. Variable Hoisting
+### 25. Variable Hoisting
 
 ```js
 console.log(employeeId);
@@ -813,7 +801,7 @@ var employeeId = '1234abe';
 // Ans : undefined
 ```
 
-### 1.25. What will be output of the below code:
+### 26. What will be output of the below code:
 
 ```js
 (function() {
@@ -856,7 +844,7 @@ Note that, in strict mode (i.e., with use strict), the statement var a = b = 3; 
 
 (Yet another prime example of why you should use use strict as a matter of course in your code!)
 
-### 1.26. Create a for loop that iterates up to 100 while outputting "fizz" at multiples of 3, "buzz" at multiples of 5 and "fizzbuzz" at multiples of 3 and 5.
+### 27. Create a for loop that iterates up to 100 while outputting "fizz" at multiples of 3, "buzz" at multiples of 5 and "fizzbuzz" at multiples of 3 and 5.
 
 ```js
 function fizzbuzz() {
@@ -874,9 +862,9 @@ function fizzbuzz() {
 fizzbuzz();
 ```
 
-### 1.27. Explain the difference between mutable and immutable objects?
+### 28. Explain the difference between mutable and immutable objects?
 
-### 1.28. Explain the difference between synchronous and asynchronous functions.
+### 29. Explain the difference between synchronous and asynchronous functions.
 
 **Synchronous functions** are blocking while asynchronous functions are not. In synchronous functions, statements complete before the next statement is run.
 
@@ -889,11 +877,11 @@ The callback is only invoked when the asynchronous operation is complete and the
 Heavy duty operations such as loading data from a web server or querying a database should be done asynchronously so that the main thread can continue executing other operations instead of blocking until that long operation to complete (in the case of browsers, the UI will freeze).
 
 
-### 1.29. How to handle multiple Http Request? , OR
+### 30. How to handle multiple Http Request? , OR
 
-### 1.30. How to add response of two HTTP calls, after both calls complete? , OR
+### 31. How to add response of two HTTP calls, after both calls complete? , OR
 
-### 1.31. How to wait until multiple GET requests are successfully processed?
+### 32. How to wait until multiple GET requests are successfully processed?
 
 **Using jQuery:**
 
@@ -971,7 +959,7 @@ $scope.fn2 = function(data){
 $scope.fn1().then($scope.fn2);
 ```
 
-### 1.32. Cancel previous Http/Ajax request?
+### 33. Cancel previous Http/Ajax request?
 
 **Using jQuery:**
 
@@ -999,7 +987,7 @@ currentRequest = jQuery.ajax({
 });
 ```
 
-### 1.33. Modify `console.log()` method and add more property to default JavaScript methods?
+### 34. Modify `console.log()` method and add more property to default JavaScript methods?
 
 - Now you can do simple things like add a DEBUG flag to enable/disable logging:
 
@@ -1046,7 +1034,7 @@ console.log = function() {
 };
 ```
 
-### 1.34. What will be the output of the following code?
+### 35. What will be the output of the following code?
 
 ```js
 var y = 1;
@@ -1077,13 +1065,13 @@ if (1) {
 console.log(k); // output 1function
 ```
 
-### 1.35. What is the drawback of creating true private in JavaScript?
+### 36. What is the drawback of creating true private in JavaScript?
 
 One of the drawback of creating a true private method in JavaScript is that they are very memory inefficient because a new copy of the method would be created for each instance.
 
 So as recommendation don't go for a private method unless it's necessary.
 
-### 1.36. What is “closure” in JavaScript? Provide an example?
+### 37. What is “closure” in JavaScript? Provide an example?
 
 A closure is a function defined inside another function (called parent function) and has access to the variable which is declared and defined in parent function scope.
 
@@ -1093,7 +1081,7 @@ The closure has access to variable in three scopes:
 2. Variable declared in parent function scope
 3. Variable declared in global namespace
 
-### 1.37. Write a mul function which will invoked as below syntax.
+### 38. Write a mul function which will invoked as below syntax.
 
 ```js
 console.log(mul(2)(3)(4)); // output : 24
@@ -1114,7 +1102,7 @@ function mul (x) {
 
 Here mul function accept the first argument and return anonymous function which take the second parameter and return anonymous function which take the third parameter and return multiplication of arguments which is being passed in successive.
 
-### 1.38. What will be the output of the following code?
+### 39. What will be the output of the following code?
 
 ```js
 var output = (function(x) {
@@ -1164,7 +1152,7 @@ console.log(emp1.company);
 
 Above code will output `xyz` as output. Here `emp1` object got company as prototype property. delete operator doesn't delete prototype property.
 
-### 1.39. What is the difference between declaring a function in below format?
+### 40. What is the difference between declaring a function in below format?
 
 ```js
 var foo = function() {
@@ -1224,9 +1212,9 @@ if (testCondition) {
 }
 ```
 
-### 1.40. How to check if an object is an array or not?
+### 41. How to check if an object is an array or not?
 
-### 1.41. What will be the output of the following code?
+### 42. What will be the output of the following code?
 
 ```js
 var bar = true;
@@ -1242,7 +1230,7 @@ console.log(bar + false); // 1
 - String + Boolean -> Concatenation
 - String + String -> Concatenation
 
-### 1.42. What will be the output of the following code?
+### 43. What will be the output of the following code?
 
 ```js
 var z = 1,
@@ -1256,7 +1244,7 @@ Above code will output `undefined` as output.
 
 - Here associativity of the assignment operator is Right to Left so first typeof y will evaluate first which is undefined and assigned to z and then y would be assigned the value of z and then z would be assign value 1.
 
-### 1.43. What will be the output of the following code?
+### 44. What will be the output of the following code?
 
 ```js
 var salary = '1000$';
@@ -1289,7 +1277,7 @@ var salary = '1000$';
 })();
 ```
 
-### 1.44. What are the way by which we can create object in JavaScript?
+### 45. What are the way by which we can create object in JavaScript?
 
 **Method 1: Function Based**
 
@@ -1353,7 +1341,7 @@ employee.getName = function() {
 
 Note: As a best practices object literal way is used to create object over this method.
 
-### 1.45. What is the difference between a method and a function in JavaScript?
+### 46. What is the difference between a method and a function in JavaScript?
 
 A function is a piece of code that is called by name and function itself not associated with any object and not defined inside any object. It can be passed data to operate on (i.e. parameter) and can optionally return data (the return value).
 
@@ -1405,7 +1393,7 @@ methodObject.display();
 
 Here methodObject is an object and display is a method which is associated with methodObject.
 
-### 1.46. Write a function called deepClone which takes an object and creates an object copy of it.
+### 47. Write a function called deepClone which takes an object and creates an object copy of it.
 
 ```js
 function deepClone(object) {
@@ -1425,7 +1413,7 @@ var newObject = deepClone(obj);
 
 So when we do deep clone then we should copy every property (including the nested object).
 
-### 1.47. How we can prevent modification of object in JavaScript?
+### 48. How we can prevent modification of object in JavaScript?
 
 ECMAScript 5 introduce several methods to prevent modification of object which lock down object to ensure that no one, accidentally or otherwise, change functionality of Object.
 
@@ -1501,7 +1489,7 @@ delete employee.name; // fails silently unless it's in strict mode
 
 Frozen objects are considered both non-extensible and sealed.
 
-### 1.48. Write code for merge two JavaScript Object dynamically.
+### 49. Write code for merge two JavaScript Object dynamically.
 
 Let say you have two object
 
@@ -1551,7 +1539,7 @@ function merge(toObj, fromObj) {
 }
 ```
 
-### 1.49. What is non-enumerable property in JavaScript and how can create?
+### 50. What is non-enumerable property in JavaScript and how can create?
 
 Object can have properties that don't show up when you iterate through object using `for...in` loop or using `Object.keys()` to get an array of property names. This properties is known as non-enumerable properties.
 
@@ -1601,7 +1589,7 @@ In non-strict mode it won't through any error but it won't change the value of p
 
 **Bonus:** `Object.defineProperty()` is also let you create read-only properties as we saw above, we are not able to modify phoneNo value of a person object.
 
-### 1.50. What is JavaScript Self-Invoking anonymous function or Self-Executing anonymous function?
+### 51. What is JavaScript Self-Invoking anonymous function or Self-Executing anonymous function?
 
 A self-invoking anonymous function also called self-executing anonymous function runs immediately or automatically when we define it and self-invoking anonymous function doesn't have any name at all.
 
@@ -1635,7 +1623,7 @@ function testCallBack(callback) {
 testCallBack(display); // Here display function is being passed as callback
 ```
 
-### 1.51. What is the significance of, and reason for, wrapping the entire content of a JavaScript source file in a function block?
+### 52. What is the significance of, and reason for, wrapping the entire content of a JavaScript source file in a function block?
 
 - This is an increasingly common practice, employed by many popular JavaScript libraries (jQuery, Node.js, etc.).
 - This technique creates a closure around the entire contents of the file which, perhaps most importantly, creates a private namespace and thereby helps avoid potential name clashes between different JavaScript modules and libraries.
@@ -1643,7 +1631,7 @@ testCallBack(display); // Here display function is being passed as callback
 - JQuery allows you to disable the $ reference to the jQuery namespace, using jQuery.noConflict().
 - If this has been done, your code can still use $ employing this closure technique, as follows:
 
-### 1.52. What is the significance, and what are the benefits, of including 'use strict' at the beginning of a JavaScript source file?
+### 53. What is the significance, and what are the benefits, of including 'use strict' at the beginning of a JavaScript source file?
 
 The short and most important answer here is that use strict is a way to voluntarily enforce stricter parsing and error handling on your JavaScript code at runtime.
 
@@ -1660,7 +1648,7 @@ In general, it is a good practice. Some of the key benefits of strict mode inclu
 7. Makes eval() safer. There are some differences in the way eval() behaves in strict mode and in non-strict mode. Most significantly, in strict mode, variables and functions declared inside of an eval() statement are not created in the containing scope (they are created in the containing scope in non-strict mode, which can also be a common source of problems).
 8. Throws error on invalid usage of delete. The delete operator (used to remove properties from objects) cannot be used on non-configurable properties of the object. Non-strict code will fail silently when an attempt is made to delete a non-configurable property, whereas strict mode will throw an error in such a case.
 
-### 1.53. What is a potential pitfall with using typeof bar === "object" to determine if bar is an object? How can this pitfall be avoided?
+### 54. What is a potential pitfall with using typeof bar === "object" to determine if bar is an object? How can this pitfall be avoided?
 
 Although `typeof bar === "object"` is a reliable way of checking if bar is an object, the surprising gotcha in JavaScript is that null is also considered an object!
 
@@ -1712,7 +1700,7 @@ console.log(bar !== null && typeof bar === 'object' && !$.isArray(bar));
 ES5 makes the array case quite simple, including its own null check:
 console.log(Array.isArray(bar));
 
-### 1.54. What will the code below output? Explain your answer.
+### 55. What will the code below output? Explain your answer.
 
 ```js
 console.log(0.1 + 0.2);
@@ -1739,7 +1727,7 @@ function areTheNumbersAlmostEqual(num1, num2) {
 console.log(areTheNumbersAlmostEqual(0.1 + 0.2, 0.3));
 ```
 
-### 1.55. Consider the two functions below. Will they both return the same thing? Why or why not?
+### 56. Consider the two functions below. Will they both return the same thing? Why or why not?
 
 ```js
 function foo1() {
@@ -1784,7 +1772,7 @@ undefined
 
 - This behavior also argues for following the convention of placing an opening curly brace at the end of a line in JavaScript, rather than on the beginning of a new line. As shown here, this becomes more than just a stylistic preference in JavaScript.
 
-### 1.56. What is NaN? What is its type? How can you reliably test if a value is equal to NaN?
+### 57. What is NaN? What is its type? How can you reliably test if a value is equal to NaN?
 
 - The NaN property represents a value that is “not a number”.
 - This special value results from an operation that could not be performed either because one of the operands was non-numeric (e.g., "abc" / 4), or because the result of the operation is non-numeric.
@@ -1806,7 +1794,7 @@ console.log(NaN === NaN); // logs "false"
 - A better solution would either be to use value !== value, which would only produce true if the value is equal to NaN.
 - Also, ES6 offers a new Number.isNaN() function, which is a different and more reliable than the old global isNaN() function.
 
-### 1.57. Discuss possible ways to write a function `isInteger(x)` that determines if x is an integer.
+### 58. Discuss possible ways to write a function `isInteger(x)` that determines if x is an integer.
 
 - This may sound trivial and, in fact, it is trivial with ECMAScript 6 which introduces a new `Number.isInteger()` function for precisely this purpose.
 - However, prior to ECMAScript 6, this is a bit more complicated, since no equivalent of the Number.isInteger() method is provided.
@@ -1856,7 +1844,7 @@ function isInteger(x) {
 > false
 ```
 
-### 1.58. Write a simple function that returns a boolean indicating whether or not a string is a palindrome?
+### 59. Write a simple function that returns a boolean indicating whether or not a string is a palindrome?
 
 The following one line function will return true if str is a palindrome; otherwise, it returns false.
 
@@ -1878,7 +1866,7 @@ console.log(isPalindrome('levels')); // logs 'false'
 console.log(isPalindrome('A car, a man, a maraca')); // logs 'true'
 ```
 
-### 1.59. Write a sum method which will work properly when invoked using either syntax below.
+### 60. Write a sum method which will work properly when invoked using either syntax below.
 
 ```js
 console.log(sum(2, 3)); // Outputs 5
@@ -1926,7 +1914,7 @@ function sum(x, y) {
 - On the other hand, if the number of arguments passed is less than the number of arguments in the function definition, the missing arguments will have a value of undefined when referenced within the function.
 - So, in the above example, by simply checking if the 2nd argument is undefined, we can determine which way the function was invoked and proceed accordingly.
 
-### 1.60. What is a “closure” in JavaScript? Provide an example.
+### 61. What is a “closure” in JavaScript? Provide an example.
 
 A closure is an inner function that has access to the variables in the outer (enclosing) function’s scope chain.
 
@@ -1973,7 +1961,7 @@ innerVar = b;
 globalVar = xyz;
 ```
 
-### 1.61. How do you clone an object?
+### 62. How do you clone an object?
 
 ```js
 var obj = { a: 1, b: 2 };
@@ -2001,7 +1989,7 @@ console.log('After Change - obj: ', obj); // 45 - This also changes
 console.log('After Change - objclone: ', objclone); // 45
 ```
 
-### 1.62. Explain event delegation:
+### 63. Explain event delegation:
 
 Event delegation is a technique involving adding event listeners to a parent element instead of adding them to the descendant elements. The listener will fire whenever the event is triggered on the descendant elements due to event bubbling up the DOM.
 
@@ -2010,7 +1998,7 @@ The benefits of this technique are:
 - Memory footprint goes down because only one single handler is needed on the parent element, rather than having to attach event handlers on each descendant.
 - There is no need to unbind the handler from elements that are removed and to bind the event for new elements.
 
-### 1.63. Explain how this works in JavaScript
+### 64. Explain how this works in JavaScript
 
 There's no simple explanation for this; it is one of the most confusing concepts in JavaScript. A hand-wavey explanation is that the value of this depends on how the function is called.
 
@@ -2022,7 +2010,7 @@ There's no simple explanation for this; it is one of the most confusing concepts
 6. If multiple of the above rules apply, the rule that is higher wins and will set this value.
 7. If the function is an ES2015 arrow function, it ignores all the rules above and receives this value of its surrounding scope at the time it is created.
 
-### 1.64. Explain why the following doesn't work as an IIFE?
+### 65. Explain why the following doesn't work as an IIFE?
 
 ```js
 function foo(){ }();
@@ -2052,7 +2040,7 @@ const foo = void (function bar() {
 console.log(foo); // undefined
 ```
 
-### 1.65. What's the difference between a variable that is: `null`, `undefined` or `undeclared`?
+### 66. What's the difference between a variable that is: `null`, `undefined` or `undeclared`?
 
 **Undeclared** - variables are created when you assign a value to an identifier that is not previously created using var, let or const. Undeclared variables will be defined globally, outside of the current scope.
 
