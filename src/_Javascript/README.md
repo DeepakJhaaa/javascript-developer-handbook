@@ -1262,3 +1262,4 @@ Static class members (properties/methods) are not tied to a specific instance of
 ### 2.40. Other Answers
 
 - http://flowerszhong.github.io/2013/11/20/javascript-questions.html
+
