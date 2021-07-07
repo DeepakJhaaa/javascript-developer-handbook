@@ -16,6 +16,7 @@ js-questions
   - [1.14. Explain "hoisting".](#114-explain-hoisting)
   - [1.15. What is the difference between `==` and `===`?](#115-what-is-the-difference-between--and-)
   - [1.16. What will be the output when the following code is executed? Explain.](#116-what-will-be-the-output-when-the-following-code-is-executed-explain)
+  - [1.17. Variable Hoisting](#117-variable-hoisting)
 - [2. Functions](#2-functions)
   - [2.1. Explain why the following doesn't work as an IIFE: `function foo(){ }();`. What needs to be changed to properly make it an IIFE?](#21-explain-why-the-following-doesnt-work-as-an-iife-function-foo--what-needs-to-be-changed-to-properly-make-it-an-iife)
   - [2.2. What's a typical use case for anonymous functions?](#22-whats-a-typical-use-case-for-anonymous-functions)
@@ -24,6 +25,12 @@ js-questions
   - [2.5. Write a mul function which will invoked as below syntax.](#25-write-a-mul-function-which-will-invoked-as-below-syntax)
   - [2.6. Write a sum method which will work properly when invoked using either syntax below.](#26-write-a-sum-method-which-will-work-properly-when-invoked-using-either-syntax-below)
   - [2.7. The following recursive code will cause a stack overflow if the array list is too large. How can you fix this and still retain the recursive pattern?](#27-the-following-recursive-code-will-cause-a-stack-overflow-if-the-array-list-is-too-large-how-can-you-fix-this-and-still-retain-the-recursive-pattern)
+  - [2.8. Consider the two functions below. Will they both return the same thing? Why or why not?](#28-consider-the-two-functions-below-will-they-both-return-the-same-thing-why-or-why-not)
+  - [2.9. Write a simple function that returns a boolean indicating whether or not a string is a palindrome?](#29-write-a-simple-function-that-returns-a-boolean-indicating-whether-or-not-a-string-is-a-palindrome)
+  - [2.10. What is the difference between a method and a function in JavaScript?](#210-what-is-the-difference-between-a-method-and-a-function-in-javascript)
+  - [2.11. What is the difference between declaring a function in below format?](#211-what-is-the-difference-between-declaring-a-function-in-below-format)
+  - [2.12. Can you give an example of a curry function and why this syntax offers an advantage?](#212-can-you-give-an-example-of-a-curry-function-and-why-this-syntax-offers-an-advantage)
+  - [2.13. Explain the differences on the usage of `foo` between `function foo() {}` and `var foo = function() {}`](#213-explain-the-differences-on-the-usage-of-foo-between-function-foo--and-var-foo--function-)
 - [3. Array](#3-array)
   - [3.1. How do you add an element at the beginning of an array? How do you add one at the end?](#31-how-do-you-add-an-element-at-the-beginning-of-an-array-how-do-you-add-one-at-the-end)
   - [3.2. What will the code below output to the console and why?](#32-what-will-the-code-below-output-to-the-console-and-why)
@@ -40,6 +47,7 @@ js-questions
   - [4.8. Write code for merge two JavaScript Object dynamically.](#48-write-code-for-merge-two-javascript-object-dynamically)
   - [4.9. What will the code below output to the console and why?](#49-what-will-the-code-below-output-to-the-console-and-why)
   - [4.10. What's the difference between host objects and native objects?](#410-whats-the-difference-between-host-objects-and-native-objects)
+  - [4.11. What is non-enumerable property in JavaScript and how can create?](#411-what-is-non-enumerable-property-in-javascript-and-how-can-create)
 - [5. Scope](#5-scope)
   - [5.1. Explain why the following doesn't work as an IIFE?](#51-explain-why-the-following-doesnt-work-as-an-iife)
   - [5.2. What is JavaScript Self-Invoking anonymous function or Self-Executing anonymous function?](#52-what-is-javascript-self-invoking-anonymous-function-or-self-executing-anonymous-function)
@@ -50,11 +58,13 @@ js-questions
   - [5.7. What will be the output of the following code](#57-what-will-be-the-output-of-the-following-code)
   - [5.8. In what order will the numbers 1-4 be logged to the console when the code below is executed? Why?](#58-in-what-order-will-the-numbers-1-4-be-logged-to-the-console-when-the-code-below-is-executed-why)
   - [5.9. Explain how `this` works in JavaScript](#59-explain-how-this-works-in-javascript)
-  - [5.10. What is a closure, and how/why would you use one?](#510-what-is-a-closure-and-howwhy-would-you-use-one)
-  - [5.11. What's the difference between `.call` and `.apply`?](#511-whats-the-difference-between-call-and-apply)
-  - [5.12. Explain `Function.prototype.bind`.](#512-explain-functionprototypebind)
-  - [5.13. Why is it, in general, a good idea to leave the global scope of a website as-is and never touch it?](#513-why-is-it-in-general-a-good-idea-to-leave-the-global-scope-of-a-website-as-is-and-never-touch-it)
-  - [5.14. What is “closure” in JavaScript? Provide an example?](#514-what-is-closure-in-javascript-provide-an-example)
+  - [5.10. Explain how this works in JavaScript](#510-explain-how-this-works-in-javascript)
+  - [5.11. What is a closure, and how/why would you use one?](#511-what-is-a-closure-and-howwhy-would-you-use-one)
+  - [5.12. What is a “closure” in JavaScript? Provide an example.](#512-what-is-a-closure-in-javascript-provide-an-example)
+  - [5.13. What's the difference between `.call` and `.apply`?](#513-whats-the-difference-between-call-and-apply)
+  - [5.14. Explain `Function.prototype.bind`.](#514-explain-functionprototypebind)
+  - [5.15. Why is it, in general, a good idea to leave the global scope of a website as-is and never touch it?](#515-why-is-it-in-general-a-good-idea-to-leave-the-global-scope-of-a-website-as-is-and-never-touch-it)
+  - [5.16. What is “closure” in JavaScript? Provide an example?](#516-what-is-closure-in-javascript-provide-an-example)
 - [6. Inheritance](#6-inheritance)
   - [6.1. Explain how prototypal inheritance works](#61-explain-how-prototypal-inheritance-works)
   - [6.2. Modify `console.log()` method and add more property to default JavaScript methods?](#62-modify-consolelog-method-and-add-more-property-to-default-javascript-methods)
@@ -68,71 +78,50 @@ js-questions
   - [7.7. Explain the difference between synchronous and asynchronous functions.](#77-explain-the-difference-between-synchronous-and-asynchronous-functions)
   - [7.8. How to wait until multiple GET requests are successfully processed?](#78-how-to-wait-until-multiple-get-requests-are-successfully-processed)
   - [7.9. Explain the difference between synchronous and asynchronous functions.](#79-explain-the-difference-between-synchronous-and-asynchronous-functions)
+  - [7.10. Cancel previous Http/Ajax request?](#710-cancel-previous-httpajax-request)
 - [8. DOM Methods](#8-dom-methods)
   - [8.1. When would you use `document.write()`?](#81-when-would-you-use-documentwrite)
   - [8.2. Difference between document `load` event and document `DOMContentLoaded` event?](#82-difference-between-document-load-event-and-document-domcontentloaded-event)
-- [9. Others](#9-others)
-  - [9.1. Explain event delegation](#91-explain-event-delegation)
-  - [9.2. What do you think of AMD vs CommonJS?](#92-what-do-you-think-of-amd-vs-commonjs)
-  - [9.3. How do you organize your code? (module pattern, classical inheritance?)](#93-how-do-you-organize-your-code-module-pattern-classical-inheritance)
-  - [9.4. What's the difference between feature detection, feature inference, and using the UA string?](#94-whats-the-difference-between-feature-detection-feature-inference-and-using-the-ua-string)
-- [10. Object:](#10-object)
-  - [10.1. Have you ever used JavaScript templating? If so, what libraries have you used?](#101-have-you-ever-used-javascript-templating-if-so-what-libraries-have-you-used)
-  - [10.2. Describe event bubbling.](#102-describe-event-bubbling)
-  - [10.3. What's the difference between an "attribute" and a "property"?](#103-whats-the-difference-between-an-attribute-and-a-property)
-  - [10.4. Explain the same-origin policy with regards to JavaScript.](#104-explain-the-same-origin-policy-with-regards-to-javascript)
-  - [10.5. Make this work:](#105-make-this-work)
-  - [10.6. Why is it called a Ternary expression, what does the word "Ternary" indicate?](#106-why-is-it-called-a-ternary-expression-what-does-the-word-ternary-indicate)
-  - [10.7. What is `"use strict";`? What are the advantages and disadvantages to using it?](#107-what-is-use-strict-what-are-the-advantages-and-disadvantages-to-using-it)
-  - [10.8. Create a for loop that iterates up to `100` while outputting **"fizz"** at multiples of `3`, **"buzz"** at multiples of `5` and **"fizzbuzz"** at multiples of `3` and `5`.](#108-create-a-for-loop-that-iterates-up-to-100-while-outputting-fizz-at-multiples-of-3-buzz-at-multiples-of-5-and-fizzbuzz-at-multiples-of-3-and-5)
-  - [10.9. Why would you use something like the `load` event? Does this event have disadvantages? Do you know any alternatives, and why would you use those?](#109-why-would-you-use-something-like-the-load-event-does-this-event-have-disadvantages-do-you-know-any-alternatives-and-why-would-you-use-those)
-  - [10.10. Explain what a single page app is and how to make one SEO-friendly.](#1010-explain-what-a-single-page-app-is-and-how-to-make-one-seo-friendly)
-  - [10.11. What are some of the advantages/disadvantages of writing JavaScript code in a language that compiles to JavaScript?](#1011-what-are-some-of-the-advantagesdisadvantages-of-writing-javascript-code-in-a-language-that-compiles-to-javascript)
-  - [10.12. What tools and techniques do you use for debugging JavaScript code?](#1012-what-tools-and-techniques-do-you-use-for-debugging-javascript-code)
-  - [10.13. What language constructions do you use for iterating over object properties and array items?](#1013-what-language-constructions-do-you-use-for-iterating-over-object-properties-and-array-items)
-  - [10.14. Explain the difference between mutable and immutable objects.](#1014-explain-the-difference-between-mutable-and-immutable-objects)
-  - [10.15. What is event loop? What is the difference between call stack and task queue?](#1015-what-is-event-loop-what-is-the-difference-between-call-stack-and-task-queue)
-  - [10.16. Explain the differences on the usage of `foo` between `function foo() {}` and `var foo = function() {}`](#1016-explain-the-differences-on-the-usage-of-foo-between-function-foo--and-var-foo--function-)
-  - [10.17. What are the differences between variables created using `let`, `var` or `const`?](#1017-what-are-the-differences-between-variables-created-using-let-var-or-const)
-  - [10.18. What are the differences between ES6 class and ES5 function constructors?](#1018-what-are-the-differences-between-es6-class-and-es5-function-constructors)
-  - [10.19. Can you offer a use case for the new arrow => function syntax? How does this new syntax differ from other functions?](#1019-can-you-offer-a-use-case-for-the-new-arrow--function-syntax-how-does-this-new-syntax-differ-from-other-functions)
-  - [10.20. What advantage is there for using the arrow syntax for a method in a constructor?](#1020-what-advantage-is-there-for-using-the-arrow-syntax-for-a-method-in-a-constructor)
-  - [10.21. Can you give an example for destructuring an object or an array?](#1021-can-you-give-an-example-for-destructuring-an-object-or-an-array)
-  - [10.22. ES6 Template Literals offer a lot of flexibility in generating strings, can you give an example?](#1022-es6-template-literals-offer-a-lot-of-flexibility-in-generating-strings-can-you-give-an-example)
-  - [10.23. Can you give an example of a curry function and why this syntax offers an advantage?](#1023-can-you-give-an-example-of-a-curry-function-and-why-this-syntax-offers-an-advantage)
-  - [10.24. What are the benefits of using spread syntax and how is it different from rest syntax?](#1024-what-are-the-benefits-of-using-spread-syntax-and-how-is-it-different-from-rest-syntax)
-  - [10.25. How can you share code between files ?](#1025-how-can-you-share-code-between-files-)
-  - [10.26. Why you might want to create static class members?](#1026-why-you-might-want-to-create-static-class-members)
-  - [10.27. Other Answers](#1027-other-answers)
-  - [10.28. Cancel previous Http/Ajax request?](#1028-cancel-previous-httpajax-request)
-  - [10.29. How to handle multiple Http Request? , OR](#1029-how-to-handle-multiple-http-request--or)
-  - [10.30. How to add response of two HTTP calls, after both calls complete? , OR](#1030-how-to-add-response-of-two-http-calls-after-both-calls-complete--or)
-- [11. Others](#11-others)
-  - [11.1. Program: What will be the output ?](#111-program-what-will-be-the-output-)
-  - [11.2. What will the following code output to the console:](#112-what-will-the-following-code-output-to-the-console)
-  - [11.3. Consider the code snippet below. What will the console output be and why?](#113-consider-the-code-snippet-below-what-will-the-console-output-be-and-why)
-  - [11.4. What will the following code output to the console and why:](#114-what-will-the-following-code-output-to-the-console-and-why)
-  - [11.5. Create a function for the below problem:](#115-create-a-function-for-the-below-problem)
-  - [11.6. What is the output of the following code?](#116-what-is-the-output-of-the-following-code)
-  - [11.7. Consider the following code. What will the output be, and why?](#117-consider-the-following-code-what-will-the-output-be-and-why)
-  - [11.8. What will be the output of this code?](#118-what-will-be-the-output-of-this-code)
-  - [11.9. Consider the following code snippet:](#119-consider-the-following-code-snippet)
-  - [11.10. Variable Hoisting](#1110-variable-hoisting)
-  - [11.11. What will be output of the below code:](#1111-what-will-be-output-of-the-below-code)
-  - [11.12. Create a for loop that iterates up to 100 while outputting "fizz" at multiples of 3, "buzz" at multiples of 5 and "fizzbuzz" at multiples of 3 and 5.](#1112-create-a-for-loop-that-iterates-up-to-100-while-outputting-fizz-at-multiples-of-3-buzz-at-multiples-of-5-and-fizzbuzz-at-multiples-of-3-and-5)
-  - [11.13. Explain the difference between mutable and immutable objects?](#1113-explain-the-difference-between-mutable-and-immutable-objects)
-  - [11.14. What will be the output of the following code?](#1114-what-will-be-the-output-of-the-following-code)
-  - [11.15. What will be the output of the following code?](#1115-what-will-be-the-output-of-the-following-code)
-  - [11.16. What is the difference between declaring a function in below format?](#1116-what-is-the-difference-between-declaring-a-function-in-below-format)
-  - [11.17. How to check if an object is an array or not?](#1117-how-to-check-if-an-object-is-an-array-or-not)
-  - [11.18. What is the difference between a method and a function in JavaScript?](#1118-what-is-the-difference-between-a-method-and-a-function-in-javascript)
-  - [11.19. What is non-enumerable property in JavaScript and how can create?](#1119-what-is-non-enumerable-property-in-javascript-and-how-can-create)
-  - [11.20. What is the significance, and what are the benefits, of including 'use strict' at the beginning of a JavaScript source file?](#1120-what-is-the-significance-and-what-are-the-benefits-of-including-use-strict-at-the-beginning-of-a-javascript-source-file)
-  - [11.21. Consider the two functions below. Will they both return the same thing? Why or why not?](#1121-consider-the-two-functions-below-will-they-both-return-the-same-thing-why-or-why-not)
-  - [11.22. Write a simple function that returns a boolean indicating whether or not a string is a palindrome?](#1122-write-a-simple-function-that-returns-a-boolean-indicating-whether-or-not-a-string-is-a-palindrome)
-  - [11.23. What is a “closure” in JavaScript? Provide an example.](#1123-what-is-a-closure-in-javascript-provide-an-example)
-  - [11.24. Explain event delegation:](#1124-explain-event-delegation)
-  - [11.25. Explain how this works in JavaScript](#1125-explain-how-this-works-in-javascript)
+  - [8.3. Why would you use something like the `load` event? Does this event have disadvantages? Do you know any alternatives, and why would you use those?](#83-why-would-you-use-something-like-the-load-event-does-this-event-have-disadvantages-do-you-know-any-alternatives-and-why-would-you-use-those)
+- [9. ES6](#9-es6)
+  - [9.1. Can you give an example for destructuring an object or an array?](#91-can-you-give-an-example-for-destructuring-an-object-or-an-array)
+  - [9.2. What are the benefits of using spread syntax and how is it different from rest syntax?](#92-what-are-the-benefits-of-using-spread-syntax-and-how-is-it-different-from-rest-syntax)
+  - [9.3. What are the differences between ES6 class and ES5 function constructors?](#93-what-are-the-differences-between-es6-class-and-es5-function-constructors)
+  - [9.4. What are the differences between variables created using `let`, `var` or `const`?](#94-what-are-the-differences-between-variables-created-using-let-var-or-const)
+- [10. Others](#10-others)
+  - [10.1. Explain event delegation](#101-explain-event-delegation)
+  - [10.2. What do you think of AMD vs CommonJS?](#102-what-do-you-think-of-amd-vs-commonjs)
+  - [10.3. How do you organize your code? (module pattern, classical inheritance?)](#103-how-do-you-organize-your-code-module-pattern-classical-inheritance)
+  - [10.4. What's the difference between feature detection, feature inference, and using the UA string?](#104-whats-the-difference-between-feature-detection-feature-inference-and-using-the-ua-string)
+  - [10.5. Have you ever used JavaScript templating? If so, what libraries have you used?](#105-have-you-ever-used-javascript-templating-if-so-what-libraries-have-you-used)
+  - [10.6. Describe event bubbling.](#106-describe-event-bubbling)
+  - [10.7. What's the difference between an "attribute" and a "property"?](#107-whats-the-difference-between-an-attribute-and-a-property)
+  - [10.8. Explain the same-origin policy with regards to JavaScript.](#108-explain-the-same-origin-policy-with-regards-to-javascript)
+  - [10.9. Make this work:](#109-make-this-work)
+  - [10.10. Why is it called a Ternary expression, what does the word "Ternary" indicate?](#1010-why-is-it-called-a-ternary-expression-what-does-the-word-ternary-indicate)
+  - [10.11. What is `"use strict";`? What are the advantages and disadvantages to using it?](#1011-what-is-use-strict-what-are-the-advantages-and-disadvantages-to-using-it)
+  - [10.12. Create a for loop that iterates up to `100` while outputting **"fizz"** at multiples of `3`, **"buzz"** at multiples of `5` and **"fizzbuzz"** at multiples of `3` and `5`.](#1012-create-a-for-loop-that-iterates-up-to-100-while-outputting-fizz-at-multiples-of-3-buzz-at-multiples-of-5-and-fizzbuzz-at-multiples-of-3-and-5)
+  - [10.13. Explain what a single page app is and how to make one SEO-friendly.](#1013-explain-what-a-single-page-app-is-and-how-to-make-one-seo-friendly)
+  - [10.14. What are some of the advantages/disadvantages of writing JavaScript code in a language that compiles to JavaScript?](#1014-what-are-some-of-the-advantagesdisadvantages-of-writing-javascript-code-in-a-language-that-compiles-to-javascript)
+  - [10.15. What language constructions do you use for iterating over object properties and array items?](#1015-what-language-constructions-do-you-use-for-iterating-over-object-properties-and-array-items)
+  - [10.16. What is event loop? What is the difference between call stack and task queue?](#1016-what-is-event-loop-what-is-the-difference-between-call-stack-and-task-queue)
+  - [10.17. How can you share code between files ?](#1017-how-can-you-share-code-between-files-)
+  - [10.18. Why you might want to create static class members?](#1018-why-you-might-want-to-create-static-class-members)
+  - [10.19. Other Answers](#1019-other-answers)
+  - [10.20. What will the following code output to the console:](#1020-what-will-the-following-code-output-to-the-console)
+  - [10.21. Consider the code snippet below. What will the console output be and why?](#1021-consider-the-code-snippet-below-what-will-the-console-output-be-and-why)
+  - [10.22. What will the following code output to the console and why:](#1022-what-will-the-following-code-output-to-the-console-and-why)
+  - [10.23. Create a function for the below problem:](#1023-create-a-function-for-the-below-problem)
+  - [10.24. What is the output of the following code?](#1024-what-is-the-output-of-the-following-code)
+  - [10.25. Consider the following code. What will the output be, and why?](#1025-consider-the-following-code-what-will-the-output-be-and-why)
+  - [10.26. What will be the output of this code?](#1026-what-will-be-the-output-of-this-code)
+  - [10.27. Consider the following code snippet:](#1027-consider-the-following-code-snippet)
+  - [10.28. What will be output of the below code:](#1028-what-will-be-output-of-the-below-code)
+  - [10.29. Create a for loop that iterates up to 100 while outputting "fizz" at multiples of 3, "buzz" at multiples of 5 and "fizzbuzz" at multiples of 3 and 5.](#1029-create-a-for-loop-that-iterates-up-to-100-while-outputting-fizz-at-multiples-of-3-buzz-at-multiples-of-5-and-fizzbuzz-at-multiples-of-3-and-5)
+  - [10.30. What will be the output of the following code?](#1030-what-will-be-the-output-of-the-following-code)
+  - [10.31. What will be the output of the following code?](#1031-what-will-be-the-output-of-the-following-code)
+  - [10.32. What is the significance, and what are the benefits, of including 'use strict' at the beginning of a JavaScript source file?](#1032-what-is-the-significance-and-what-are-the-benefits-of-including-use-strict-at-the-beginning-of-a-javascript-source-file)
+  - [10.33. Explain event delegation:](#1033-explain-event-delegation)
 
 ## 1. Variable and Types
 
@@ -615,6 +604,23 @@ console.log(false === '0'); // false
 - It is therefore generally good practice to use the === rather than ==.
 - The same holds true for !== vs !=.
 
+### 1.17. Variable Hoisting
+
+```js
+console.log(employeeId);
+// Ans: ReferenceError: employeeId is not defined
+
+console.log(employeeId);
+var employeeId = '19000';
+// Ans: undefined
+
+var employeeId = '1234abe';
+(function() {
+  console.log(employeeId);
+  var employeeId = '122345';
+})();
+// Ans : undefined
+```
 
 ## 2. Functions
 
@@ -850,6 +856,255 @@ var nextListItem = function() {
 - When nextListItem runs, if item is not null, the timeout function (nextListItem) is pushed to the event queue and the function exits, thereby leaving the call stack clear.
 - When the event queue runs its timed-out event, the next item is processed and a timer is set to again invoke nextListItem.
 - Accordingly, the method is processed from start to finish without a direct recursive call, so the call stack remains clear, regardless of the number of iterations.
+
+
+
+### 2.8. Consider the two functions below. Will they both return the same thing? Why or why not?
+
+```js
+function foo1() {
+  return {
+    bar: 'hello',
+  };
+}
+
+function foo2() {
+  return;
+  {
+    bar: 'hello';
+  }
+}
+```
+
+**Ans:**
+
+Surprisingly, these two functions will not return the same thing. Rather:
+
+```js
+console.log("foo1 returns:");
+console.log(foo1());
+console.log("foo2 returns:");
+console.log(foo2());
+
+//will yield:
+
+// foo1 returns:
+Object {bar: "hello"}
+// foo2 returns:
+undefined
+```
+
+- Not only is this surprising, but what makes this particularly gnarly is that `foo2()` returns `undefined` without any error being thrown.
+
+* The reason for this has to do with the fact that semicolons are technically optional in JavaScript (although omitting them is generally really bad form).
+
+* As a result, when the line containing the return statement (with nothing else on the line) is encountered in foo2(), a semicolon is automatically inserted immediately after the return statement.
+
+- No error is thrown since the remainder of the code is perfectly valid, even though it doesn’t ever get invoked or do anything (it is simply an unused code block that defines a property bar which is equal to the string "hello").
+
+- This behavior also argues for following the convention of placing an opening curly brace at the end of a line in JavaScript, rather than on the beginning of a new line. As shown here, this becomes more than just a stylistic preference in JavaScript.
+
+### 2.9. Write a simple function that returns a boolean indicating whether or not a string is a palindrome?
+
+The following one line function will return true if str is a palindrome; otherwise, it returns false.
+
+```js
+function isPalindrome(str) {
+  str = str.replace(/\W/g, '').toLowerCase();
+  return (
+    str ==
+    str
+      .split('')
+      .reverse()
+      .join('')
+  );
+}
+
+// for example:
+console.log(isPalindrome('level')); // logs 'true'
+console.log(isPalindrome('levels')); // logs 'false'
+console.log(isPalindrome('A car, a man, a maraca')); // logs 'true'
+```
+
+
+### 2.10. What is the difference between a method and a function in JavaScript?
+
+A function is a piece of code that is called by name and function itself not associated with any object and not defined inside any object. It can be passed data to operate on (i.e. parameter) and can optionally return data (the return value).
+
+```js
+// Function definition
+function myFunc() {
+  // Do some stuff;
+}
+
+// Calling function
+myFunc();
+```
+
+Here myFunc() function call is not associated with object hence not invoked through any object.
+
+A function can be self-invoking anonymous function or named self-invoking function
+
+```js
+// Named Self-invoking Function
+(function myFunc() {
+  // Do some stuff;
+})();
+
+// Anonymous Self-invoking Function
+(function() {
+  // Do some stuff;
+})();
+```
+
+In a case of named self-invoking anonymous function or anonymous self-invoking function, there is no need of call function explicitly.
+
+- A method is a piece of code that is called by name and that is associated with the object. In most respects it is identical to function call except for some key difference:
+- It is implicitly passed for the object for which it was called.
+- It is able to operate on data that is contained within the class (remembering that an object is an instance of a class- the class is the definition, the object is an instance of that)
+- Method call is always associated with object
+
+```js
+var methodObject = {
+  attribute: 'xyz',
+  display: function() {
+    // Method
+    console.log(this.attribute);
+  },
+};
+
+// Call method
+methodObject.display();
+```
+
+Here methodObject is an object and display is a method which is associated with methodObject.
+
+
+### 2.11. What is the difference between declaring a function in below format?
+
+```js
+var foo = function() {
+  // Some code
+};
+
+function bar() {
+  // Some code
+}
+```
+
+The main difference is function foo is defined at run-time whereas function bar is defined at parse time. For understanding it in better way let see below code:
+
+```js
+// Run-Time function declaration
+foo(); // Call foo function here, It will give an error
+var foo = function() {
+  console.log('Hi I am inside Foo');
+};
+
+// Parse-Time function declaration
+
+bar(); // Call bar function here, It will not give an Error
+function bar() {
+  console.log('Hi I am inside Foo');
+}
+```
+
+Another advantage of first-one way of declaration that you can declare function based on certain condition for example:
+
+```js
+<script>
+if(testCondition) { // If testCondition is true then
+  function foo() {
+    console.log("inside Foo with testCondition True value");
+  };
+ } else {
+  function foo() {
+    console.log("inside Foo with testCondition false value");
+  };
+ }
+ </script>
+```
+
+But if you try to run similar code in the following format, it would give an error
+
+```js
+if (testCondition) {
+  // If testCondition is true then
+  var foo = function() {
+    console.log('inside Foo with testCondition True value');
+  };
+} else {
+  var foo = function() {
+    console.log('inside Foo with testCondition false value');
+  };
+}
+```
+
+### 2.12. Can you give an example of a curry function and why this syntax offers an advantage?
+
+Currying is a pattern where a function with more than one parameter is broken into multiple functions that, when called in series, will accumulate all of the required parameters one at a time. This technique can be useful for making code written in a functional style easier to read and compose. It's important to note that for a function to be curried, it needs to start out as one function, then broken out into a sequence of functions that each accepts one parameter.
+
+```js
+function curry(fn) {
+  if (fn.length === 0) {
+    return fn;
+  }
+
+  function _curried(depth, args) {
+    return function(newArgument) {
+      if (depth - 1 === 0) {
+        return fn(...args, newArgument);
+      }
+      return _curried(depth - 1, [...args, newArgument]);
+    };
+  }
+
+  return _curried(fn.length, []);
+}
+
+function add(a, b) {
+  return a + b;
+}
+
+var curriedAdd = curry(add);
+var addFive = curriedAdd(5);
+
+var result = [0, 1, 2, 3, 4, 5].map(addFive); // [5, 6, 7, 8, 9, 10]
+```
+
+**References:**
+
+- https://hackernoon.com/currying-in-js-d9ddc64f162e
+
+[[↑] Back to top](#js-questions)
+
+### 2.13. Explain the differences on the usage of `foo` between `function foo() {}` and `var foo = function() {}`
+
+The former is a function declaration while the latter is a function expression. The key difference is that function declarations have its body hoisted but the bodies of function expressions are not (they have the same hoisting behavior as variables). For more explanation on hoisting, refer to the question above on hoisting. If you try to invoke a function expression before it is defined, you will get an `Uncaught TypeError: XXX is not a function` error.
+
+**Function Declaration**
+
+```js
+foo(); // 'FOOOOO'
+function foo() {
+  console.log('FOOOOO');
+}
+```
+
+**Function Expression**
+
+```js
+foo(); // Uncaught TypeError: foo is not a function
+var foo = function() {
+  console.log('FOOOOO');
+};
+```
+
+**References:**
+
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function
+
+[[↑] Back to top](#js-questions)
 
 
 ## 3. Array
@@ -1344,6 +1599,60 @@ Host objects are provided by the runtime environment (browser or Node), such as 
 
 [[↑] Back to top](#js-questions)
 
+
+
+### 4.11. What is non-enumerable property in JavaScript and how can create?
+
+Object can have properties that don't show up when you iterate through object using `for...in` loop or using `Object.keys()` to get an array of property names. This properties is known as non-enumerable properties.
+
+Let say we have following object:
+
+```js
+var person = {
+  name: 'John',
+};
+person.salary = '10000$';
+person['country'] = 'USA';
+
+console.log(Object.keys(person)); // ['name', 'salary', 'country']
+```
+
+As we know that person object properties name, salary ,country are enumerable hence it's shown up when we called `Object.keys(person)`.
+
+To create a non-enumerable property we have to use `Object.defineProperty()`. This is a special method for creating non-enumerable property in JavaScript.
+
+```js
+var person = {
+  name: 'John',
+};
+person.salary = '10000$';
+person['country'] = 'USA';
+
+// Create non-enumerable property
+Object.defineProperty(person, 'phoneNo', {
+  value: '8888888888',
+  enumerable: false,
+});
+
+Object.keys(person); // ['name', 'salary', 'country']
+```
+
+In above example phoneNo property didn't show up because we made it non-enumerable by setting `enumerable:false`.
+
+Now let's try to change value of phoneNo.
+
+```js
+person.phoneNo = '7777777777';
+```
+
+Changing non-enumerable property value will return error in strict mode.
+
+In non-strict mode it won't through any error but it won't change the value of phoneNo.
+
+**Bonus:** `Object.defineProperty()` is also let you create read-only properties as we saw above, we are not able to modify phoneNo value of a person object.
+
+
+
 ## 5. Scope
 
 ### 5.1. Explain why the following doesn't work as an IIFE?
@@ -1567,7 +1876,19 @@ For an in-depth explanation, do check out his [article on Medium](https://codebu
 
 [[↑] Back to top](#js-questions)
 
-### 5.10. What is a closure, and how/why would you use one?
+### 5.10. Explain how this works in JavaScript
+
+There's no simple explanation for this; it is one of the most confusing concepts in JavaScript. A hand-wavey explanation is that the value of this depends on how the function is called.
+
+1. If the new keyword is used when calling the function, this inside the function is a brand new object.
+2. If apply, call, or bind are used to call/create a function, this inside the function is the object that is passed in as the argument.
+3. If a function is called as a method, such as obj.method() — this is the object that the function is a property of.
+4. If a function is invoked as a free function invocation, meaning it was invoked without any of the conditions present above, this is the global object.
+5. In a browser, it is the window object. If in strict mode ('use strict'), this will be undefined instead of the global object.
+6. If multiple of the above rules apply, the rule that is higher wins and will set this value.
+7. If the function is an ES2015 arrow function, it ignores all the rules above and receives this value of its surrounding scope at the time it is created.
+
+### 5.11. What is a closure, and how/why would you use one?
 
 A closure is the combination of a function and the lexical environment within which that function was declared. The word "lexical" refers to the fact that lexical scoping uses the location where a variable is declared within the source code to determine where that variable is available. Closures are functions that have access to the outer (enclosing) function's variables—scope chain even after the outer function has returned.
 
@@ -1583,7 +1904,57 @@ A closure is the combination of a function and the lexical environment within wh
 
 [[↑] Back to top](#js-questions)
 
-### 5.11. What's the difference between `.call` and `.apply`?
+
+
+### 5.12. What is a “closure” in JavaScript? Provide an example.
+
+A closure is an inner function that has access to the variables in the outer (enclosing) function’s scope chain.
+
+The closure has access to variables in three scopes; specifically: (1) variable in its own scope, (2) variables in the enclosing function’s scope, and (3) global variables.
+
+Here is an example:
+
+```js
+var globalVar = 'xyz';
+
+(function outerFunc(outerArg) {
+  var outerVar = 'a';
+
+  (function innerFunc(innerArg) {
+    var innerVar = 'b';
+
+    console.log(
+      'outerArg = ' +
+        outerArg +
+        '\n' +
+        'innerArg = ' +
+        innerArg +
+        '\n' +
+        'outerVar = ' +
+        outerVar +
+        '\n' +
+        'innerVar = ' +
+        innerVar +
+        '\n' +
+        'globalVar = ' +
+        globalVar,
+    );
+  })(456);
+})(123);
+```
+
+In the above example, variables from `innerFunc`, `outerFunc`, and the global namespace are all in scope in the `innerFunc`. The above code will therefore produce the following output:
+
+```js
+outerArg = 123;
+innerArg = 456;
+outerVar = a;
+innerVar = b;
+globalVar = xyz;
+```
+
+
+### 5.13. What's the difference between `.call` and `.apply`?
 
 Both `.call` and `.apply` are used to invoke functions and the first parameter will be used as the value of `this` within the function. However, `.call` takes in comma-separated arguments as the next arguments while `.apply` takes in an array of arguments as the next argument. An easy way to remember this is C for `call` and comma-separated and A for `apply` and an array of arguments.
 
@@ -1598,7 +1969,7 @@ console.log(add.apply(null, [1, 2])); // 3
 
 [[↑] Back to top](#js-questions)
 
-### 5.12. Explain `Function.prototype.bind`.
+### 5.14. Explain `Function.prototype.bind`.
 
 Taken word-for-word from [MDN](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_objects/Function/bind):
 
@@ -1612,13 +1983,13 @@ In my experience, it is most useful for binding the value of `this` in methods o
 
 [[↑] Back to top](#js-questions)
 
-### 5.13. Why is it, in general, a good idea to leave the global scope of a website as-is and never touch it?
+### 5.15. Why is it, in general, a good idea to leave the global scope of a website as-is and never touch it?
 
 Every script has access to the global scope, and if everyone uses the global namespace to define their variables, collisions will likely occur. Use the module pattern (IIFEs) to encapsulate your variables within a local namespace.
 
 [[↑] Back to top](#js-questions)
 
-### 5.14. What is “closure” in JavaScript? Provide an example?
+### 5.16. What is “closure” in JavaScript? Provide an example?
 
 A closure is a function defined inside another function (called parent function) and has access to the variable which is declared and defined in parent function scope.
 
@@ -1893,7 +2264,33 @@ The callback is only invoked when the asynchronous operation is complete and the
 
 Heavy duty operations such as loading data from a web server or querying a database should be done asynchronously so that the main thread can continue executing other operations instead of blocking until that long operation to complete (in the case of browsers, the UI will freeze).
 
+### 7.10. Cancel previous Http/Ajax request?
 
+**Using jQuery:**
+
+- JQuery provides the `abort()` method to cancel the current request.
+- “beforeSend” – property is used to check if already there is an instance of that request, if already there is an instance last request can be cancelled using “.abort()” method.
+
+```js
+var currentRequest = null;
+
+currentRequest = jQuery.ajax({
+  type: 'POST',
+  data: 'value=' + text,
+  url: 'AJAX_URL',
+  beforeSend: function() {
+    if (currentRequest != null) {
+      currentRequest.abort();
+    }
+  },
+  success: function(data) {
+    // Success
+  },
+  error: function(e) {
+    // Error
+  },
+});
+```
 
 ## 8. DOM Methods
 
@@ -1924,224 +2321,7 @@ The `DOMContentLoaded` event is fired when the initial HTML document has been co
 
 [[↑] Back to top](#js-questions)
 
-## 9. Others
-
-### 9.1. Explain event delegation
-
-Event delegation is a technique involving adding event listeners to a parent element instead of adding them to the descendant elements. The listener will fire whenever the event is triggered on the descendant elements due to event bubbling up the DOM. The benefits of this technique are:
-
-- Memory footprint goes down because only one single handler is needed on the parent element, rather than having to attach event handlers on each descendant.
-- There is no need to unbind the handler from elements that are removed and to bind the event for new elements.
-
-**References:**
-
-- https://davidwalsh.name/event-delegate
-- https://stackoverflow.com/questions/1687296/what-is-dom-event-delegation
-
-[[↑] Back to top](#js-questions)
-
-
-
-### 9.2. What do you think of AMD vs CommonJS?
-
-Both are ways to implement a module system, which was not natively present in JavaScript until ES2015 came along. CommonJS is synchronous while AMD (Asynchronous Module Definition) is obviously asynchronous. CommonJS is designed with server-side development in mind while AMD, with its support for asynchronous loading of modules, is more intended for browsers.
-
-I find AMD syntax to be quite verbose and CommonJS is closer to the style you would write import statements in other languages. Most of the time, I find AMD unnecessary, because if you served all your JavaScript into one concatenated bundle file, you wouldn't benefit from the async loading properties. Also, CommonJS syntax is closer to Node style of writing modules and there is less context-switching overhead when switching between client side and server side JavaScript development.
-
-I'm glad that with ES2015 modules, that has support for both synchronous and asynchronous loading, we can finally just stick to one approach. Although it hasn't been fully rolled out in browsers and in Node, we can always use transpilers to convert our code.
-
-**References:**
-
-- https://auth0.com/blog/javascript-module-systems-showdown/
-- https://stackoverflow.com/questions/16521471/relation-between-commonjs-amd-and-requirejs
-
-[[↑] Back to top](#js-questions)
-
-
-### 9.3. How do you organize your code? (module pattern, classical inheritance?)
-
-In the past, I used Backbone for my models which encourages a more OOP approach, creating Backbone models and attaching methods to them.
-
-The module pattern is still great, but these days, I use React/Redux which utilize a single-directional data flow based on Flux architecture. I would represent my app's models using plain objects and write utility pure functions to manipulate these objects. State is manipulated using actions and reducers like in any other Redux application.
-
-I avoid using classical inheritance where possible. When and if I do, I stick to [these rules](https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4).
-
-[[↑] Back to top](#js-questions)
-
-### 9.4. What's the difference between feature detection, feature inference, and using the UA string?
-
-**Feature Detection**
-
-Feature detection involves working out whether a browser supports a certain block of code, and running different code depending on whether it does (or doesn't), so that the browser can always provide a working experience rather crashing/erroring in some browsers. For example:
-
-```js
-if ('geolocation' in navigator) {
-  // Can use navigator.geolocation
-} else {
-  // Handle lack of feature
-}
-```
-
-[Modernizr](https://modernizr.com/) is a great library to handle feature detection.
-
-**Feature Inference**
-
-Feature inference checks for a feature just like feature detection, but uses another function because it assumes it will also exist, e.g.:
-
-```js
-if (document.getElementsByTagName) {
-  element = document.getElementById(id);
-}
-```
-
-This is not really recommended. Feature detection is more foolproof.
-
-**UA String**
-
-This is a browser-reported string that allows the network protocol peers to identify the application type, operating system, software vendor or software version of the requesting software user agent. It can be accessed via `navigator.userAgent`. However, the string is tricky to parse and can be spoofed. For example, Chrome reports both as Chrome and Safari. So to detect Safari you have to check for the Safari string and the absence of the Chrome string. Avoid this method.
-
-**References:**
-
-- https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Cross_browser_testing/Feature_detection
-- https://stackoverflow.com/questions/20104930/whats-the-difference-between-feature-detection-feature-inference-and-using-th
-- https://developer.mozilla.org/en-US/docs/Web/HTTP/Browser_detection_using_the_user_agent
-
-[[↑] Back to top](#js-questions)
-
-## 10. Object:
-
-### 10.1. Have you ever used JavaScript templating? If so, what libraries have you used?
-
-Yes. Handlebars, Underscore, Lodash, AngularJS, and JSX. I disliked templating in AngularJS because it made heavy use of strings in the directives and typos would go uncaught. JSX is my new favorite as it is closer to JavaScript and there is barely any syntax to learn. Nowadays, you can even use ES2015 template string literals as a quick way for creating templates without relying on third-party code.
-
-```js
-const template = `<div>My name is: ${name}</div>`;
-```
-
-However, do be aware of a potential XSS in the above approach as the contents are not escaped for you, unlike in templating libraries.
-
-[[↑] Back to top](#js-questions)
-
-
-
-### 10.2. Describe event bubbling.
-
-When an event triggers on a DOM element, it will attempt to handle the event if there is a listener attached, then the event is bubbled up to its parent and the same thing happens. This bubbling occurs up the element's ancestors all the way to the `document`. Event bubbling is the mechanism behind event delegation.
-
-[[↑] Back to top](#js-questions)
-
-### 10.3. What's the difference between an "attribute" and a "property"?
-
-Attributes are defined on the HTML markup but properties are defined on the DOM. To illustrate the difference, imagine we have this text field in our HTML: `<input type="text" value="Hello">`.
-
-```js
-const input = document.querySelector('input');
-console.log(input.getAttribute('value')); // Hello
-console.log(input.value); // Hello
-```
-
-But after you change the value of the text field by adding "World!" to it, this becomes:
-
-```js
-console.log(input.getAttribute('value')); // Hello
-console.log(input.value); // Hello World!
-```
-
-**References:**
-
-- https://stackoverflow.com/questions/6003819/properties-and-attributes-in-html
-
-[[↑] Back to top](#js-questions)
-
-
-
-### 10.4. Explain the same-origin policy with regards to JavaScript.
-
-The same-origin policy prevents JavaScript from making requests across domain boundaries. An origin is defined as a combination of URI scheme, hostname, and port number. This policy prevents a malicious script on one page from obtaining access to sensitive data on another web page through that page's Document Object Model.
-
-**References:**
-
-- https://en.wikipedia.org/wiki/Same-origin_policy
-
-[[↑] Back to top](#js-questions)
-
-### 10.5. Make this work:
-
-```js
-duplicate([1, 2, 3, 4, 5]); // [1,2,3,4,5,1,2,3,4,5]
-```
-
-```js
-function duplicate(arr) {
-  return arr.concat(arr);
-}
-
-duplicate([1, 2, 3, 4, 5]); // [1,2,3,4,5,1,2,3,4,5]
-```
-
-[[↑] Back to top](#js-questions)
-
-### 10.6. Why is it called a Ternary expression, what does the word "Ternary" indicate?
-
-"Ternary" indicates three, and a ternary expression accepts three operands, the test condition, the "then" expression and the "else" expression. Ternary expressions are not specific to JavaScript and I'm not sure why it is even in this list.
-
-**References:**
-
-- https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
-
-[[↑] Back to top](#js-questions)
-
-### 10.7. What is `"use strict";`? What are the advantages and disadvantages to using it?
-
-'use strict' is a statement used to enable strict mode to entire scripts or individual functions. Strict mode is a way to opt into a restricted variant of JavaScript.
-
-Advantages:
-
-- Makes it impossible to accidentally create global variables.
-- Makes assignments which would otherwise silently fail to throw an exception.
-- Makes attempts to delete undeletable properties throw (where before the attempt would simply have no effect).
-- Requires that function parameter names be unique.
-- `this` is undefined in the global context.
-- It catches some common coding bloopers, throwing exceptions.
-- It disables features that are confusing or poorly thought out.
-
-Disadvantages:
-
-- Many missing features that some developers might be used to.
-- No more access to `function.caller` and `function.arguments`.
-- Concatenation of scripts written in different strict modes might cause issues.
-
-Overall, I think the benefits outweigh the disadvantages, and I never had to rely on the features that strict mode blocks. I would recommend using strict mode.
-
-**References:**
-
-- http://2ality.com/2011/10/strict-mode-hatred.html
-- http://lucybain.com/blog/2014/js-use-strict/
-
-[[↑] Back to top](#js-questions)
-
-### 10.8. Create a for loop that iterates up to `100` while outputting **"fizz"** at multiples of `3`, **"buzz"** at multiples of `5` and **"fizzbuzz"** at multiples of `3` and `5`.
-
-Check out this version of FizzBuzz by [Paul Irish](https://gist.github.com/jaysonrowe/1592432#gistcomment-790724).
-
-```js
-for (let i = 1; i <= 100; i++) {
-  let f = i % 3 == 0,
-    b = i % 5 == 0;
-  console.log(f ? (b ? 'FizzBuzz' : 'Fizz') : b ? 'Buzz' : i);
-}
-```
-
-I would not advise you to write the above during interviews though. Just stick with the long but clear approach. For more wacky versions of FizzBuzz, check out the reference link below.
-
-**References:**
-
-- https://gist.github.com/jaysonrowe/1592432
-
-[[↑] Back to top](#js-questions)
-
-
-### 10.9. Why would you use something like the `load` event? Does this event have disadvantages? Do you know any alternatives, and why would you use those?
+### 8.3. Why would you use something like the `load` event? Does this event have disadvantages? Do you know any alternatives, and why would you use those?
 
 The `load` event fires at the end of the document loading process. At this point, all of the objects in the document are in the DOM, and all the images, scripts, links and sub-frames have finished loading.
 
@@ -2155,151 +2335,152 @@ TODO.
 
 [[↑] Back to top](#js-questions)
 
-### 10.10. Explain what a single page app is and how to make one SEO-friendly.
+## 9. ES6
 
-The below is taken from the awesome [Grab Front End Guide](https://github.com/grab/front-end-guide), which coincidentally, is written by me!
+### 9.1. Can you give an example for destructuring an object or an array?
 
-Web developers these days refer to the products they build as web apps, rather than websites. While there is no strict difference between the two terms, web apps tend to be highly interactive and dynamic, allowing the user to perform actions and receive a response to their action. Traditionally, the browser receives HTML from the server and renders it. When the user navigates to another URL, a full-page refresh is required and the server sends fresh new HTML to the new page. This is called server-side rendering.
+Destructuring is an expression available in ES6 which enables a succinct and convenient way to extract values of Objects or Arrays and place them into distinct variables.
 
-However, in modern SPAs, client-side rendering is used instead. The browser loads the initial page from the server, along with the scripts (frameworks, libraries, app code) and stylesheets required for the whole app. When the user navigates to other pages, a page refresh is not triggered. The URL of the page is updated via the [HTML5 History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API). New data required for the new page, usually in JSON format, is retrieved by the browser via [AJAX](https://developer.mozilla.org/en-US/docs/AJAX/Getting_Started) requests to the server. The SPA then dynamically updates the page with the data via JavaScript, which it has already downloaded in the initial page load. This model is similar to how native mobile apps work.
-
-The benefits:
-
-- The app feels more responsive and users do not see the flash between page navigations due to full-page refreshes.
-- Fewer HTTP requests are made to the server, as the same assets do not have to be downloaded again for each page load.
-- Clear separation of the concerns between the client and the server; you can easily build new clients for different platforms (e.g. mobile, chatbots, smart watches) without having to modify the server code. You can also modify the technology stack on the client and server independently, as long as the API contract is not broken.
-
-The downsides:
-
-- Heavier initial page load due to the loading of framework, app code, and assets required for multiple pages.
-- There's an additional step to be done on your server which is to configure it to route all requests to a single entry point and allow client-side routing to take over from there.
-- SPAs are reliant on JavaScript to render content, but not all search engines execute JavaScript during crawling, and they may see empty content on your page. This inadvertently hurts the Search Engine Optimization (SEO) of your app. However, most of the time, when you are building apps, SEO is not the most important factor, as not all the content needs to be indexable by search engines. To overcome this, you can either server-side render your app or use services such as [Prerender](https://prerender.io/) to "render your javascript in a browser, save the static HTML, and return that to the crawlers".
-
-**References:**
-
-- https://github.com/grab/front-end-guide#single-page-apps-spas
-- http://stackoverflow.com/questions/21862054/single-page-app-advantages-and-disadvantages
-- http://blog.isquaredsoftware.com/presentations/2016-10-revolution-of-web-dev/
-- https://medium.freecodecamp.com/heres-why-client-side-rendering-won-46a349fadb52
-
-[[↑] Back to top](#js-questions)
-
-### 10.11. What are some of the advantages/disadvantages of writing JavaScript code in a language that compiles to JavaScript?
-
-Some examples of languages that compile to JavaScript include CoffeeScript, Elm, ClojureScript, PureScript, and TypeScript.
-
-Advantages:
-
-- Fixes some of the longstanding problems in JavaScript and discourages JavaScript anti-patterns.
-- Enables you to write shorter code, by providing some syntactic sugar on top of JavaScript, which I think ES5 lacks, but ES2015 is awesome.
-- Static types are awesome (in the case of TypeScript) for large projects that need to be maintained over time.
-
-Disadvantages:
-
-- Require a build/compile process as browsers only run JavaScript and your code will need to be compiled into JavaScript before being served to browsers.
-- Debugging can be a pain if your source maps do not map nicely to your pre-compiled source.
-- Most developers are not familiar with these languages and will need to learn it. There's a ramp up cost involved for your team if you use it for your projects.
-- Smaller community (depends on the language), which means resources, tutorials, libraries, and tooling would be harder to find.
-- IDE/editor support might be lacking.
-- These languages will always be behind the latest JavaScript standard.
-- Developers should be cognizant of what their code is being compiled to — because that is what would actually be running, and that is what matters in the end.
-
-Practically, ES2015 has vastly improved JavaScript and made it much nicer to write. I don't really see the need for CoffeeScript these days.
-
-**References:**
-
-- https://softwareengineering.stackexchange.com/questions/72569/what-are-the-pros-and-cons-of-coffeescript
-
-[[↑] Back to top](#js-questions)
-
-### 10.12. What tools and techniques do you use for debugging JavaScript code?
-
-- React and Redux
-  - [React Devtools](https://github.com/facebook/react-devtools)
-  - [Redux Devtools](https://github.com/gaearon/redux-devtools)
-- Vue
-  - [Vue Devtools](https://github.com/vuejs/vue-devtools)
-- JavaScript
-  - [Chrome Devtools](https://hackernoon.com/twelve-fancy-chrome-devtools-tips-dc1e39d10d9d)
-  - `debugger` statement
-  - Good old `console.log` debugging
-
-**References:**
-
-- https://hackernoon.com/twelve-fancy-chrome-devtools-tips-dc1e39d10d9d
-- https://raygun.com/blog/javascript-debugging/
-
-[[↑] Back to top](#js-questions)
-
-### 10.13. What language constructions do you use for iterating over object properties and array items?
-
-For objects:
-
-- `for` loops - `for (var property in obj) { console.log(property); }`. However, this will also iterate through its inherited properties, and you will add an `obj.hasOwnProperty(property)` check before using it.
-- `Object.keys()` - `Object.keys(obj).forEach(function (property) { ... })`. `Object.keys()` is a static method that will lists all enumerable properties of the object that you pass it.
-- `Object.getOwnPropertyNames()` - `Object.getOwnPropertyNames(obj).forEach(function (property) { ... })`. `Object.getOwnPropertyNames()` is a static method that will lists all enumerable and non-enumerable properties of the object that you pass it.
-
-For arrays:
-
-- `for` loops - `for (var i = 0; i < arr.length; i++)`. The common pitfall here is that `var` is in the function scope and not the block scope and most of the time you would want block scoped iterator variable. ES2015 introduces `let` which has block scope and it is recommended to use that instead. So this becomes: `for (let i = 0; i < arr.length; i++)`.
-- `forEach` - `arr.forEach(function (el, index) { ... })`. This construct can be more convenient at times because you do not have to use the `index` if all you need is the array elements. There are also the `every` and `some` methods which will allow you to terminate the iteration early.
-
-Most of the time, I would prefer the `.forEach` method, but it really depends on what you are trying to do. `for` loops allow more flexibility, such as prematurely terminate the loop using `break` or incrementing the iterator more than once per loop.
-
-[[↑] Back to top](#js-questions)
-
-### 10.14. Explain the difference between mutable and immutable objects.
-
-- What is an example of an immutable object in JavaScript?
-- What are the pros and cons of immutability?
-- How can you achieve immutability in your own code?
-
-TODO
-
-[[↑] Back to top](#js-questions)
-
-### 10.15. What is event loop? What is the difference between call stack and task queue?
-
-The event loop is a single-threaded loop that monitors the call stack and checks if there is any work to be done in the task queue. If the call stack is empty and there are callback functions in the task queue, a function is dequeued and pushed onto the call stack to be executed.
-
-If you haven't already checked out Philip Robert's [talk on the Event Loop](https://2014.jsconf.eu/speakers/philip-roberts-what-the-heck-is-the-event-loop-anyway.html), you should. It is one of the most viewed videos on JavaScript.
-
-**References:**
-
-- https://2014.jsconf.eu/speakers/philip-roberts-what-the-heck-is-the-event-loop-anyway.html
-- http://theproactiveprogrammer.com/javascript/the-javascript-event-loop-a-stack-and-a-queue/
-
-[[↑] Back to top](#js-questions)
-
-### 10.16. Explain the differences on the usage of `foo` between `function foo() {}` and `var foo = function() {}`
-
-The former is a function declaration while the latter is a function expression. The key difference is that function declarations have its body hoisted but the bodies of function expressions are not (they have the same hoisting behavior as variables). For more explanation on hoisting, refer to the question above on hoisting. If you try to invoke a function expression before it is defined, you will get an `Uncaught TypeError: XXX is not a function` error.
-
-**Function Declaration**
+**Array destructuring**
 
 ```js
-foo(); // 'FOOOOO'
-function foo() {
-  console.log('FOOOOO');
+// Variable assignment.
+const foo = ['one', 'two', 'three'];
+
+const [one, two, three] = foo;
+console.log(one); // "one"
+console.log(two); // "two"
+console.log(three); // "three"
+```
+
+```js
+// Swapping variables
+let a = 1;
+let b = 3;
+
+[a, b] = [b, a];
+console.log(a); // 3
+console.log(b); // 1
+```
+
+**Object destructuring**
+
+```js
+// Variable assignment.
+const o = { p: 42, q: true };
+const { p, q } = o;
+
+console.log(p); // 42
+console.log(q); // true
+```
+
+**References:**
+
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+- https://ponyfoo.com/articles/es6-destructuring-in-depth
+
+[[↑] Back to top](#js-questions)
+
+### 9.2. What are the benefits of using spread syntax and how is it different from rest syntax?
+
+ES6's spread syntax is very useful when coding in a functional paradigm as we can easily create copies of arrays or objects without resorting to `Object.create`, `slice`, or a library function. This language feature is used often in Redux and rx.js projects.
+
+```js
+function putDookieInAnyArray(arr) {
+  return [...arr, 'dookie'];
+}
+
+const result = putDookieInAnyArray(['I', 'really', "don't", 'like']); // ["I", "really", "don't", "like", "dookie"]
+
+const person = {
+  name: 'Todd',
+  age: 29
+};
+
+const copyOfTodd = { ...person };
+```
+
+ES6's rest syntax offers a shorthand for including an arbitrary number of arguments to be passed to a function. It is like an inverse of the spread syntax, taking data and stuffing it into an array rather than unpacking an array of data, and it works in function arguments, as well as in array and object destructuring assignments.
+
+```js
+function addFiveToABunchOfNumbers(...numbers) {
+  return numbers.map(x => x + 5);
+}
+
+const result = addFiveToABunchOfNumbers(4, 5, 6, 7, 8, 9, 10); // [9, 10, 11, 12, 13, 14, 15]
+
+const [a, b, ...rest] = [1, 2, 3, 4]; // a: 1, b: 2, rest: [3, 4]
+
+const { e, f, ...others } = {
+  e: 1,
+  f: 2,
+  g: 3,
+  h: 4
+}; // e: 1, f: 2, others: { g: 3, h: 4 }
+```
+
+**References:**
+
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+
+[[↑] Back to top](#js-questions)
+
+### 9.3. What are the differences between ES6 class and ES5 function constructors?
+
+Let's first look at example of each:
+
+```js
+// ES5 Function Constructor
+function Person(name) {
+  this.name = name;
+}
+
+// ES6 Class
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
 }
 ```
 
-**Function Expression**
+For simple constructors, they look pretty similar.
+
+The main difference in the constructor comes when using inheritance. If we want to create a `Student` class that subclasses `Person` and add a `studentId` field, this is what we have to do in addition to the above.
 
 ```js
-foo(); // Uncaught TypeError: foo is not a function
-var foo = function() {
-  console.log('FOOOOO');
-};
+// ES5 Function Constructor
+function Student(name, studentId) {
+  // Call constructor of superclass to initialize superclass-derived members.
+  Person.call(this, name);
+
+  // Initialize subclass's own members.
+  this.studentId = studentId;
+}
+
+Student.prototype = Object.create(Person.prototype);
+Student.prototype.constructor = Student;
+
+// ES6 Class
+class Student extends Person {
+  constructor(name, studentId) {
+    super(name);
+    this.studentId = studentId;
+  }
+}
 ```
+
+It's much more verbose to use inheritance in ES5 and the ES6 version is easier to understand and remember.
 
 **References:**
 
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function
+- https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Inheritance
+- https://eli.thegreenplace.net/2013/10/22/classical-inheritance-in-javascript-es5
 
 [[↑] Back to top](#js-questions)
 
-### 10.17. What are the differences between variables created using `let`, `var` or `const`?
+### 9.4. What are the differences between variables created using `let`, `var` or `const`?
 
 Variables declared using the `var` keyword are scoped to the function in which they are created, or if created outside of any function, to the global object. `let` and `const` are _block scoped_, meaning they are only accessible within the nearest set of curly braces (function, if-else block, or for-loop).
 
@@ -2381,206 +2562,312 @@ baz = 'qux';
 
 [[↑] Back to top](#js-questions)
 
-### 10.18. What are the differences between ES6 class and ES5 function constructors?
 
-Let's first look at example of each:
+## 10. Others
 
-```js
-// ES5 Function Constructor
-function Person(name) {
-  this.name = name;
-}
+### 10.1. Explain event delegation
 
-// ES6 Class
-class Person {
-  constructor(name) {
-    this.name = name;
-  }
-}
-```
+Event delegation is a technique involving adding event listeners to a parent element instead of adding them to the descendant elements. The listener will fire whenever the event is triggered on the descendant elements due to event bubbling up the DOM. The benefits of this technique are:
 
-For simple constructors, they look pretty similar.
-
-The main difference in the constructor comes when using inheritance. If we want to create a `Student` class that subclasses `Person` and add a `studentId` field, this is what we have to do in addition to the above.
-
-```js
-// ES5 Function Constructor
-function Student(name, studentId) {
-  // Call constructor of superclass to initialize superclass-derived members.
-  Person.call(this, name);
-
-  // Initialize subclass's own members.
-  this.studentId = studentId;
-}
-
-Student.prototype = Object.create(Person.prototype);
-Student.prototype.constructor = Student;
-
-// ES6 Class
-class Student extends Person {
-  constructor(name, studentId) {
-    super(name);
-    this.studentId = studentId;
-  }
-}
-```
-
-It's much more verbose to use inheritance in ES5 and the ES6 version is easier to understand and remember.
+- Memory footprint goes down because only one single handler is needed on the parent element, rather than having to attach event handlers on each descendant.
+- There is no need to unbind the handler from elements that are removed and to bind the event for new elements.
 
 **References:**
 
-- https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Inheritance
-- https://eli.thegreenplace.net/2013/10/22/classical-inheritance-in-javascript-es5
+- https://davidwalsh.name/event-delegate
+- https://stackoverflow.com/questions/1687296/what-is-dom-event-delegation
 
 [[↑] Back to top](#js-questions)
 
-### 10.19. Can you offer a use case for the new arrow => function syntax? How does this new syntax differ from other functions?
 
-TODO
 
-[[↑] Back to top](#js-questions)
+### 10.2. What do you think of AMD vs CommonJS?
 
-### 10.20. What advantage is there for using the arrow syntax for a method in a constructor?
+Both are ways to implement a module system, which was not natively present in JavaScript until ES2015 came along. CommonJS is synchronous while AMD (Asynchronous Module Definition) is obviously asynchronous. CommonJS is designed with server-side development in mind while AMD, with its support for asynchronous loading of modules, is more intended for browsers.
 
-TODO
+I find AMD syntax to be quite verbose and CommonJS is closer to the style you would write import statements in other languages. Most of the time, I find AMD unnecessary, because if you served all your JavaScript into one concatenated bundle file, you wouldn't benefit from the async loading properties. Also, CommonJS syntax is closer to Node style of writing modules and there is less context-switching overhead when switching between client side and server side JavaScript development.
 
-[[↑] Back to top](#js-questions)
-
-### 10.21. Can you give an example for destructuring an object or an array?
-
-Destructuring is an expression available in ES6 which enables a succinct and convenient way to extract values of Objects or Arrays and place them into distinct variables.
-
-**Array destructuring**
-
-```js
-// Variable assignment.
-const foo = ['one', 'two', 'three'];
-
-const [one, two, three] = foo;
-console.log(one); // "one"
-console.log(two); // "two"
-console.log(three); // "three"
-```
-
-```js
-// Swapping variables
-let a = 1;
-let b = 3;
-
-[a, b] = [b, a];
-console.log(a); // 3
-console.log(b); // 1
-```
-
-**Object destructuring**
-
-```js
-// Variable assignment.
-const o = { p: 42, q: true };
-const { p, q } = o;
-
-console.log(p); // 42
-console.log(q); // true
-```
+I'm glad that with ES2015 modules, that has support for both synchronous and asynchronous loading, we can finally just stick to one approach. Although it hasn't been fully rolled out in browsers and in Node, we can always use transpilers to convert our code.
 
 **References:**
 
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
-- https://ponyfoo.com/articles/es6-destructuring-in-depth
+- https://auth0.com/blog/javascript-module-systems-showdown/
+- https://stackoverflow.com/questions/16521471/relation-between-commonjs-amd-and-requirejs
 
 [[↑] Back to top](#js-questions)
 
-### 10.22. ES6 Template Literals offer a lot of flexibility in generating strings, can you give an example?
 
-TODO
+### 10.3. How do you organize your code? (module pattern, classical inheritance?)
+
+In the past, I used Backbone for my models which encourages a more OOP approach, creating Backbone models and attaching methods to them.
+
+The module pattern is still great, but these days, I use React/Redux which utilize a single-directional data flow based on Flux architecture. I would represent my app's models using plain objects and write utility pure functions to manipulate these objects. State is manipulated using actions and reducers like in any other Redux application.
+
+I avoid using classical inheritance where possible. When and if I do, I stick to [these rules](https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4).
 
 [[↑] Back to top](#js-questions)
 
-### 10.23. Can you give an example of a curry function and why this syntax offers an advantage?
+### 10.4. What's the difference between feature detection, feature inference, and using the UA string?
 
-Currying is a pattern where a function with more than one parameter is broken into multiple functions that, when called in series, will accumulate all of the required parameters one at a time. This technique can be useful for making code written in a functional style easier to read and compose. It's important to note that for a function to be curried, it needs to start out as one function, then broken out into a sequence of functions that each accepts one parameter.
+**Feature Detection**
+
+Feature detection involves working out whether a browser supports a certain block of code, and running different code depending on whether it does (or doesn't), so that the browser can always provide a working experience rather crashing/erroring in some browsers. For example:
 
 ```js
-function curry(fn) {
-  if (fn.length === 0) {
-    return fn;
-  }
-
-  function _curried(depth, args) {
-    return function(newArgument) {
-      if (depth - 1 === 0) {
-        return fn(...args, newArgument);
-      }
-      return _curried(depth - 1, [...args, newArgument]);
-    };
-  }
-
-  return _curried(fn.length, []);
+if ('geolocation' in navigator) {
+  // Can use navigator.geolocation
+} else {
+  // Handle lack of feature
 }
+```
 
-function add(a, b) {
-  return a + b;
+[Modernizr](https://modernizr.com/) is a great library to handle feature detection.
+
+**Feature Inference**
+
+Feature inference checks for a feature just like feature detection, but uses another function because it assumes it will also exist, e.g.:
+
+```js
+if (document.getElementsByTagName) {
+  element = document.getElementById(id);
 }
+```
 
-var curriedAdd = curry(add);
-var addFive = curriedAdd(5);
+This is not really recommended. Feature detection is more foolproof.
 
-var result = [0, 1, 2, 3, 4, 5].map(addFive); // [5, 6, 7, 8, 9, 10]
+**UA String**
+
+This is a browser-reported string that allows the network protocol peers to identify the application type, operating system, software vendor or software version of the requesting software user agent. It can be accessed via `navigator.userAgent`. However, the string is tricky to parse and can be spoofed. For example, Chrome reports both as Chrome and Safari. So to detect Safari you have to check for the Safari string and the absence of the Chrome string. Avoid this method.
+
+**References:**
+
+- https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Cross_browser_testing/Feature_detection
+- https://stackoverflow.com/questions/20104930/whats-the-difference-between-feature-detection-feature-inference-and-using-th
+- https://developer.mozilla.org/en-US/docs/Web/HTTP/Browser_detection_using_the_user_agent
+
+[[↑] Back to top](#js-questions)
+
+
+### 10.5. Have you ever used JavaScript templating? If so, what libraries have you used?
+
+Yes. Handlebars, Underscore, Lodash, AngularJS, and JSX. I disliked templating in AngularJS because it made heavy use of strings in the directives and typos would go uncaught. JSX is my new favorite as it is closer to JavaScript and there is barely any syntax to learn. Nowadays, you can even use ES2015 template string literals as a quick way for creating templates without relying on third-party code.
+
+```js
+const template = `<div>My name is: ${name}</div>`;
+```
+
+However, do be aware of a potential XSS in the above approach as the contents are not escaped for you, unlike in templating libraries.
+
+[[↑] Back to top](#js-questions)
+
+
+
+### 10.6. Describe event bubbling.
+
+When an event triggers on a DOM element, it will attempt to handle the event if there is a listener attached, then the event is bubbled up to its parent and the same thing happens. This bubbling occurs up the element's ancestors all the way to the `document`. Event bubbling is the mechanism behind event delegation.
+
+[[↑] Back to top](#js-questions)
+
+### 10.7. What's the difference between an "attribute" and a "property"?
+
+Attributes are defined on the HTML markup but properties are defined on the DOM. To illustrate the difference, imagine we have this text field in our HTML: `<input type="text" value="Hello">`.
+
+```js
+const input = document.querySelector('input');
+console.log(input.getAttribute('value')); // Hello
+console.log(input.value); // Hello
+```
+
+But after you change the value of the text field by adding "World!" to it, this becomes:
+
+```js
+console.log(input.getAttribute('value')); // Hello
+console.log(input.value); // Hello World!
 ```
 
 **References:**
 
-- https://hackernoon.com/currying-in-js-d9ddc64f162e
+- https://stackoverflow.com/questions/6003819/properties-and-attributes-in-html
 
 [[↑] Back to top](#js-questions)
 
-### 10.24. What are the benefits of using spread syntax and how is it different from rest syntax?
 
-ES6's spread syntax is very useful when coding in a functional paradigm as we can easily create copies of arrays or objects without resorting to `Object.create`, `slice`, or a library function. This language feature is used often in Redux and rx.js projects.
 
-```js
-function putDookieInAnyArray(arr) {
-  return [...arr, 'dookie'];
-}
+### 10.8. Explain the same-origin policy with regards to JavaScript.
 
-const result = putDookieInAnyArray(['I', 'really', "don't", 'like']); // ["I", "really", "don't", "like", "dookie"]
-
-const person = {
-  name: 'Todd',
-  age: 29
-};
-
-const copyOfTodd = { ...person };
-```
-
-ES6's rest syntax offers a shorthand for including an arbitrary number of arguments to be passed to a function. It is like an inverse of the spread syntax, taking data and stuffing it into an array rather than unpacking an array of data, and it works in function arguments, as well as in array and object destructuring assignments.
-
-```js
-function addFiveToABunchOfNumbers(...numbers) {
-  return numbers.map(x => x + 5);
-}
-
-const result = addFiveToABunchOfNumbers(4, 5, 6, 7, 8, 9, 10); // [9, 10, 11, 12, 13, 14, 15]
-
-const [a, b, ...rest] = [1, 2, 3, 4]; // a: 1, b: 2, rest: [3, 4]
-
-const { e, f, ...others } = {
-  e: 1,
-  f: 2,
-  g: 3,
-  h: 4
-}; // e: 1, f: 2, others: { g: 3, h: 4 }
-```
+The same-origin policy prevents JavaScript from making requests across domain boundaries. An origin is defined as a combination of URI scheme, hostname, and port number. This policy prevents a malicious script on one page from obtaining access to sensitive data on another web page through that page's Document Object Model.
 
 **References:**
 
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+- https://en.wikipedia.org/wiki/Same-origin_policy
 
 [[↑] Back to top](#js-questions)
 
-### 10.25. How can you share code between files ?
+### 10.9. Make this work:
+
+```js
+duplicate([1, 2, 3, 4, 5]); // [1,2,3,4,5,1,2,3,4,5]
+```
+
+```js
+function duplicate(arr) {
+  return arr.concat(arr);
+}
+
+duplicate([1, 2, 3, 4, 5]); // [1,2,3,4,5,1,2,3,4,5]
+```
+
+[[↑] Back to top](#js-questions)
+
+### 10.10. Why is it called a Ternary expression, what does the word "Ternary" indicate?
+
+"Ternary" indicates three, and a ternary expression accepts three operands, the test condition, the "then" expression and the "else" expression. Ternary expressions are not specific to JavaScript and I'm not sure why it is even in this list.
+
+**References:**
+
+- https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
+
+[[↑] Back to top](#js-questions)
+
+### 10.11. What is `"use strict";`? What are the advantages and disadvantages to using it?
+
+'use strict' is a statement used to enable strict mode to entire scripts or individual functions. Strict mode is a way to opt into a restricted variant of JavaScript.
+
+Advantages:
+
+- Makes it impossible to accidentally create global variables.
+- Makes assignments which would otherwise silently fail to throw an exception.
+- Makes attempts to delete undeletable properties throw (where before the attempt would simply have no effect).
+- Requires that function parameter names be unique.
+- `this` is undefined in the global context.
+- It catches some common coding bloopers, throwing exceptions.
+- It disables features that are confusing or poorly thought out.
+
+Disadvantages:
+
+- Many missing features that some developers might be used to.
+- No more access to `function.caller` and `function.arguments`.
+- Concatenation of scripts written in different strict modes might cause issues.
+
+Overall, I think the benefits outweigh the disadvantages, and I never had to rely on the features that strict mode blocks. I would recommend using strict mode.
+
+**References:**
+
+- http://2ality.com/2011/10/strict-mode-hatred.html
+- http://lucybain.com/blog/2014/js-use-strict/
+
+[[↑] Back to top](#js-questions)
+
+### 10.12. Create a for loop that iterates up to `100` while outputting **"fizz"** at multiples of `3`, **"buzz"** at multiples of `5` and **"fizzbuzz"** at multiples of `3` and `5`.
+
+Check out this version of FizzBuzz by [Paul Irish](https://gist.github.com/jaysonrowe/1592432#gistcomment-790724).
+
+```js
+for (let i = 1; i <= 100; i++) {
+  let f = i % 3 == 0,
+    b = i % 5 == 0;
+  console.log(f ? (b ? 'FizzBuzz' : 'Fizz') : b ? 'Buzz' : i);
+}
+```
+
+I would not advise you to write the above during interviews though. Just stick with the long but clear approach. For more wacky versions of FizzBuzz, check out the reference link below.
+
+**References:**
+
+- https://gist.github.com/jaysonrowe/1592432
+
+[[↑] Back to top](#js-questions)
+
+
+### 10.13. Explain what a single page app is and how to make one SEO-friendly.
+
+The below is taken from the awesome [Grab Front End Guide](https://github.com/grab/front-end-guide), which coincidentally, is written by me!
+
+Web developers these days refer to the products they build as web apps, rather than websites. While there is no strict difference between the two terms, web apps tend to be highly interactive and dynamic, allowing the user to perform actions and receive a response to their action. Traditionally, the browser receives HTML from the server and renders it. When the user navigates to another URL, a full-page refresh is required and the server sends fresh new HTML to the new page. This is called server-side rendering.
+
+However, in modern SPAs, client-side rendering is used instead. The browser loads the initial page from the server, along with the scripts (frameworks, libraries, app code) and stylesheets required for the whole app. When the user navigates to other pages, a page refresh is not triggered. The URL of the page is updated via the [HTML5 History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API). New data required for the new page, usually in JSON format, is retrieved by the browser via [AJAX](https://developer.mozilla.org/en-US/docs/AJAX/Getting_Started) requests to the server. The SPA then dynamically updates the page with the data via JavaScript, which it has already downloaded in the initial page load. This model is similar to how native mobile apps work.
+
+The benefits:
+
+- The app feels more responsive and users do not see the flash between page navigations due to full-page refreshes.
+- Fewer HTTP requests are made to the server, as the same assets do not have to be downloaded again for each page load.
+- Clear separation of the concerns between the client and the server; you can easily build new clients for different platforms (e.g. mobile, chatbots, smart watches) without having to modify the server code. You can also modify the technology stack on the client and server independently, as long as the API contract is not broken.
+
+The downsides:
+
+- Heavier initial page load due to the loading of framework, app code, and assets required for multiple pages.
+- There's an additional step to be done on your server which is to configure it to route all requests to a single entry point and allow client-side routing to take over from there.
+- SPAs are reliant on JavaScript to render content, but not all search engines execute JavaScript during crawling, and they may see empty content on your page. This inadvertently hurts the Search Engine Optimization (SEO) of your app. However, most of the time, when you are building apps, SEO is not the most important factor, as not all the content needs to be indexable by search engines. To overcome this, you can either server-side render your app or use services such as [Prerender](https://prerender.io/) to "render your javascript in a browser, save the static HTML, and return that to the crawlers".
+
+**References:**
+
+- https://github.com/grab/front-end-guide#single-page-apps-spas
+- http://stackoverflow.com/questions/21862054/single-page-app-advantages-and-disadvantages
+- http://blog.isquaredsoftware.com/presentations/2016-10-revolution-of-web-dev/
+- https://medium.freecodecamp.com/heres-why-client-side-rendering-won-46a349fadb52
+
+[[↑] Back to top](#js-questions)
+
+### 10.14. What are some of the advantages/disadvantages of writing JavaScript code in a language that compiles to JavaScript?
+
+Some examples of languages that compile to JavaScript include CoffeeScript, Elm, ClojureScript, PureScript, and TypeScript.
+
+Advantages:
+
+- Fixes some of the longstanding problems in JavaScript and discourages JavaScript anti-patterns.
+- Enables you to write shorter code, by providing some syntactic sugar on top of JavaScript, which I think ES5 lacks, but ES2015 is awesome.
+- Static types are awesome (in the case of TypeScript) for large projects that need to be maintained over time.
+
+Disadvantages:
+
+- Require a build/compile process as browsers only run JavaScript and your code will need to be compiled into JavaScript before being served to browsers.
+- Debugging can be a pain if your source maps do not map nicely to your pre-compiled source.
+- Most developers are not familiar with these languages and will need to learn it. There's a ramp up cost involved for your team if you use it for your projects.
+- Smaller community (depends on the language), which means resources, tutorials, libraries, and tooling would be harder to find.
+- IDE/editor support might be lacking.
+- These languages will always be behind the latest JavaScript standard.
+- Developers should be cognizant of what their code is being compiled to — because that is what would actually be running, and that is what matters in the end.
+
+Practically, ES2015 has vastly improved JavaScript and made it much nicer to write. I don't really see the need for CoffeeScript these days.
+
+**References:**
+
+- https://softwareengineering.stackexchange.com/questions/72569/what-are-the-pros-and-cons-of-coffeescript
+
+[[↑] Back to top](#js-questions)
+
+### 10.15. What language constructions do you use for iterating over object properties and array items?
+
+For objects:
+
+- `for` loops - `for (var property in obj) { console.log(property); }`. However, this will also iterate through its inherited properties, and you will add an `obj.hasOwnProperty(property)` check before using it.
+- `Object.keys()` - `Object.keys(obj).forEach(function (property) { ... })`. `Object.keys()` is a static method that will lists all enumerable properties of the object that you pass it.
+- `Object.getOwnPropertyNames()` - `Object.getOwnPropertyNames(obj).forEach(function (property) { ... })`. `Object.getOwnPropertyNames()` is a static method that will lists all enumerable and non-enumerable properties of the object that you pass it.
+
+For arrays:
+
+- `for` loops - `for (var i = 0; i < arr.length; i++)`. The common pitfall here is that `var` is in the function scope and not the block scope and most of the time you would want block scoped iterator variable. ES2015 introduces `let` which has block scope and it is recommended to use that instead. So this becomes: `for (let i = 0; i < arr.length; i++)`.
+- `forEach` - `arr.forEach(function (el, index) { ... })`. This construct can be more convenient at times because you do not have to use the `index` if all you need is the array elements. There are also the `every` and `some` methods which will allow you to terminate the iteration early.
+
+Most of the time, I would prefer the `.forEach` method, but it really depends on what you are trying to do. `for` loops allow more flexibility, such as prematurely terminate the loop using `break` or incrementing the iterator more than once per loop.
+
+[[↑] Back to top](#js-questions)
+
+
+### 10.16. What is event loop? What is the difference between call stack and task queue?
+
+The event loop is a single-threaded loop that monitors the call stack and checks if there is any work to be done in the task queue. If the call stack is empty and there are callback functions in the task queue, a function is dequeued and pushed onto the call stack to be executed.
+
+If you haven't already checked out Philip Robert's [talk on the Event Loop](https://2014.jsconf.eu/speakers/philip-roberts-what-the-heck-is-the-event-loop-anyway.html), you should. It is one of the most viewed videos on JavaScript.
+
+**References:**
+
+- https://2014.jsconf.eu/speakers/philip-roberts-what-the-heck-is-the-event-loop-anyway.html
+- http://theproactiveprogrammer.com/javascript/the-javascript-event-loop-a-stack-and-a-queue/
+
+[[↑] Back to top](#js-questions)
+
+### 10.17. How can you share code between files ?
 
 This depends on the JavaScript environment.
 
@@ -2598,7 +2885,7 @@ ES2015 defines a module syntax which aims to replace both AMD and CommonJS. This
 - https://nodejs.org/docs/latest/api/modules.html
 - http://2ality.com/2014/09/es6-modules-final.html
 
-### 10.26. Why you might want to create static class members?
+### 10.18. Why you might want to create static class members?
 
 Static class members (properties/methods) are not tied to a specific instance of a class and have the same value regardless of which instance is referring to it. Static properties are typically configuration variables and static methods are usually pure utility functions which do not depend on the state of the instance.
 
@@ -2608,49 +2895,12 @@ Static class members (properties/methods) are not tied to a specific instance of
 
 [[↑] Back to top](#js-questions)
 
-### 10.27. Other Answers
+### 10.19. Other Answers
 
 - http://flowerszhong.github.io/2013/11/20/javascript-questions.html
 
 
-
-### 10.28. Cancel previous Http/Ajax request?
-
-**Using jQuery:**
-
-- JQuery provides the `abort()` method to cancel the current request.
-- “beforeSend” – property is used to check if already there is an instance of that request, if already there is an instance last request can be cancelled using “.abort()” method.
-
-```js
-var currentRequest = null;
-
-currentRequest = jQuery.ajax({
-  type: 'POST',
-  data: 'value=' + text,
-  url: 'AJAX_URL',
-  beforeSend: function() {
-    if (currentRequest != null) {
-      currentRequest.abort();
-    }
-  },
-  success: function(data) {
-    // Success
-  },
-  error: function(e) {
-    // Error
-  },
-});
-```
-
-### 10.29. How to handle multiple Http Request? , OR
-
-### 10.30. How to add response of two HTTP calls, after both calls complete? , OR
-
-## 11. Others
-
-### 11.1. Program: What will be the output ?
-
-### 11.2. What will the following code output to the console:
+### 10.20. What will the following code output to the console:
 
 ```js
 console.log(
@@ -2676,7 +2926,7 @@ f(9): returns 9 _ f(8), which is 362880
 f(10): returns 10 _ f(9), which is 3628800
 ```
 
-### 11.3. Consider the code snippet below. What will the console output be and why?
+### 10.21. Consider the code snippet below. What will the console output be and why?
 
 ```js
 (function(x) {
@@ -2694,7 +2944,7 @@ The output will be 1, even though the value of x is never set in the inner funct
 - In JavaScript, a closure is implemented as an “inner function”; i.e., a function defined within the body of another function. An important feature of closures is that an inner function still has access to the outer function’s variables.
 - Therefore, in this example, since x is not defined in the inner function, the scope of the outer function is searched for a defined variable x, which is found to have a value of 1.
 
-### 11.4. What will the following code output to the console and why:
+### 10.22. What will the following code output to the console and why:
 
 ```js
 var hero = {
@@ -2727,7 +2977,7 @@ One way to fix the stoleSecretIdentity() function is as follows:
 var stoleSecretIdentity = hero.getSecretIdentity.bind(hero);
 ```
 
-### 11.5. Create a function for the below problem:
+### 10.23. Create a function for the below problem:
 
 For a given a DOM Element on the page, will visit the element itself and all of its descendants (not just its immediate children). For each element visited, the function should pass that element to a provided callback function. The arguments to the function should be:
 
@@ -2747,7 +2997,7 @@ function Traverse(p_element, p_callback) {
 }
 ```
 
-### 11.6. What is the output of the following code?
+### 10.24. What is the output of the following code?
 
 ```js
 var length = 10;
@@ -2782,7 +3032,7 @@ Answer: Output
 - Now, we know that we can access any number of arguments in a JavaScript function using the arguments[] array.
 - Hence `arguments[0]()` is nothing but calling fn(). Inside fn now, the scope of this function becomes the arguments array, and logging the length of arguments[] will return 2. Hence the output will be as above.
 
-### 11.7. Consider the following code. What will the output be, and why?
+### 10.25. Consider the following code. What will the output be, and why?
 
 ```js
 (function() {
@@ -2823,7 +3073,7 @@ var statements are hoisted (without their value initialization) to the top of th
 })();
 ```
 
-### 11.8. What will be the output of this code?
+### 10.26. What will be the output of this code?
 
 ```js
 var x = 21;
@@ -2844,7 +3094,7 @@ It’s because JavaScript initialization is not hoisted.
 
 The reason is that when the function is executed, it checks that there’s a local x variable present but doesn’t yet declare it, so it won’t look for global one.)
 
-### 11.9. Consider the following code snippet:
+### 10.27. Consider the following code snippet:
 
 ```js
 for (var i = 0; i < 5; i++) {
@@ -2941,26 +3191,7 @@ for (let i = 0; i < 5; i++) {
 - This is a useful strategy for ensuring that an object has a given set of properties.
 - Passing this object to Object.keys will return an array with those set keys as well (even if their values are undefined).
 
-
-### 11.10. Variable Hoisting
-
-```js
-console.log(employeeId);
-// Ans: ReferenceError: employeeId is not defined
-
-console.log(employeeId);
-var employeeId = '19000';
-// Ans: undefined
-
-var employeeId = '1234abe';
-(function() {
-  console.log(employeeId);
-  var employeeId = '122345';
-})();
-// Ans : undefined
-```
-
-### 11.11. What will be output of the below code:
+### 10.28. What will be output of the below code:
 
 ```js
 (function() {
@@ -3003,7 +3234,7 @@ Note that, in strict mode (i.e., with use strict), the statement var a = b = 3; 
 
 (Yet another prime example of why you should use use strict as a matter of course in your code!)
 
-### 11.12. Create a for loop that iterates up to 100 while outputting "fizz" at multiples of 3, "buzz" at multiples of 5 and "fizzbuzz" at multiples of 3 and 5.
+### 10.29. Create a for loop that iterates up to 100 while outputting "fizz" at multiples of 3, "buzz" at multiples of 5 and "fizzbuzz" at multiples of 3 and 5.
 
 ```js
 function fizzbuzz() {
@@ -3021,11 +3252,8 @@ function fizzbuzz() {
 fizzbuzz();
 ```
 
-### 11.13. Explain the difference between mutable and immutable objects?
 
-
-
-### 11.14. What will be the output of the following code?
+### 10.30. What will be the output of the following code?
 
 ```js
 var y = 1;
@@ -3056,7 +3284,7 @@ if (1) {
 console.log(k); // output 1function
 ```
 
-### 11.15. What will be the output of the following code?
+### 10.31. What will be the output of the following code?
 
 ```js
 var output = (function(x) {
@@ -3106,175 +3334,7 @@ console.log(emp1.company);
 
 Above code will output `xyz` as output. Here `emp1` object got company as prototype property. delete operator doesn't delete prototype property.
 
-### 11.16. What is the difference between declaring a function in below format?
-
-```js
-var foo = function() {
-  // Some code
-};
-
-function bar() {
-  // Some code
-}
-```
-
-The main difference is function foo is defined at run-time whereas function bar is defined at parse time. For understanding it in better way let see below code:
-
-```js
-// Run-Time function declaration
-foo(); // Call foo function here, It will give an error
-var foo = function() {
-  console.log('Hi I am inside Foo');
-};
-
-// Parse-Time function declaration
-
-bar(); // Call bar function here, It will not give an Error
-function bar() {
-  console.log('Hi I am inside Foo');
-}
-```
-
-Another advantage of first-one way of declaration that you can declare function based on certain condition for example:
-
-```js
-<script>
-if(testCondition) { // If testCondition is true then
-  function foo() {
-    console.log("inside Foo with testCondition True value");
-  };
- } else {
-  function foo() {
-    console.log("inside Foo with testCondition false value");
-  };
- }
- </script>
-```
-
-But if you try to run similar code in the following format, it would give an error
-
-```js
-if (testCondition) {
-  // If testCondition is true then
-  var foo = function() {
-    console.log('inside Foo with testCondition True value');
-  };
-} else {
-  var foo = function() {
-    console.log('inside Foo with testCondition false value');
-  };
-}
-```
-
-### 11.17. How to check if an object is an array or not?
-
-
-### 11.18. What is the difference between a method and a function in JavaScript?
-
-A function is a piece of code that is called by name and function itself not associated with any object and not defined inside any object. It can be passed data to operate on (i.e. parameter) and can optionally return data (the return value).
-
-```js
-// Function definition
-function myFunc() {
-  // Do some stuff;
-}
-
-// Calling function
-myFunc();
-```
-
-Here myFunc() function call is not associated with object hence not invoked through any object.
-
-A function can be self-invoking anonymous function or named self-invoking function
-
-```js
-// Named Self-invoking Function
-(function myFunc() {
-  // Do some stuff;
-})();
-
-// Anonymous Self-invoking Function
-(function() {
-  // Do some stuff;
-})();
-```
-
-In a case of named self-invoking anonymous function or anonymous self-invoking function, there is no need of call function explicitly.
-
-- A method is a piece of code that is called by name and that is associated with the object. In most respects it is identical to function call except for some key difference:
-- It is implicitly passed for the object for which it was called.
-- It is able to operate on data that is contained within the class (remembering that an object is an instance of a class- the class is the definition, the object is an instance of that)
-- Method call is always associated with object
-
-```js
-var methodObject = {
-  attribute: 'xyz',
-  display: function() {
-    // Method
-    console.log(this.attribute);
-  },
-};
-
-// Call method
-methodObject.display();
-```
-
-Here methodObject is an object and display is a method which is associated with methodObject.
-
-
-
-### 11.19. What is non-enumerable property in JavaScript and how can create?
-
-Object can have properties that don't show up when you iterate through object using `for...in` loop or using `Object.keys()` to get an array of property names. This properties is known as non-enumerable properties.
-
-Let say we have following object:
-
-```js
-var person = {
-  name: 'John',
-};
-person.salary = '10000$';
-person['country'] = 'USA';
-
-console.log(Object.keys(person)); // ['name', 'salary', 'country']
-```
-
-As we know that person object properties name, salary ,country are enumerable hence it's shown up when we called `Object.keys(person)`.
-
-To create a non-enumerable property we have to use `Object.defineProperty()`. This is a special method for creating non-enumerable property in JavaScript.
-
-```js
-var person = {
-  name: 'John',
-};
-person.salary = '10000$';
-person['country'] = 'USA';
-
-// Create non-enumerable property
-Object.defineProperty(person, 'phoneNo', {
-  value: '8888888888',
-  enumerable: false,
-});
-
-Object.keys(person); // ['name', 'salary', 'country']
-```
-
-In above example phoneNo property didn't show up because we made it non-enumerable by setting `enumerable:false`.
-
-Now let's try to change value of phoneNo.
-
-```js
-person.phoneNo = '7777777777';
-```
-
-Changing non-enumerable property value will return error in strict mode.
-
-In non-strict mode it won't through any error but it won't change the value of phoneNo.
-
-**Bonus:** `Object.defineProperty()` is also let you create read-only properties as we saw above, we are not able to modify phoneNo value of a person object.
-
-
-### 11.20. What is the significance, and what are the benefits, of including 'use strict' at the beginning of a JavaScript source file?
+### 10.32. What is the significance, and what are the benefits, of including 'use strict' at the beginning of a JavaScript source file?
 
 The short and most important answer here is that use strict is a way to voluntarily enforce stricter parsing and error handling on your JavaScript code at runtime.
 
@@ -3291,127 +3351,7 @@ In general, it is a good practice. Some of the key benefits of strict mode inclu
 7. Makes eval() safer. There are some differences in the way eval() behaves in strict mode and in non-strict mode. Most significantly, in strict mode, variables and functions declared inside of an eval() statement are not created in the containing scope (they are created in the containing scope in non-strict mode, which can also be a common source of problems).
 8. Throws error on invalid usage of delete. The delete operator (used to remove properties from objects) cannot be used on non-configurable properties of the object. Non-strict code will fail silently when an attempt is made to delete a non-configurable property, whereas strict mode will throw an error in such a case.
 
-
-
-### 11.21. Consider the two functions below. Will they both return the same thing? Why or why not?
-
-```js
-function foo1() {
-  return {
-    bar: 'hello',
-  };
-}
-
-function foo2() {
-  return;
-  {
-    bar: 'hello';
-  }
-}
-```
-
-**Ans:**
-
-Surprisingly, these two functions will not return the same thing. Rather:
-
-```js
-console.log("foo1 returns:");
-console.log(foo1());
-console.log("foo2 returns:");
-console.log(foo2());
-
-//will yield:
-
-// foo1 returns:
-Object {bar: "hello"}
-// foo2 returns:
-undefined
-```
-
-- Not only is this surprising, but what makes this particularly gnarly is that `foo2()` returns `undefined` without any error being thrown.
-
-* The reason for this has to do with the fact that semicolons are technically optional in JavaScript (although omitting them is generally really bad form).
-
-* As a result, when the line containing the return statement (with nothing else on the line) is encountered in foo2(), a semicolon is automatically inserted immediately after the return statement.
-
-- No error is thrown since the remainder of the code is perfectly valid, even though it doesn’t ever get invoked or do anything (it is simply an unused code block that defines a property bar which is equal to the string "hello").
-
-- This behavior also argues for following the convention of placing an opening curly brace at the end of a line in JavaScript, rather than on the beginning of a new line. As shown here, this becomes more than just a stylistic preference in JavaScript.
-
-
-### 11.22. Write a simple function that returns a boolean indicating whether or not a string is a palindrome?
-
-The following one line function will return true if str is a palindrome; otherwise, it returns false.
-
-```js
-function isPalindrome(str) {
-  str = str.replace(/\W/g, '').toLowerCase();
-  return (
-    str ==
-    str
-      .split('')
-      .reverse()
-      .join('')
-  );
-}
-
-// for example:
-console.log(isPalindrome('level')); // logs 'true'
-console.log(isPalindrome('levels')); // logs 'false'
-console.log(isPalindrome('A car, a man, a maraca')); // logs 'true'
-```
-
-
-
-### 11.23. What is a “closure” in JavaScript? Provide an example.
-
-A closure is an inner function that has access to the variables in the outer (enclosing) function’s scope chain.
-
-The closure has access to variables in three scopes; specifically: (1) variable in its own scope, (2) variables in the enclosing function’s scope, and (3) global variables.
-
-Here is an example:
-
-```js
-var globalVar = 'xyz';
-
-(function outerFunc(outerArg) {
-  var outerVar = 'a';
-
-  (function innerFunc(innerArg) {
-    var innerVar = 'b';
-
-    console.log(
-      'outerArg = ' +
-        outerArg +
-        '\n' +
-        'innerArg = ' +
-        innerArg +
-        '\n' +
-        'outerVar = ' +
-        outerVar +
-        '\n' +
-        'innerVar = ' +
-        innerVar +
-        '\n' +
-        'globalVar = ' +
-        globalVar,
-    );
-  })(456);
-})(123);
-```
-
-In the above example, variables from `innerFunc`, `outerFunc`, and the global namespace are all in scope in the `innerFunc`. The above code will therefore produce the following output:
-
-```js
-outerArg = 123;
-innerArg = 456;
-outerVar = a;
-innerVar = b;
-globalVar = xyz;
-```
-
-
-### 11.24. Explain event delegation:
+### 10.33. Explain event delegation:
 
 Event delegation is a technique involving adding event listeners to a parent element instead of adding them to the descendant elements. The listener will fire whenever the event is triggered on the descendant elements due to event bubbling up the DOM.
 
@@ -3420,15 +3360,4 @@ The benefits of this technique are:
 - Memory footprint goes down because only one single handler is needed on the parent element, rather than having to attach event handlers on each descendant.
 - There is no need to unbind the handler from elements that are removed and to bind the event for new elements.
 
-### 11.25. Explain how this works in JavaScript
-
-There's no simple explanation for this; it is one of the most confusing concepts in JavaScript. A hand-wavey explanation is that the value of this depends on how the function is called.
-
-1. If the new keyword is used when calling the function, this inside the function is a brand new object.
-2. If apply, call, or bind are used to call/create a function, this inside the function is the object that is passed in as the argument.
-3. If a function is called as a method, such as obj.method() — this is the object that the function is a property of.
-4. If a function is invoked as a free function invocation, meaning it was invoked without any of the conditions present above, this is the global object.
-5. In a browser, it is the window object. If in strict mode ('use strict'), this will be undefined instead of the global object.
-6. If multiple of the above rules apply, the rule that is higher wins and will set this value.
-7. If the function is an ES2015 arrow function, it ignores all the rules above and receives this value of its surrounding scope at the time it is created.
 
