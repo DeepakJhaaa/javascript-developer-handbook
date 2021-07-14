@@ -268,7 +268,7 @@ If you are using external resources like HTML, CSS, which is coming from outside
 * In Angular 2, the components are the main way to build or specify HTML elements and business logic on the page.
 * In AngularJs 1, we are handling using scope, directives and controllers but all those concepts are using in a single combined that is called components.
 * The component is the core functionality of Angular 2 app but we need to know to pass the data in to the components to configure them.
-* To build an Angular 2 application you define a set of components, for every HTML elements, views, and route.  
+* To build an Angular 2 application you define a set of components, for every HTML elements, views, and route.
 * Angular 2 applications must have a root component that contains all other components. That means all Angular 2 applications have a component tree.
 
 ### 1.9. What are differences between Components and Directives?
@@ -287,9 +287,9 @@ If you are using external resources like HTML, CSS, which is coming from outside
 * @Input is used to define an input for a component, we use the @Input decorator.
 * Angular 2 components is the core components of applications but you must need to know “how to pass data into components to dynamically?” and that time you need to define an input component.
 
-**How to pass data into components:** 
+**How to pass data into components:**
 
-We can see the below example for passing the user data in to the components. 
+We can see the below example for passing the user data in to the components.
 
 For example:
 ```js
@@ -308,7 +308,7 @@ constructor() { }
 ```
 The components is use to render the user information on the view.
 
-### 1.11. What is Outputs in Angular 2?  
+### 1.11. What is Outputs in Angular 2?
 Angular 2 component is the core components of applications but we need to know how to pass data into components to dynamically. For the same, we need to define an input (use like @Input decorator) for a component.
 
 * @Output decorator is used to binds a property of a component to send the data from child component to parent component and this is a one-way communication.
@@ -802,7 +802,7 @@ The main building blocks of an Angular application is shown in the below diagram
      }
      ```
   **[⬆ Back to Top](#table-of-contents)**
-     
+
 
 ### 2.10. Can you give an example of built-in validators?
      In reactive forms, you can use built-in validator like `required` and `minlength` on your input form controls. For example, the registration form can have these validators on name input field
@@ -876,7 +876,7 @@ The main building blocks of an Angular application is shown in the below diagram
 
 ### 2.12. What are dynamic forms?
   Dynamic forms is a pattern in which we build a form dynamically based on metadata that describes a business object model. You can create them based on reactive form API.
-     
+
   **[⬆ Back to Top](#table-of-contents)**
 
 
@@ -2338,7 +2338,7 @@ Below are the list of differences between promise and observable,
 
 ### 9.23. what is an rxjs subject in Angular
   An RxJS Subject is a special type of Observable that allows values to be multicasted to many Observers. While plain Observables are unicast (each subscribed Observer owns an independent execution of the Observable), Subjects are multicast.
-  
+
   A Subject is like an Observable, but can multicast to many Observers. Subjects are like EventEmitters: they maintain a registry of many listeners.
 
   ``` typescript
@@ -3335,7 +3335,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
         ```javascript
         import { Component, OnInit, Input } from '@angular/core';
         import { trigger, state, style, animate, transition } from '@angular/animations';
-    
+
         @Component({
         selector: 'app-animate',
         templateUrl: `<div [@changeState]="currentState" class="myblock mx-auto"></div>`,
@@ -3362,11 +3362,11 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
         ]
         })
         export class AnimateComponent implements OnInit {
-    
+
             @Input() currentState;
-    
+
             constructor() { }
-    
+
             ngOnInit() {
             }
         }
@@ -3671,7 +3671,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
    **[⬆ Back to Top](#table-of-contents)**
 
-131. 
+131.
 
 132.  ### What is Bazel tool?
       Bazel is a powerful build tool developed and massively used by Google and it can keep track of the dependencies between different packages and build targets. In Angular8, you can build your CLI application with Bazel.
@@ -3746,11 +3746,8 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
    **[⬆ Back to Top](#table-of-contents)**
 
-139. 
 
-140.
-
-141. ### What is the purpose of differential loading in CLI?
+139. ### What is the purpose of differential loading in CLI?
      From Angular8 release onwards, the applications are built using differential loading strategy from CLI to build two separate bundles as part of your deployed application.
 
      1. The first build contains ES2015 syntax which takes the advantage of built-in support in modern browsers, ships less polyfills, and results in a smaller bundle size.
@@ -3760,7 +3757,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-142. ### Is Angular supports dynamic imports?
+140. ### Is Angular supports dynamic imports?
      Yes, Angular 8 supports dynamic imports in router configuration. i.e, You can use the import statement for lazy loading the module using `loadChildren` method and it will be understood by the IDEs(VSCode and WebStorm), webpack, etc.
      Previously, you have been written as below to lazily load the feature module. By mistake, if you have typo in the module name it still accepts the string and throws an error during build time.
      ```javascript
@@ -3773,7 +3770,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-143. ### What is lazy loading?
+141. ### What is lazy loading?
      Lazy loading is one of the most useful concepts of Angular Routing. It helps us to download the web pages in chunks instead of downloading everything in a big bundle. It is used for lazy loading by asynchronously loading the feature module for routing whenever required using the property `loadChildren`. Let's load both `Customer` and `Order` feature modules lazily as below,
      ```javascript
      const routes: Routes = [
@@ -3795,7 +3792,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-144. ### What are workspace APIs?
+142. ### What are workspace APIs?
      Angular 8.0 release introduces Workspace APIs to make it easier for developers to read and modify the angular.json file instead of manually modifying it. Currently, the only supported storage3 format is the JSON-based format used by the Angular CLI. You can enable or add optimization option for build target as below,
      ```javascript
      import { NodeJsSyncHost } from '@angular-devkit/core/node';
@@ -3825,7 +3822,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-145. ### How do you upgrade angular version?
+143. ### How do you upgrade angular version?
      The Angular upgrade is quite easier using Angular CLI `ng update` command as mentioned below. For example, if you upgrade from Angular 7 to 8 then your lazy loaded route imports will be migrated to the new import syntax automatically.
      ```bash
      $ ng update @angular/cli @angular/core
@@ -3833,7 +3830,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-146. ### What is Angular Material?
+144. ### What is Angular Material?
      Angular Material is a collection of Material Design components for Angular framework following the Material Design spec. You can apply Material Design very easily using Angular Material. The installation can be done through npm or yarn,
      ```bash
      npm install --save @angular/material @angular/cdk @angular/animations
@@ -3844,7 +3841,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-147. ### How do you upgrade location service of angularjs?
+145. ### How do you upgrade location service of angularjs?
      If you are using `$location` service in your old AngularJS application, now you can use `LocationUpgradeModule`(unified location service) which puts the responsibilities of `$location` service to `Location` service in Angular. Let's add this module to `AppModule` as below,
      ```javascript
      // Other imports ...
@@ -3861,12 +3858,12 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-148. ### What is NgUpgrade?
+146. ### What is NgUpgrade?
      NgUpgrade is a library put together by the Angular team, which you can use in your applications to mix and match AngularJS and Angular components and bridge the AngularJS and Angular dependency injection systems.
 
      **[⬆ Back to Top](#table-of-contents)**
 
-149. ### How do you test Angular application using CLI?
+147. ### How do you test Angular application using CLI?
      Angular CLI downloads and install everything needed with the Jasmine Test framework. You just need to run `ng test` to see the test results. By default this command builds the app in watch mode, and launches the `Karma test runner`. The output of test results would be as below,
      ```bash
      10% building modules 1/1 modules 0 active
@@ -3880,7 +3877,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-150. ### How to use polyfills in Angular application?
+148. ### How to use polyfills in Angular application?
      The Angular CLI provides support for polyfills officially. When you create a new project with the ng new command, a `src/polyfills.ts` configuration file is created as part of your project folder. This file includes the mandatory and many of the optional polyfills as JavaScript import statements. Let's categorize the polyfills,
 
      1. **Mandatory polyfills:** These are installed automatically when you create your project with ng new command and the respective import statements enabled in 'src/polyfills.ts' file.
@@ -3896,7 +3893,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-151. ### What are the ways to trigger change detection in Angular?
+149. ### What are the ways to trigger change detection in Angular?
      You can inject either ApplicationRef or NgZone, or ChangeDetectorRef into your component and apply below specific methods to trigger change detection in Angular. i.e, There are 3 possible ways,
 
      1. **ApplicationRef.tick():** Invoke this method to explicitly process change detection and its side-effects. It check the full component tree.
@@ -3905,75 +3902,15 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-152. ### What are the differences of various versions of Angular?
-     There are different versions of Angular framework. Let's see the features of all the various versions,
-
-     1. **Angular 1:**
-        * Angular 1 (AngularJS) is the first angular framework released in the year 2010.
-        * AngularJS is not built for mobile devices.
-        * It is based on controllers with MVC architecture.
-     2. **Angular 2:**
-        * Angular 2 was released in the year 2016. Angular 2 is a complete rewrite of Angular1 version.
-        * The performance issues that Angular 1 version had has been addressed in Angular 2 version.
-        * Angular 2 is built from scratch for mobile devices unlike Angular 1 version.
-        * Angular 2 is components based.
-     3. **Angular 3:**
-        * The following are the different package versions in Angular 2:
-          * @angular/core v2.3.0
-          * @angular/compiler v2.3.0
-          * @angular/http v2.3.0
-          * @angular/router v3.3.0
-        * The router package is already versioned 3 so to avoid confusion switched to Angular 4 version and skipped 3 version.
-     4. **Angular 4:**
-        * The compiler generated code file size in AOT mode is very much reduced.
-        * With Angular 4 the production bundles size is reduced by hundreds of KB’s.
-        * Animation features are removed from angular/core and formed as a separate package.
-        * Supports Typescript 2.1 and 2.2.
-        * Angular Universal
-        * New HttpClient
-     5. **Angular 5:**
-        * Angular 5 makes angular faster. It improved the loading time and execution time.
-        * Shipped with new build optimizer.
-        * Supports Typescript 2.5.
-        * Service Worker
-     6. **Angular 6:**
-        * It is released in May 2018.
-        * Includes Angular Command Line Interface (CLI), Component Development KIT (CDK), Angular Material Package, Angular Elements.
-        * Service Worker bug fixes.
-        * i18n
-        * Experimental mode for Ivy.
-        * RxJS 6.0
-        * Tree Shaking
-     7. **Angular 7:**
-        * It is released in October 2018.
-        * TypeScript 3.1
-        * RxJS 6.3
-        * New Angular CLI
-        * CLI Prompts capability provide an ability to ask questions to the user before they run. It is like interactive dialog between the user and the CLI
-        * With the improved CLI Prompts capability, it helps developers to make the decision. New ng commands ask users for routing and CSS styles types(SCSS) and ng add @angular/material asks for themes and gestures or animations.
-      8. **Angular 8:**
-         * It is released in May 2019.
-         * TypeScript 3.4
-      9. **Angular 9:**
-         * It is released in February 2020.
-         * TypeScript 3.7
-         * Ivy enabled by default
-      10. **Angular 10:**
-            * It is released in June 2020.
-            * TypeScript 3.9 
-            * TSlib 2.0
-
-      **[⬆ Back to Top](#table-of-contents)**
-
-153. ### What are the security principles in angular?
+150. ### What are the security principles in angular?
      Below are the list of security principles in angular,
 
 		1.	You should avoid direct use of the DOM APIs.
-		2.  You should enable Content Security Policy (CSP) and configure your web server to return appropriate CSP HTTP headers.
-		3.  You should Use the offline template compiler.
-		4.  You should Use Server Side XSS protection.
-		5.  You should Use DOM Sanitizer.
-		6.  You should Preventing CSRF or XSRF attacks. 
+		1.  You should enable Content Security Policy (CSP) and configure your web server to return appropriate CSP HTTP headers.
+		2.  You should Use the offline template compiler.
+		3.  You should Use Server Side XSS protection.
+		4.  You should Use DOM Sanitizer.
+		5.  You should Preventing CSRF or XSRF attacks.
 
 	 **[⬆ Back to Top](#table-of-contents)**
 
@@ -4157,15 +4094,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-173. 
-
-174. 
-
-175. 
-
-176. 
-
-177. ### How does Angular simplifies Internationalization?
+173. ### How does Angular simplifies Internationalization?
 
      Angular simplifies the below areas of internationalization,
      1. Displaying dates, number, percentages, and currencies in a local format.
@@ -4175,7 +4104,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-178. ### How do you manually register locale data?
+174. ### How do you manually register locale data?
      By default, Angular only contains locale data for en-US which is English as spoken in the United States of America . But if you want to set to another locale, you must import locale data for that new locale. After that you can register using `registerLocaleData` method and the syntax of this method looks like below,
      ```javascript
      registerLocaleData(data: any, localeId?: any, extraData?: any): void
@@ -4190,16 +4119,14 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-179. 
-
-180. ### What is the purpose of i18n attribute?
+175. ### What is the purpose of i18n attribute?
      The Angular i18n attribute marks translatable content. It is a custom attribute, recognized by Angular tools and compilers. The compiler removes it after translation.
 
      **Note:** Remember that i18n is not an Angular directive.
 
      **[⬆ Back to Top](#table-of-contents)**
 
-181. ### What is the purpose of custom id?
+176. ### What is the purpose of custom id?
      When you change the translatable text, the Angular extractor tool generates a new id for that translation unit. Because of this behavior, you must then update the translation file with the new id every time.
 
      For example, the translation file `messages.de.xlf.html` has generated trans-unit for some text message as below
@@ -4213,7 +4140,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-182. ### What happens if the custom id is not unique?
+177. ### What happens if the custom id is not unique?
      You need to define custom ids as unique. If you use the same id for two different text messages then only the first one is extracted. But its translation is used in place of both original text messages.
 
      For example, let's define same custom id `myCustomId` for two messages,
@@ -4237,7 +4164,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-183. ### Can I translate text without creating an element?
+178. ### Can I translate text without creating an element?
      Yes, you can achieve using `<ng-container>` attribute. Normally you need to wrap a text content with i18n attribute for the translation. But if you don't want to create a new DOM element just for the sake of translation, you can wrap the text in an <ng-container> element.
      ```html
      <ng-container i18n>I'm not using any DOM element for translation</ng-container>
@@ -4246,7 +4173,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-184. ### How can I translate attribute?
+179. ### How can I translate attribute?
      You can translate attributes by attaching `i18n-x` attribute  where x is the name of the attribute to translate. For example, you can translate image title attribute as below,
      ```html
      <img [src]="example" i18n-title title="Internationlization" />
@@ -4255,7 +4182,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-185. ### List down the pluralization categories?
+180. ### List down the pluralization categories?
      Pluralization has below categories depending on the language.
      1. =0 (or any other number)
      2. zero
@@ -4267,7 +4194,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-186. ### What is select ICU expression?
+181. ### What is select ICU expression?
      ICU expression is is similar to the plural expressions except that you choose among alternative translations based on a string value instead of a number. Here you define those string values.
 
      Let's take component binding with `residenceStatus` property which has "citizen", "permanent resident" and "foreigner" possible values and the message maps those values to the appropriate translations.
@@ -4277,7 +4204,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-187. ### How do you report missing translations?
+182. ### How do you report missing translations?
      By default, When translation is missing, it generates a warning message such as "Missing translation for message 'somekey'". But you can configure with a different level of message in Angular compiler as below,
      1. **Error:** It throws an error. If you are using AOT compilation, the build will fail. But if you are using JIT compilation, the app will fail to load.
      2. **Warning (default):** It shows a 'Missing translation' warning in the console or shell.
@@ -4307,7 +4234,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
      });
      ```
      **[⬆ Back to Top](#table-of-contents)**
-188. ### How do you provide build configuration for multiple locales?
+183. ### How do you provide build configuration for multiple locales?
      You can provide build configuration such as translation file path, name, format and application url in `configuration` settings of Angular.json file. For example, the German version of your application configured the build as follows,
      ```javascript
      "configurations": {
@@ -4324,19 +4251,19 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-189. ### What is an angular library?
+184. ### What is an angular library?
      An Angular library is an Angular project that differs from an app in that it cannot run on its own. It must be imported and used in an app. For example,  you can import or add `service worker` library to an Angular application which turns an application into a Progressive Web App (PWA).
 
      **Note:** You can create own third party library and publish it as npm package to be used in an Application.
 
      **[⬆ Back to Top](#table-of-contents)**
 
-190. ### What is AOT compiler?
+185. ### What is AOT compiler?
      The AOT compiler is part of a build process that produces a small, fast, ready-to-run application package, typically for production. It converts your Angular HTML and TypeScript code into efficient JavaScript code during the build phase before the browser downloads and runs that code.
 
      **[⬆ Back to Top](#table-of-contents)**
 
-191. ### How do you select an element in component template?
+186. ### How do you select an element in component template?
      You can control any DOM element via ElementRef by injecting it into your component's constructor. i.e, The component should have constructor with ElementRef parameter,
      ```javascript
      constructor(myElement: ElementRef) {
@@ -4346,12 +4273,12 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-192. ### What is TestBed?
+187. ### What is TestBed?
      TestBed is an api for writing unit tests for Angular applications and it's libraries. Even though We still write our tests in Jasmine and run using Karma, this API provides an easier way to create components, handle injection, test asynchronous behaviour and interact with our application.
 
      **[⬆ Back to Top](#table-of-contents)**
 
-193. ### What is protractor?
+188. ### What is protractor?
      Protractor is an end-to-end test framework for Angular and AngularJS applications. It runs tests against your application running in a real browser, interacting with it as a user would.
      ```javascript
      npm install -g protractor
@@ -4359,12 +4286,12 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-194. ### What is collection?
+189. ### What is collection?
      Collection is a set of related schematics collected in an npm package. For example, `@schematics/angular` collection is used in Angular CLI to apply transforms to a web-app project. You can create your own schematic collection for customizing angular projects.
 
      **[⬆ Back to Top](#table-of-contents)**
 
-195. ### How do you create schematics for libraries?
+190. ### How do you create schematics for libraries?
      You can create your own schematic collections to integrate your library with the Angular CLI. These collections are classified as 3 main schematics,
      1. **Add schematics:** These schematics are used to install library in an Angular workspace using `ng add` command.
         For example, @angular/material schematic tells the add command to install and set up Angular Material and theming.
@@ -4375,7 +4302,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-196. ### How do you use jquery in Angular?
+191. ### How do you use jquery in Angular?
      You can use jquery in Angular using 3 simple steps,
      1. **Install the dependency:** At first, install the jquery dependency using npm
          ```cmd
@@ -4414,7 +4341,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-197. ### What is the reason for No provider for HTTP exception?
+192. ### What is the reason for No provider for HTTP exception?
      This exception is due to missing HttpClientModule in your module. You just need to import in module as below,
      ```javascript
      import { HttpClientModule } from '@angular/common/http';
@@ -4432,7 +4359,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-198. ### What is router state?
+193. ### What is router state?
      The RouteState is an interface which represents the state of the router as a tree of activated routes.
      ```javascript
      interface RouterState extends Tree {
@@ -4444,7 +4371,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-199. ### How can I use SASS in angular project?
+194. ### How can I use SASS in angular project?
      When you are creating your project with angular cli, you can use `ng new`command. It generates all your components with predefined sass files.
      ```javascript
      ng new My_New_Project --style=sass
@@ -4455,7 +4382,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
      ```
      **[⬆ Back to Top](#table-of-contents)**
 
-200. ### What is the purpose of hidden property?
+195. ### What is the purpose of hidden property?
      The hidden property is used  to show or hide the associated DOM element, based on an expression. It can be compared close to `ng-show` directive in AngularJS. Let's say you want to show user name based on the availability of user using `hidden` property.
      ```javascript
      <div [hidden]="!user.name">
@@ -4464,12 +4391,12 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
      ```
      **[⬆ Back to Top](#table-of-contents)**
 
-201. ### What is the difference between ngIf and hidden property?
+196. ### What is the difference between ngIf and hidden property?
      The main difference is that *ngIf will remove the element from the DOM, while [hidden] actually plays with the CSS style by setting `display:none`. Generally it is expensive to add and remove stuff from the DOM for frequent actions.
 
      **[⬆ Back to Top](#table-of-contents)**
 
-202. ### What is slice pipe?
+197. ### What is slice pipe?
      The slice pipe is used to create a new Array or String containing a subset (slice) of the elements. The syntax looks like as below,
      ```javascript
      {{ value_expression | slice : start [ : end ] }}
@@ -4489,7 +4416,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-203. ### What is index property in ngFor directive?
+198. ### What is index property in ngFor directive?
      The index property of the NgFor directive is used to return the zero-based index of the item in each iteration. You can capture the index in a template input variable and use it in the template.
 
      For example, you can capture the index in a variable named indexVar and displays it with the todo's name using ngFor directive as below.
@@ -4499,7 +4426,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-204. ### What is the purpose of ngFor trackBy?
+199. ### What is the purpose of ngFor trackBy?
      The main purpose of using *ngFor with trackBy option is performance optimization. Normally if you use NgFor with large data sets, a small change to one item by removing or adding an item, can trigger a cascade of DOM manipulations. In this case, Angular sees only a fresh list of new object references and to replace the old DOM elements with all new DOM elements. You can help Angular to track which items added or removed by providing a `trackBy` function which takes the index and the current item as arguments and needs to return the unique identifier for this item.
 
      For example, lets set trackBy to the trackByTodos() method
@@ -4515,7 +4442,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-205. ### What is the purpose of ngSwitch directive?
+200. ### What is the purpose of ngSwitch directive?
      **NgSwitch** directive is similar to JavaScript switch statement which displays one element from among several possible elements, based on a switch condition. In this case only the selected element placed into the DOM. It has been used along with `NgSwitch`, `NgSwitchCase` and `NgSwitchDefault` directives.
 
      For example, let's display the browser details based on selected browser using ngSwitch directive.
@@ -4531,7 +4458,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-206. ### Is it possible to do aliasing for inputs and outputs?
+201. ### Is it possible to do aliasing for inputs and outputs?
      Yes, it is possible to do aliasing for inputs and outputs in two ways.
      1. **Aliasing in metadata:** The inputs and outputs in the metadata aliased using a colon-delimited (:) string with the directive property name on the left and the public alias on the right. i.e. It will be in the format of propertyName:alias.
          ```javascript
@@ -4546,7 +4473,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-207. ### What is safe navigation operator?
+202. ### What is safe navigation operator?
      The safe navigation operator(?)(or known as Elvis Operator) is used to guard against `null` and `undefined` values in property paths when you are not aware whether a path exists or not. i.e. It returns value of the object path if it exists, else it returns the null value.
 
      For example, you can access nested properties of a user profile easily without null reference errors as below,
@@ -4557,7 +4484,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-208. ### Is any special configuration required for Angular9?
+203. ### Is any special configuration required for Angular9?
      You don't need any special configuration. In Angular9, the Ivy renderer is the default Angular compiler. Even though Ivy is available Angular8 itself, you had to configure it in tsconfig.json file as below,
      ```javascript
      "angularCompilerOptions": {    "enableIvy": true  }
@@ -4565,7 +4492,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-209. ### What are type safe TestBed API changes in Angular9?
+204. ### What are type safe TestBed API changes in Angular9?
      Angular 9 provides type safe changes in TestBed API changes by replacing the old get function with the new inject method. Because TestBed.get method is not type-safe. The usage would be as below,
      ```javascript
      TestBed.get(ChangeDetectorRef) // returns any. It is deprecated now.
@@ -4575,7 +4502,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-210. ### Is mandatory to pass static flag for ViewChild?
+205. ### Is mandatory to pass static flag for ViewChild?
      In Angular 8, the static flag is required for ViewChild. Whereas in Angular9, you no longer need to pass this property. Once you updated to Angular9 using `ng update`, the migration will remove { static: false } script everywhere.
      ```javascript
      @ViewChild(ChildDirective) child: ChildDirective; // Angular9 usage
@@ -4584,7 +4511,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-211. ### What are the list of template expression operators?
+206. ### What are the list of template expression operators?
      The Angular template expression language supports three special template expression operators.
      1. Pipe operator
      2. Safe navigation operator
@@ -4592,12 +4519,12 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-212. ### What is the precedence between pipe and ternary operators?
+207. ### What is the precedence between pipe and ternary operators?
      The pipe operator has a higher precedence than the ternary operator (?:). For example, the expression `first ? second : third | fourth` is parsed as `first ? second : (third | fourth)`.
 
      **[⬆ Back to Top](#table-of-contents)**
 
-213. ### What is an entry component?
+208. ### What is an entry component?
      An entry component is any component that Angular loads imperatively(i.e, not referencing it in the template) by type. Due to this behavior, they can’t be found by the Angular compiler during compilation. These components created dynamically with `ComponentFactoryResolver`.
 
      Basically, there are two main kinds of entry components which are following -
@@ -4605,7 +4532,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
      2. A component you specify in a route
 
      **[⬆ Back to Top](#table-of-contents)**
-214. ### What is a bootstrapped component?
+209. ### What is a bootstrapped component?
      A bootstrapped component is an entry component that Angular loads into the DOM during the bootstrap process or application launch time. Generally, this bootstrapped or root component is named as `AppComponent` in your root module using `bootstrap` property as below.
      ```js
      @NgModule({
@@ -4624,7 +4551,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
      ```
 
      **[⬆ Back to Top](#table-of-contents)**
-215. ### How do you manually bootstrap an application?
+210. ### How do you manually bootstrap an application?
      You can use `ngDoBootstrap` hook for a manual bootstrapping of the application instead of using bootstrap array in `@NgModule` annotation. This hook is part of `DoBootstap` interface.
      ```js
      interface DoBootstrap {
@@ -4642,12 +4569,12 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-216. ### Is it necessary for bootstrapped component to be entry component?
+211. ### Is it necessary for bootstrapped component to be entry component?
      Yes, the bootstrapped component needs to be an entry component. This is because the bootstrapping process is an imperative process.
 
      **[⬆ Back to Top](#table-of-contents)**
 
-217. ### What is a routed entry component?
+212. ### What is a routed entry component?
      The components referenced in router configuration are called as routed entry components. This routed entry component defined in a route definition as below,
      ```js
      const routes: Routes = [
@@ -4663,44 +4590,44 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-218. ### Why is not necessary to use entryComponents array every time?
+213. ### Why is not necessary to use entryComponents array every time?
      Most of the time, you don't need to explicity to set entry components in entryComponents array of ngModule decorator. Because angular adds components from both @NgModule.bootstrap and route definitions to entry components automatically.
 
      **[⬆ Back to Top](#table-of-contents)**
 
-219. ### Do I still need to use entryComponents array in Angular9?
+214. ### Do I still need to use entryComponents array in Angular9?
      No. In previous angular releases, the entryComponents array of ngModule decorator is used to tell the compiler which components would be created and inserted dynamically in the view. In Angular9, this is not required anymore with Ivy.
 
      **[⬆ Back to Top](#table-of-contents)**
 
-220. ### Is it all components generated in production build?
+215. ### Is it all components generated in production build?
      No, only the entry components and template components appears in production builds. If a component isn't an entry component and isn't found in a template, the tree shaker will throw it away. Due to this reason, make sure to add only true entry components to reduce the bundle size.
 
      **[⬆ Back to Top](#table-of-contents)**
 
-221. ### What is Angular compiler?
+216. ### What is Angular compiler?
      The Angular compiler is used to convert the application code into JavaScript code. It reads the template markup, combines it with the corresponding component class code, and emits component factories which creates JavaScript representation of the component along with elements of @Component metadata.
 
      **[⬆ Back to Top](#table-of-contents)**
 
-222. ### What is the role of ngModule metadata in compilation process?
+217. ### What is the role of ngModule metadata in compilation process?
      The `@NgModule` metadata is used to tell the Angular compiler what components to be compiled for this module and how to link this module with other modules.
 
      **[⬆ Back to Top](#table-of-contents)**
 
-223. ### How does angular finds components, directives and pipes?
+218. ### How does angular finds components, directives and pipes?
      The Angular compiler finds a component or directive in a template when it can match the selector of that component or directive in that template. Whereas it finds a pipe if the pipe's name appears within the pipe syntax of the template HTML.
 
      **[⬆ Back to Top](#table-of-contents)**
 
-224. ### Give few examples for NgModules?
+219. ### Give few examples for NgModules?
      The Angular core libraries and third-party libraries are available as NgModules.
      1. Angular libraries such as FormsModule, HttpClientModule, and RouterModule are NgModules.
      2. Many third-party libraries such as Material Design, Ionic, and AngularFire2 are NgModules.
 
      **[⬆ Back to Top](#table-of-contents)**
 
-225. ### What are feature modules?
+220. ### What are feature modules?
      Feature modules are NgModules, which are used for the purpose of organizing code. The feature module can be created with Angular CLI using the below command in the root directory,
      ```javascript
      ng generate module MyCustomFeature //
@@ -4723,14 +4650,14 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-226. ### What are the imported modules in CLI generated feature modules?
+221. ### What are the imported modules in CLI generated feature modules?
      In the CLI generated feature module, there are two JavaScript import statements at the top of the file
      1. **NgModule:** InOrder to use the `@NgModule` decorator
      2. **CommonModule:** It provides many common directives such as `ngIf` and `ngFor`.
 
      **[⬆ Back to Top](#table-of-contents)**
 
-227. ### What are the differences between ngmodule and javascript module?
+222. ### What are the differences between ngmodule and javascript module?
      Below are the main differences between Angular NgModule and javascript module,
 
      | NgModule                                                                          | JavaScript module                               |
@@ -4742,14 +4669,14 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-228. ### What are the possible errors with declarations?
+223. ### What are the possible errors with declarations?
      There are two common possible errors with declarations array,
      1. If you use a component without declaring it, Angular returns an error message.
      2. If you try to declare the same class in more than one module then compiler emits an error.
 
      **[⬆ Back to Top](#table-of-contents)**
 
-229. ### What are the steps to use declaration elements?
+224. ### What are the steps to use declaration elements?
      Below are the steps to be followed to use declaration elements.
      1. Create the element(component, directive and pipes) and export it from the file where you wrote it
      2. Import it into the appropriate module.
@@ -4758,14 +4685,14 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-230. ### What happens if browserModule used in feature module?
+225. ### What happens if browserModule used in feature module?
      If you do import `BrowserModule` into a lazy loaded feature module, Angular returns an error telling you to use `CommonModule` instead. Because BrowserModule’s providers are for the entire app so it should only be in the root module, not in feature module. Whereas Feature modules only need the common directives in CommonModule.
 
      ![ScreenShot](images/browser-module-error.gif)
 
      **[⬆ Back to Top](#table-of-contents)**
 
-231. ### What are the types of feature modules?
+226. ### What are the types of feature modules?
      Below are the five categories of feature modules,
      1. **Domain:** Deliver a user experience dedicated to a particular application domain(For example, place an order, registration etc)
      2. **Routed:** These are domain feature modules whose top components are the targets of router navigation routes.
@@ -4775,7 +4702,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-232. ### What is a provider?
+227. ### What is a provider?
      A provider is an instruction to the Dependency Injection system on how to obtain a value for a dependency(aka services created). The service can be provided using Angular CLI as below,
      ```javascript
      ng generate service my-service
@@ -4792,12 +4719,12 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
      ```
      **[⬆ Back to Top](#table-of-contents)**
 
-233. ### What is the recommendation for provider scope?
+228. ### What is the recommendation for provider scope?
      You should always provide your service in the root injector unless there is a case where you want the service to be available only if you import a particular @NgModule.
 
      **[⬆ Back to Top](#table-of-contents)**
 
-234. ### How do you restrict provider scope to a module?
+229. ### How do you restrict provider scope to a module?
      It is possible to restrict service provider scope to a specific module instead making available to entire application. There are two possible ways to do it.
      1. **Using providedIn in service:**
          ```js
@@ -4825,7 +4752,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-235. ### How do you provide a singleton service?
+230. ### How do you provide a singleton service?
      There are two possible ways to provide a singleton service.
      1. Set the providedIn property of the @Injectable() to "root". This is the preferred way(starting from Angular 6.0) of creating a singleton service since it makes your services tree-shakable.
 
@@ -4850,7 +4777,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-236. ### What are the different ways to remove duplicate service registration?
+231. ### What are the different ways to remove duplicate service registration?
      If a module defines provides and declarations then loading the module in multiple feature modules will duplicate the registration of the service. Below are the different ways to prevent this duplicate behavior.
      1. Use the providedIn syntax instead of registering the service in the module.
      2. Separate your services into their own module.
@@ -4858,12 +4785,12 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-237. ### How does forRoot method helpful to avoid duplicate router instances?
+232. ### How does forRoot method helpful to avoid duplicate router instances?
      If the `RouterModule` module didn’t have forRoot() static method then each feature module would instantiate a new Router instance, which leads to broken application due to duplicate instances. After using forRoot() method, the root application module imports `RouterModule.forRoot(...)` and gets a Router, and all feature modules import `RouterModule.forChild(...)` which does not instantiate another Router.
 
      **[⬆ Back to Top](#table-of-contents)**
 
-238. ### What is a shared module?
+233. ### What is a shared module?
      The Shared Module is the module in which you put commonly used directives, pipes, and components into one module that is shared(import it) throughout the application.
 
      For example, the below shared module imports CommonModule, FormsModule for common directives and components, pipes and directives based on the need,
@@ -4886,12 +4813,12 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-239. ### Can I share services using modules?
+234. ### Can I share services using modules?
      No, it is not recommended to share services by importing module. i.e Import modules when you want to use directives, pipes, and components only. The best approach to get a hold of shared services is through 'Angular dependency injection' because importing a module will result in a new service instance.
 
      **[⬆ Back to Top](#table-of-contents)**
 
-240. ### How do you get current direction for locales?
+235. ### How do you get current direction for locales?
      In Angular 9.1, the API method `getLocaleDirection` can be used to get the current direction in your app. This method is useful to support Right to Left locales for your Internationalization based applications.
      ```js
      import { getLocaleDirection, registerLocaleData } from '@angular/common';
@@ -4912,7 +4839,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-241. ### What is ngcc?
+236. ### What is ngcc?
      The ngcc(Angular Compatibility Compiler) is a tool which upgrades node_module compiled with non-ivy ngc into ivy compliant format. The `postinstall` script from package.json will make sure your node_modules will be compatible with the Ivy renderer.
      ```js
      "scripts": {
@@ -4924,7 +4851,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-242. ### What classes should not be added to declarations?
+237. ### What classes should not be added to declarations?
      The below class types shouldn't be added to declarations
      1. A class which is already declared in any another module.
      2. Directives imported from another module.
@@ -4934,9 +4861,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-243. 
-
-245. ### How do you create displayBlock components?
+238. ### How do you create displayBlock components?
      By default, Angular CLI creates components in an inline displayed mode(i.e, display:inline). But it is possible to create components with display: block style using `displayBlock` option,
      ```js
      ng generate component my-component --displayBlock
@@ -4945,8 +4870,7 @@ We also have the HomeComponent. The path is ‘home’, and the component to lau
 
      **[⬆ Back to Top](#table-of-contents)**
 
-246. 
-251. ### How do you trigger an animation?
+239. ### How do you trigger an animation?
      Angular provides a `trigger()` function for animation in order to collect the states and transitions with a specific animation name, so that you can attach it to the triggering element in the HTML template. This function watch for changes and trigger initiates the actions when a change occurs.
      For example, let's create trigger named `upDown`, and attach it to the button element.
      ```js
