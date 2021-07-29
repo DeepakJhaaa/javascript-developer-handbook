@@ -1,35 +1,6 @@
-# React Interview Questions & Answers
+# 1. React Interview Questions & Answers
 
-> Click :star:if you like the project. Pull Request are highly appreciated. Follow me [@SudheerJonna](https://twitter.com/SudheerJonna) for technical updates.
-
----
-<div align="center">
-        <a href="https://www.fullstack.cafe/?utm_source=github&utm_medium=sud">
-            3600 Tech Interview Questions. <b>Answered</b>.
-            <div>
-                <img src="https://user-images.githubusercontent.com/13550565/76382460-cc784d80-6393-11ea-8837-2b89265ac853.png" width="150" alt="FullStack.Cafe">
-            </div>
-        </a>
-</div>
-
----
-<div>
-Learn to code and get hired with <a href="https://zerotomastery.io/?utm_source=github&utm_medium=sponsor&utm_campaign=reactjs-interview-questions">Zero To Mastery:</a>
-<ol>
-<li>This <a href="https://links.zerotomastery.io/react_sudheer">React course</a> is good if you’re struggling to learn React beyond the basics</li>
-<li>This <a href="http://links.zerotomastery.io/mci_sudheer">coding interview bootcamp</a> is helpful if you’re serious about getting hired as a developer</li>
-</ol>
-</div>
-
----
-
-**Note:** This repository is specific to ReactJS. Please check [Javascript Interview questions](https://github.com/sudheerj/javascript-interview-questions) for core javascript questions.
-
-## Downloading PDF/Epub formats
-
-You can download the PDF and Epub version of this repository from the latest run on the [actions tab](https://github.com/sudheerj/reactjs-interview-questions/actions).
-
-### Table of Contents
+### 1.0.1. Table of Contents
 
 | No. | Questions                                                                                                                                                                                                                        |
 | --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -370,9 +341,92 @@ You can download the PDF and Epub version of this repository from the latest run
 | 328 | [How do you get redux scaffolding using create-react-app?](#how-do-you-get-redux-scaffolding-using-create-react-app)                                                                                                             |
 | 329 | [What are React Server components?](#what-are-react-server-components)                                                                                                                                                           |
 
-## Core React
+- [1. React Interview Questions & Answers](#1-react-interview-questions--answers)
+    - [1.0.1. Table of Contents](#101-table-of-contents)
+  - [1.1. Core React](#11-core-react)
+  - [1.2. React Router](#12-react-router)
+  - [1.3. React Internationalization](#13-react-internationalization)
+  - [1.4. React Testing](#14-react-testing)
+  - [1.5. React Redux](#15-react-redux)
+  - [1.6. React Native](#16-react-native)
+  - [1.7. React supported libraries & Integration](#17-react-supported-libraries--integration)
+  - [1.8. Miscellaneous](#18-miscellaneous)
+- [2. Redux Quick Reference](#2-redux-quick-reference)
+  - [2.1. Creating a store](#21-creating-a-store)
+  - [2.2. Using a store](#22-using-a-store)
+  - [2.3. Provider](#23-provider)
+  - [2.4. Mapping state](#24-mapping-state)
+  - [2.5. Combining reducers](#25-combining-reducers)
+  - [2.6. Signature](#26-signature)
+  - [2.7. Applying middleware](#27-applying-middleware)
+- [3. Jest Quick Reference](#3-jest-quick-reference)
+  - [3.1. Basic Test Structure](#31-basic-test-structure)
+  - [3.2. Matchers](#32-matchers)
+    - [3.2.1. Basic matchers](#321-basic-matchers)
+    - [3.2.2. Truthiness](#322-truthiness)
+    - [3.2.3. Numbers](#323-numbers)
+    - [3.2.4. Strings](#324-strings)
+    - [3.2.5. Arrays](#325-arrays)
+    - [3.2.6. Objects](#326-objects)
+    - [3.2.7. Exceptions](#327-exceptions)
+    - [3.2.8. Snapshots](#328-snapshots)
+    - [3.2.9. Mock functions](#329-mock-functions)
+    - [3.2.10. Misc](#3210-misc)
+    - [3.2.11. Promise matchers (Jest 20+)](#3211-promise-matchers-jest-20)
+  - [3.3. Async tests](#33-async-tests)
+    - [3.3.1. async/await](#331-asyncawait)
+    - [3.3.2. Promises](#332-promises)
+    - [3.3.3. done() callback](#333-donecallback)
+  - [3.4. Mocks](#34-mocks)
+    - [3.4.1. Mock functions](#341-mock-functions)
+    - [3.4.2. Returning, resolving and rejecting values](#342-returning-resolving-and-rejecting-values)
+    - [3.4.3. Mock modules using `jest.mock` method](#343-mock-modules-using-jestmock-method)
+    - [3.4.4. Mock modules using a mock file](#344-mock-modules-using-a-mock-file)
+    - [3.4.5. Mock object methods](#345-mock-object-methods)
+    - [3.4.6. Mock getters and setters (Jest 22.1.0+)](#346-mock-getters-and-setters-jest-2210)
+    - [3.4.7. Mock getters and setters](#347-mock-getters-and-setters)
+    - [3.4.8. Clearing and restoring mocks](#348-clearing-and-restoring-mocks)
+    - [3.4.9. Accessing the original module when using mocks](#349-accessing-the-original-module-when-using-mocks)
+    - [3.4.10. Timer mocks](#3410-timer-mocks)
+  - [3.5. Data-driven tests (Jest 23+)](#35-data-driven-tests-jest-23)
+  - [3.6. Skipping tests](#36-skipping-tests)
+  - [3.7. Testing modules with side effects](#37-testing-modules-with-side-effects)
+- [4. React Quick Reference](#4-react-quick-reference)
+  - [4.1. Components](#41-components)
+  - [4.2. Stateless Components](#42-stateless-components)
+  - [4.3. Properties](#43-properties)
+  - [4.4. States](#44-states)
+  - [4.5. Children](#45-children)
+  - [4.6. Nesting](#46-nesting)
+  - [4.7. Functional components](#47-functional-components)
+  - [4.8. Pure Components](#48-pure-components)
+  - [4.9. Mounting](#49-mounting)
+  - [4.10. Updating](#410-updating)
+  - [4.11. State Hook](#411-state-hook)
+  - [4.12. Effect Hook](#412-effect-hook)
+  - [4.13. References](#413-references)
+  - [4.14. DOM Events](#414-dom-events)
+  - [4.15. Transferring props](#415-transferring-props)
+  - [4.16. JSX patterns](#416-jsx-patterns)
+  - [4.17. Style shorthand](#417-style-shorthand)
+  - [4.18. Conditionals](#418-conditionals)
+  - [4.19. Lists](#419-lists)
+  - [4.20. Short-circuit evaluation](#420-short-circuit-evaluation)
+  - [4.21. Fragments and Arrays](#421-fragments-and-arrays)
+  - [4.22. Errors](#422-errors)
+  - [4.23. Portals](#423-portals)
+  - [4.24. Hydration](#424-hydration)
+  - [4.25. PropTypes](#425-proptypes)
+  - [4.26. Basic types](#426-basic-types)
+  - [4.27. Required Types](#427-required-types)
+  - [4.28. Elements](#428-elements)
+  - [4.29. Enumerables (oneOf)](#429-enumerables-oneof)
+  - [4.30. Custom validation](#430-custom-validation)
+  - [4.31. Arrays and Objects](#431-arrays-and-objects)
+- [5. React Best Practices](#5-react-best-practices)
 
 
+## 1.1. Core React
 
 1. ### What is React?
 
@@ -3055,7 +3109,7 @@ You can download the PDF and Epub version of this repository from the latest run
 
      Libraries such as React Router and DownShift are using this pattern.
 
-## React Router
+## 1.2. React Router
 
 
    **[⬆ Back to Top](#table-of-contents)**
@@ -3302,7 +3356,7 @@ You can download the PDF and Epub version of this repository from the latest run
      }
      ```
 
-## React Internationalization
+## 1.3. React Internationalization
 
 
    **[⬆ Back to Top](#table-of-contents)**
@@ -3425,7 +3479,7 @@ You can download the PDF and Epub version of this repository from the latest run
      export default injectIntl(MyComponent)
      ```
 
-## React Testing
+## 1.4. React Testing
 
 
    **[⬆ Back to Top](#table-of-contents)**
@@ -3557,7 +3611,7 @@ You can download the PDF and Epub version of this repository from the latest run
      ✓ adds 1 + 2 to equal 3 (2ms)
      ```
 
-## React Redux
+## 1.5. React Redux
 
 
    **[⬆ Back to Top](#table-of-contents)**
@@ -4220,7 +4274,7 @@ You can download the PDF and Epub version of this repository from the latest run
 
    **[⬆ Back to Top](#table-of-contents)**
 
-## React Native
+## 1.6. React Native
 
 
    **[⬆ Back to Top](#table-of-contents)**
@@ -4263,7 +4317,7 @@ You can download the PDF and Epub version of this repository from the latest run
      4. Press `Command + Option + I` to open the Chrome Developer tools, or open it via `View` -> `Developer` -> `Developer Tools`.
      5. You should now be able to debug as you normally would.
 
-## React supported libraries & Integration
+## 1.7. React supported libraries & Integration
 
 
    **[⬆ Back to Top](#table-of-contents)**
@@ -4489,7 +4543,7 @@ You can download the PDF and Epub version of this repository from the latest run
      └─ tslint.json
      ```
 
-## Miscellaneous
+## 1.8. Miscellaneous
 
 
    **[⬆ Back to Top](#table-of-contents)**
@@ -6745,9 +6799,9 @@ ReactDOM.render(
 
 
 
-# Redux Quick Reference
+# 2. Redux Quick Reference
 
-## Creating a store
+## 2.1. Creating a store
 
 A store is made from a reducer function, which takes the current state, and returns a new state depending on the action it was given.
 
@@ -6776,7 +6830,7 @@ let store = createStore(counter, { value: 0 })
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Using a store
+## 2.2. Using a store
 
 Dispatch actions to change the store\'s state.
 
@@ -6798,7 +6852,7 @@ store.subscribe(() => { ... })
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Provider
+## 2.3. Provider
 
 The `<Provider>` component makes the store available in React components. It is used for `connect()`.
 
@@ -6815,7 +6869,7 @@ React.render(
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Mapping state
+## 2.4. Mapping state
 
 ```js
 import { connect } from 'react-redux'
@@ -6852,7 +6906,7 @@ export default connect(mapState, mapDispatch)(App)
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Combining reducers
+## 2.5. Combining reducers
 
 Combines multiple reducers into one reducer function.
 
@@ -6866,7 +6920,7 @@ const reducer = combineReducers({
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Signature
+## 2.6. Signature
 
 Middlewares are simply decorators for `dispatch()` to allows to take different kinds of actions, and to perform different tasks when receiving actions.
 
@@ -6893,7 +6947,7 @@ const logger = store => {
     <b><a href="#">↥ back to top</a></b>
 </div>
 
-## Applying middleware
+## 2.7. Applying middleware
 
 ```js
 const enhancer = applyMiddleware(logger, thunk, ...)
@@ -6906,94 +6960,93 @@ const store = createStore(reducer, {}, enhancer)
 </div>
 
 
-# Jest Quick Reference
+# 3. Jest Quick Reference
 
-- [React Interview Questions & Answers](#react-interview-questions--answers)
-  - [Downloading PDF/Epub formats](#downloading-pdfepub-formats)
-    - [Table of Contents](#table-of-contents)
-  - [Core React](#core-react)
-  - [React Router](#react-router)
-  - [React Internationalization](#react-internationalization)
-  - [React Testing](#react-testing)
-  - [React Redux](#react-redux)
-  - [React Native](#react-native)
-  - [React supported libraries & Integration](#react-supported-libraries--integration)
-  - [Miscellaneous](#miscellaneous)
-- [Redux Quick Reference](#redux-quick-reference)
-  - [Creating a store](#creating-a-store)
-  - [Using a store](#using-a-store)
-  - [Provider](#provider)
-  - [Mapping state](#mapping-state)
-  - [Combining reducers](#combining-reducers)
-  - [Signature](#signature)
-  - [Applying middleware](#applying-middleware)
-- [Jest Quick Reference](#jest-quick-reference)
-  - [Basic Test Structure](#basic-test-structure)
-  - [Matchers](#matchers)
-    - [Basic matchers](#basic-matchers)
-    - [Truthiness](#truthiness)
-    - [Numbers](#numbers)
-    - [Strings](#strings)
-    - [Arrays](#arrays)
-    - [Objects](#objects)
-    - [Exceptions](#exceptions)
-    - [Snapshots](#snapshots)
-    - [Mock functions](#mock-functions)
-    - [Misc](#misc)
-    - [Promise matchers (Jest 20+)](#promise-matchers-jest-20)
-  - [Async tests](#async-tests)
-    - [async/await](#asyncawait)
-    - [Promises](#promises)
-    - [done() callback](#donecallback)
-  - [Mocks](#mocks)
-    - [Mock functions](#mock-functions-1)
-    - [Returning, resolving and rejecting values](#returning-resolving-and-rejecting-values)
-    - [Mock modules using `jest.mock` method](#mock-modules-using-jestmock-method)
-    - [Mock modules using a mock file](#mock-modules-using-a-mock-file)
-    - [Mock object methods](#mock-object-methods)
-    - [Mock getters and setters (Jest 22.1.0+)](#mock-getters-and-setters-jest-2210)
-    - [Mock getters and setters](#mock-getters-and-setters)
-    - [Clearing and restoring mocks](#clearing-and-restoring-mocks)
-    - [Accessing the original module when using mocks](#accessing-the-original-module-when-using-mocks)
-    - [Timer mocks](#timer-mocks)
-  - [Data-driven tests (Jest 23+)](#data-driven-tests-jest-23)
-  - [Skipping tests](#skipping-tests)
-  - [Testing modules with side effects](#testing-modules-with-side-effects)
-- [React Quick Reference](#react-quick-reference)
-  - [Components](#components)
-  - [Stateless Components](#stateless-components)
-  - [Properties](#properties)
-  - [States](#states)
-  - [Children](#children)
-  - [Nesting](#nesting)
-  - [Functional components](#functional-components)
-  - [Pure Components](#pure-components)
-  - [Mounting](#mounting)
-  - [Updating](#updating)
-  - [State Hook](#state-hook)
-  - [Effect Hook](#effect-hook)
-  - [References](#references)
-  - [DOM Events](#dom-events)
-  - [Transferring props](#transferring-props)
-  - [JSX patterns](#jsx-patterns)
-  - [Style shorthand](#style-shorthand)
-  - [Conditionals](#conditionals)
-  - [Lists](#lists)
-  - [Short-circuit evaluation](#short-circuit-evaluation)
-  - [Fragments and Arrays](#fragments-and-arrays)
-  - [Errors](#errors)
-  - [Portals](#portals)
-  - [Hydration](#hydration)
-  - [PropTypes](#proptypes)
-  - [Basic types](#basic-types)
-  - [Required Types](#required-types)
-  - [Elements](#elements)
-  - [Enumerables (oneOf)](#enumerables-oneof)
-  - [Custom validation](#custom-validation)
-  - [Arrays and Objects](#arrays-and-objects)
-- [React Best Practices](#react-best-practices)
+- [1. React Interview Questions & Answers](#1-react-interview-questions--answers)
+    - [1.0.1. Table of Contents](#101-table-of-contents)
+  - [1.1. Core React](#11-core-react)
+  - [1.2. React Router](#12-react-router)
+  - [1.3. React Internationalization](#13-react-internationalization)
+  - [1.4. React Testing](#14-react-testing)
+  - [1.5. React Redux](#15-react-redux)
+  - [1.6. React Native](#16-react-native)
+  - [1.7. React supported libraries & Integration](#17-react-supported-libraries--integration)
+  - [1.8. Miscellaneous](#18-miscellaneous)
+- [2. Redux Quick Reference](#2-redux-quick-reference)
+  - [2.1. Creating a store](#21-creating-a-store)
+  - [2.2. Using a store](#22-using-a-store)
+  - [2.3. Provider](#23-provider)
+  - [2.4. Mapping state](#24-mapping-state)
+  - [2.5. Combining reducers](#25-combining-reducers)
+  - [2.6. Signature](#26-signature)
+  - [2.7. Applying middleware](#27-applying-middleware)
+- [3. Jest Quick Reference](#3-jest-quick-reference)
+  - [3.1. Basic Test Structure](#31-basic-test-structure)
+  - [3.2. Matchers](#32-matchers)
+    - [3.2.1. Basic matchers](#321-basic-matchers)
+    - [3.2.2. Truthiness](#322-truthiness)
+    - [3.2.3. Numbers](#323-numbers)
+    - [3.2.4. Strings](#324-strings)
+    - [3.2.5. Arrays](#325-arrays)
+    - [3.2.6. Objects](#326-objects)
+    - [3.2.7. Exceptions](#327-exceptions)
+    - [3.2.8. Snapshots](#328-snapshots)
+    - [3.2.9. Mock functions](#329-mock-functions)
+    - [3.2.10. Misc](#3210-misc)
+    - [3.2.11. Promise matchers (Jest 20+)](#3211-promise-matchers-jest-20)
+  - [3.3. Async tests](#33-async-tests)
+    - [3.3.1. async/await](#331-asyncawait)
+    - [3.3.2. Promises](#332-promises)
+    - [3.3.3. done() callback](#333-donecallback)
+  - [3.4. Mocks](#34-mocks)
+    - [3.4.1. Mock functions](#341-mock-functions)
+    - [3.4.2. Returning, resolving and rejecting values](#342-returning-resolving-and-rejecting-values)
+    - [3.4.3. Mock modules using `jest.mock` method](#343-mock-modules-using-jestmock-method)
+    - [3.4.4. Mock modules using a mock file](#344-mock-modules-using-a-mock-file)
+    - [3.4.5. Mock object methods](#345-mock-object-methods)
+    - [3.4.6. Mock getters and setters (Jest 22.1.0+)](#346-mock-getters-and-setters-jest-2210)
+    - [3.4.7. Mock getters and setters](#347-mock-getters-and-setters)
+    - [3.4.8. Clearing and restoring mocks](#348-clearing-and-restoring-mocks)
+    - [3.4.9. Accessing the original module when using mocks](#349-accessing-the-original-module-when-using-mocks)
+    - [3.4.10. Timer mocks](#3410-timer-mocks)
+  - [3.5. Data-driven tests (Jest 23+)](#35-data-driven-tests-jest-23)
+  - [3.6. Skipping tests](#36-skipping-tests)
+  - [3.7. Testing modules with side effects](#37-testing-modules-with-side-effects)
+- [4. React Quick Reference](#4-react-quick-reference)
+  - [4.1. Components](#41-components)
+  - [4.2. Stateless Components](#42-stateless-components)
+  - [4.3. Properties](#43-properties)
+  - [4.4. States](#44-states)
+  - [4.5. Children](#45-children)
+  - [4.6. Nesting](#46-nesting)
+  - [4.7. Functional components](#47-functional-components)
+  - [4.8. Pure Components](#48-pure-components)
+  - [4.9. Mounting](#49-mounting)
+  - [4.10. Updating](#410-updating)
+  - [4.11. State Hook](#411-state-hook)
+  - [4.12. Effect Hook](#412-effect-hook)
+  - [4.13. References](#413-references)
+  - [4.14. DOM Events](#414-dom-events)
+  - [4.15. Transferring props](#415-transferring-props)
+  - [4.16. JSX patterns](#416-jsx-patterns)
+  - [4.17. Style shorthand](#417-style-shorthand)
+  - [4.18. Conditionals](#418-conditionals)
+  - [4.19. Lists](#419-lists)
+  - [4.20. Short-circuit evaluation](#420-short-circuit-evaluation)
+  - [4.21. Fragments and Arrays](#421-fragments-and-arrays)
+  - [4.22. Errors](#422-errors)
+  - [4.23. Portals](#423-portals)
+  - [4.24. Hydration](#424-hydration)
+  - [4.25. PropTypes](#425-proptypes)
+  - [4.26. Basic types](#426-basic-types)
+  - [4.27. Required Types](#427-required-types)
+  - [4.28. Elements](#428-elements)
+  - [4.29. Enumerables (oneOf)](#429-enumerables-oneof)
+  - [4.30. Custom validation](#430-custom-validation)
+  - [4.31. Arrays and Objects](#431-arrays-and-objects)
+- [5. React Best Practices](#5-react-best-practices)
 
-## Basic Test Structure
+## 3.1. Basic Test Structure
 
 ```js
 describe('Color Picker', () => {
@@ -7017,11 +7070,11 @@ describe('Color Picker', () => {
 })
 ```
 
-## Matchers
+## 3.2. Matchers
 
 [Using matchers](http://jestjs.io/docs/en/using-matchers), [matchers docs](https://facebook.github.io/jest/docs/expect.html)
 
-### Basic matchers
+### 3.2.1. Basic matchers
 
 ```js
 expect(42).toBe(42) // Strict equality (===)
@@ -7031,7 +7084,7 @@ expect({ a: undefined, b: 2 }).toEqual({ b: 2 }) // Deep equality
 expect({ a: undefined, b: 2 }).not.toStrictEqual({ b: 2 }) // Strict equality (Jest 23+)
 ```
 
-### Truthiness
+### 3.2.2. Truthiness
 
 ```js
 // Matches anything that an if statement treats as true (not false, 0, '', null, undefined, NaN)
@@ -7048,7 +7101,7 @@ expect(7).toBeDefined()
 expect(true).toEqual(expect.any(Boolean))
 ```
 
-### Numbers
+### 3.2.3. Numbers
 
 ```js
 expect(2).toBeGreaterThan(1)
@@ -7059,7 +7112,7 @@ expect(0.2 + 0.1).toBeCloseTo(0.3, 5)
 expect(NaN).toEqual(expect.any(Number))
 ```
 
-### Strings
+### 3.2.4. Strings
 
 ```js
 expect('long string').toMatch('str')
@@ -7069,7 +7122,7 @@ expect('pizza').not.toMatch('coffee')
 expect(['pizza', 'coffee']).toEqual([expect.stringContaining('zz'), expect.stringMatching(/ff/)])
 ```
 
-### Arrays
+### 3.2.5. Arrays
 
 ```js
 expect([]).toEqual(expect.any(Array))
@@ -7079,7 +7132,7 @@ expect([{ a: 1 }, { a: 2 }]).toContainEqual({ a: 1 })
 expect(['Alice', 'Bob', 'Eve']).toEqual(expect.arrayContaining(['Alice', 'Bob']))
 ```
 
-### Objects
+### 3.2.6. Objects
 
 ```js
 expect({ a: 1 }).toHaveProperty('a')
@@ -7096,7 +7149,7 @@ expect([{ a: 1 }, { b: 2 }]).toEqual([
 ])
 ```
 
-### Exceptions
+### 3.2.7. Exceptions
 
 ```js
 // const fn = () => { throw new Error('Out of cheese!') }
@@ -7105,7 +7158,7 @@ expect(fn).toThrow('Out of cheese')
 expect(fn).toThrowErrorMatchingSnapshot()
 ```
 
-### Snapshots
+### 3.2.8. Snapshots
 
 ```js
 expect(node).toMatchSnapshot()
@@ -7116,7 +7169,7 @@ expect(user).toMatchSnapshot({
 expect(user).toMatchInlineSnapshot()
 ```
 
-### Mock functions
+### 3.2.9. Mock functions
 
 ```js
 // const fn = jest.fn()
@@ -7148,7 +7201,7 @@ expect(fn.mock.calls[0][0]).toBe(2) // fn.mock.calls[0][0] — the first argumen
 - `nthReturnedWith` → `toHaveNthReturnedWith`
   </details>
 
-### Misc
+### 3.2.10. Misc
 
 ```js
 expect(new A()).toBeInstanceOf(A)
@@ -7156,7 +7209,7 @@ expect(() => {}).toEqual(expect.any(Function))
 expect('pizza').toEqual(expect.anything())
 ```
 
-### Promise matchers (Jest 20+)
+### 3.2.11. Promise matchers (Jest 20+)
 
 ```js
 test('resolve to lemon', () => {
@@ -7180,7 +7233,7 @@ test('resolve to lemon', async () => {
 
 [resolves docs](https://facebook.github.io/jest/docs/en/expect.html#resolves)
 
-## Async tests
+## 3.3. Async tests
 
 See [more examples](https://facebook.github.io/jest/docs/en/tutorial-async.html) in Jest docs.
 
@@ -7201,7 +7254,7 @@ beforeEach(expect.hasAssertions)
 ```
 This will verify the presense of at least one assertion per test case. It also plays nice with more specific `expect.assertions(3)` declarations.
 
-### async/await
+### 3.3.1. async/await
 
 ```js
 test('async test', async () => {
@@ -7211,7 +7264,7 @@ test('async test', async () => {
 })
 ```
 
-### Promises
+### 3.3.2. Promises
 
 _Return_ a Promise from your test:
 
@@ -7224,7 +7277,7 @@ test('async test', () => {
 })
 ```
 
-### done() callback
+### 3.3.3. done() callback
 
 Wrap your assertions in try/catch block, otherwise Jest will ignore failures:
 
@@ -7244,9 +7297,9 @@ test('async test', done => {
 })
 ```
 
-## Mocks
+## 3.4. Mocks
 
-### Mock functions
+### 3.4.1. Mock functions
 
 ```js
 test('call the callback', () => {
@@ -7281,7 +7334,7 @@ const callback = jest.fn(() => true)
 
 [Mock functions docs](https://facebook.github.io/jest/docs/mock-function-api.html)
 
-### Returning, resolving and rejecting values
+### 3.4.2. Returning, resolving and rejecting values
 
 Your mocks can return values:
 
@@ -7316,7 +7369,7 @@ const callback = jest.fn()
 //  call 2+: true
 ```
 
-### Mock modules using `jest.mock` method
+### 3.4.3. Mock modules using `jest.mock` method
 
 ```js
 jest.mock('lodash/memoize', () => a => a) // The original lodash/memoize should exist
@@ -7327,7 +7380,7 @@ jest.mock('lodash/memoize', () => a => a, { virtual: true }) // The original lod
 
 > Note: When using `babel-jest`, calls to `jest.mock` will automatically be hoisted to the top of the code block. Use `jest.doMock` if you want to explicitly avoid this behavior.
 
-### Mock modules using a mock file
+### 3.4.4. Mock modules using a mock file
 
 1.  Create a file like `__mocks__/lodash/memoize.js`:
 
@@ -7345,7 +7398,7 @@ jest.mock('lodash/memoize', () => a => a, { virtual: true }) // The original lod
 
 [Manual mocks docs](https://facebook.github.io/jest/docs/manual-mocks.html)
 
-### Mock object methods
+### 3.4.5. Mock object methods
 
 ```js
 const spy = jest.spyOn(console, 'log').mockImplementation(() => {})
@@ -7359,7 +7412,7 @@ expect(spy).toHaveBeenCalled()
 spy.mockRestore()
 ```
 
-### Mock getters and setters (Jest 22.1.0+)
+### 3.4.6. Mock getters and setters (Jest 22.1.0+)
 
 ```js
 const location = {}
@@ -7367,7 +7420,7 @@ const getTitle = jest.spyOn(location, 'title', 'get').mockImplementation(() => '
 const setTitle = jest.spyOn(location, 'title', 'set').mockImplementation(() => {})
 ```
 
-### Mock getters and setters
+### 3.4.7. Mock getters and setters
 
 ```js
 const getTitle = jest.fn(() => 'pizza')
@@ -7379,7 +7432,7 @@ Object.defineProperty(location, 'title', {
 })
 ```
 
-### Clearing and restoring mocks
+### 3.4.8. Clearing and restoring mocks
 
 For one mock:
 
@@ -7399,7 +7452,7 @@ jest.resetAllMocks()
 jest.restoreAllMocks()
 ```
 
-### Accessing the original module when using mocks
+### 3.4.9. Accessing the original module when using mocks
 
 ```js
 jest.mock('fs')
@@ -7407,7 +7460,7 @@ const fs = require('fs') // Mocked module
 const fs = require.requireActual('fs') // Original module
 ```
 
-### Timer mocks
+### 3.4.10. Timer mocks
 
 Write synchronous test for code that uses native timer functions (`setTimeout`, `setInterval`, `clearTimeout`, `clearInterval`).
 
@@ -7453,7 +7506,7 @@ Use [jest.runOnlyPendingTimers()](https://jestjs.io/docs/en/timer-mocks#run-pend
 
 **Note:** you should call `jest.useFakeTimers()` in your test case to use other fake timer methods.
 
-## Data-driven tests (Jest 23+)
+## 3.5. Data-driven tests (Jest 23+)
 
 Run the same test with different data:
 
@@ -7488,7 +7541,7 @@ describe.each([['mobile'], ['tablet'], ['desktop']])('checkout flow on %s', (vie
 
 [describe.each() docs](https://jestjs.io/docs/en/api.html#describeeachtablename-fn-timeout), [test.each() docs](https://jestjs.io/docs/en/api.html#testeachtablename-fn-timeout),
 
-## Skipping tests
+## 3.6. Skipping tests
 
 Do not run these tests:
 
@@ -7504,7 +7557,7 @@ describe.only('makePoniesPink'...
 tests.only('make each pony pink'...
 ```
 
-## Testing modules with side effects
+## 3.7. Testing modules with side effects
 
 Node.js and Jest will cache modules you `require`. To test modules with side effects you’ll need to reset the module registry between tests:
 
@@ -7528,7 +7581,7 @@ test('second text', () => {
 })
 ```
 
-# React Quick Reference
+# 4. React Quick Reference
 
 - Components
   - [Components](#components)
@@ -7566,7 +7619,7 @@ test('second text', () => {
   - [Short-Circuit Evaluation](#short-circuit-evaluation)
   - [Fragments and Arrays](#fragments-and-arrays)
 
-## Components
+## 4.1. Components
 
 ```javascript
 import React from 'react';
@@ -7585,7 +7638,7 @@ const el = document.body
 ReactDOM.render(<Hello name='Alex' />, el)
 ```
 
-## Stateless Components
+## 4.2. Stateless Components
 
 ```javascript
 // Stateless React Component
@@ -7615,7 +7668,7 @@ ReactDOM.render(
 );
 ```
 
-## Properties
+## 4.3. Properties
 
 ```javascript
 <Video fullscreen={true} autoplay={false} />
@@ -7628,7 +7681,7 @@ render () {
 }
 ```
 
-## States
+## 4.4. States
 
 ```javascript
 constructor(props) {
@@ -7646,7 +7699,7 @@ render () {
 }
 ```
 
-## Children
+## 4.5. Children
 
 ```javascript
 <AlertBox>
@@ -7666,7 +7719,7 @@ class AlertBox extends Component {
 }
 ```
 
-## Nesting
+## 4.6. Nesting
 
 ```javascript
 import React, { Component, Fragment } from 'react';
@@ -7685,7 +7738,7 @@ class Info extends Component {
 }
 ```
 
-## Functional components
+## 4.7. Functional components
 
 Functional components have no state. Also, their props are passed as the first parameter to a function.
 
@@ -7700,7 +7753,7 @@ function MyComponent ({ name }) {
 }
 ```
 
-## Pure Components
+## 4.8. Pure Components
 
 Performance-optimized version of React.Component.
 
@@ -7712,7 +7765,7 @@ class MessageBox extends PureComponent {
 }
 ```
 
-## Mounting
+## 4.9. Mounting
 
 Set initial the state on `constructor()`. Add DOM event handlers, timers etc on `componentDidMount()`, then remove them on `componentWillUnmount()`.
 
@@ -7725,7 +7778,7 @@ componentWillUnmount()	      # Before DOM removal
 componentDidCatch()	      # Catch errors (16+)
 ```
 
-## Updating
+## 4.10. Updating
 
 Called when parents change properties and `setState()`. These are not called for initial renders.
 
@@ -7736,7 +7789,7 @@ render()	                                         # Render
 componentDidUpdate (prevProps, prevState)	         # Operate on the DOM here
 ```
 
-## State Hook
+## 4.11. State Hook
 
 ```javascript
 import React, { useState } from 'react';
@@ -7756,7 +7809,7 @@ function Example() {
 }
 ```
 
-## Effect Hook
+## 4.12. Effect Hook
 
 The `useEffect()` Hook can be used as `componentDidMount()`, `componentDidUpdate()`, and `componentWillUnmount()` combined.
 
@@ -7784,7 +7837,7 @@ function Example() {
 }
 ```
 
-## References
+## 4.13. References
 
 Allows access to DOM nodes.
 
@@ -7805,7 +7858,7 @@ class MyComponent extends Component {
 }
 ```
 
-## DOM Events
+## 4.14. DOM Events
 
 Pass functions to attributes like `onChange()`.
 
@@ -7824,7 +7877,7 @@ class MyComponent extends Component {
 }
 ```
 
-## Transferring props
+## 4.15. Transferring props
 
 Propagates `src="..."` down to the sub-component.
 
@@ -7838,9 +7891,9 @@ class VideoPlayer extends Component {
 }
 ```
 
-## JSX patterns
+## 4.16. JSX patterns
 
-## Style shorthand
+## 4.17. Style shorthand
 
 Inline styles
 
@@ -7850,7 +7903,7 @@ return <div style={style}></div>
 return <div style={{ margin: 0, padding: 0 }}></div>
 ```
 
-## Conditionals
+## 4.18. Conditionals
 
 ```javascript
 <Fragment>
@@ -7860,7 +7913,7 @@ return <div style={{ margin: 0, padding: 0 }}></div>
 </Fragment>
 ```
 
-## Lists
+## 4.19. Lists
 
 ```javascript
 class TodoList extends Component {
@@ -7876,7 +7929,7 @@ class TodoList extends Component {
 }
 ```
 
-## Short-circuit evaluation
+## 4.20. Short-circuit evaluation
 
 ```javascript
 <Fragment>
@@ -7885,7 +7938,7 @@ class TodoList extends Component {
 </Fragment>
 ```
 
-##  Fragments and Arrays
+##  4.21. Fragments and Arrays
 
 ```javascript
 // Arrays
@@ -7910,7 +7963,7 @@ render () {
 }
 ```
 
-## Errors
+## 4.22. Errors
 
 Catch errors via `componentDidCatch()`.
 
@@ -7923,7 +7976,7 @@ class MyComponent extends Component {
 }
 ```
 
-## Portals
+## 4.23. Portals
 
 This renders `this.props.children` into any location in the DOM.
 
@@ -7936,7 +7989,7 @@ render () {
 }
 ```
 
-## Hydration
+## 4.24. Hydration
 
 Use `ReactDOM.hydrate()` instead of using `ReactDOM.render()` if you are rendering over the output of ReactDOMServer.
 
@@ -7945,7 +7998,7 @@ const el = document.getElementById('app')
 ReactDOM.hydrate(<App />, el)
 ```
 
-## PropTypes
+## 4.25. PropTypes
 
 Typechecking with PropTypes
 
@@ -7973,7 +8026,7 @@ import PropTypes from 'prop-types';
 | (···).isRequired      | Required                             |
 
 
-## Basic types
+## 4.26. Basic types
 
 ```javascript
 MyComponent.propTypes = {
@@ -7985,7 +8038,7 @@ MyComponent.propTypes = {
 }
 ```
 
-## Required Types
+## 4.27. Required Types
 
 ```javascript
 MyCo.propTypes = {
@@ -7993,7 +8046,7 @@ MyCo.propTypes = {
 }
 ```
 
-## Elements
+## 4.28. Elements
 
 ```javascript
 MyCo.propTypes = {
@@ -8005,7 +8058,7 @@ MyCo.propTypes = {
 }
 ```
 
-## Enumerables (oneOf)
+## 4.29. Enumerables (oneOf)
 
 ```javascript
 MyCo.propTypes = {
@@ -8015,7 +8068,7 @@ MyCo.propTypes = {
 }
 ```
 
-## Custom validation
+## 4.30. Custom validation
 
 ```javascript
 MyCo.propTypes = {
@@ -8028,7 +8081,7 @@ MyCo.propTypes = {
 }
 ```
 
-## Arrays and Objects
+## 4.31. Arrays and Objects
 
 Use `.arrayOf()`, `.objectOf()`, `.instanceOf()`, `.shape()`.
 
@@ -8049,7 +8102,7 @@ MyCo.propTypes = {
 ```
 
 
-# React Best Practices
+# 5. React Best Practices
 
 1. Component name must start with capitals letters.
 
