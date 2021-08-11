@@ -13,15 +13,18 @@
   - [1.11. Why should we not update the state directly?](#111-why-should-we-not-update-the-state-directly)
   - [1.12. What is the purpose of callback function as an argument of `setState()`?](#112-what-is-the-purpose-of-callback-function-as-an-argument-of-setstate)
   - [1.13. How to bind methods or event handlers in JSX callbacks?](#113-how-to-bind-methods-or-event-handlers-in-jsx-callbacks)
-    - [1.13.1. Why function is preferred over object for `setState()`?](#1131-why-function-is-preferred-over-object-for-setstate)
-      - [1.13.1.1. What are the exceptions on React component naming?](#11311-what-are-the-exceptions-on-react-component-naming)
-  - [1.14. React Router](#114-react-router)
-  - [1.15. React Internationalization](#115-react-internationalization)
-  - [1.16. React Testing](#116-react-testing)
-  - [1.17. React Redux](#117-react-redux)
-  - [1.18. React Native](#118-react-native)
-  - [1.19. React supported libraries & Integration](#119-react-supported-libraries--integration)
-  - [1.20. Miscellaneous](#120-miscellaneous)
+  - [1.14. How to pass a parameter to an event handler or callback?](#114-how-to-pass-a-parameter-to-an-event-handler-or-callback)
+  - [1.15. What are synthetic events in React?](#115-what-are-synthetic-events-in-react)
+  - [1.16. What are inline conditional expressions?](#116-what-are-inline-conditional-expressions)
+    - [1.16.1. Why function is preferred over object for `setState()`?](#1161-why-function-is-preferred-over-object-for-setstate)
+      - [1.16.1.1. What are the exceptions on React component naming?](#11611-what-are-the-exceptions-on-react-component-naming)
+  - [1.17. React Router](#117-react-router)
+  - [1.18. React Internationalization](#118-react-internationalization)
+  - [1.19. React Testing](#119-react-testing)
+  - [1.20. React Redux](#120-react-redux)
+  - [1.21. React Native](#121-react-native)
+  - [1.22. React supported libraries & Integration](#122-react-supported-libraries--integration)
+  - [1.23. Miscellaneous](#123-miscellaneous)
 - [2. Redux Quick Reference](#2-redux-quick-reference)
   - [2.1. Creating a store](#21-creating-a-store)
   - [2.2. Using a store](#22-using-a-store)
@@ -357,47 +360,47 @@ render() {
 
   1.	**Binding in Constructor:** In JavaScript classes, the methods are not bound by default. The same thing applies for React event handlers defined as class methods. Normally we bind them in constructor.
 
-      ```javascript
-      class Component extends React.Component {
-        constructor(props) {
-          super(props)
-          this.handleClick = this.handleClick.bind(this)
-        }
+  ```javascript
+  class Component extends React.Component {
+    constructor(props) {
+      super(props)
+      this.handleClick = this.handleClick.bind(this)
+    }
 
-        handleClick() {
-          // ...
-        }
-      }
-      ```
+    handleClick() {
+      // ...
+    }
+  }
+  ```
 
   2. **Public class fields syntax:** If you don't like to use bind approach then *public class fields syntax* can be used to correctly bind callbacks.
 
-      ```jsx harmony
-      handleClick = () => {
-        console.log('this is:', this)
-      }
-      ```
+  ```jsx harmony
+  handleClick = () => {
+    console.log('this is:', this)
+  }
+  ```
 
-      ```jsx harmony
-      <button onClick={this.handleClick}>
-        {'Click me'}
-      </button>
-      ```
+  ```jsx harmony
+  <button onClick={this.handleClick}>
+    {'Click me'}
+  </button>
+  ```
 
   3. **Arrow functions in callbacks:** You can use *arrow functions* directly in the callbacks.
 
-      ```jsx harmony
-      <button onClick={(event) => this.handleClick(event)}>
-        {'Click me'}
-      </button>
-      ```
+  ```jsx harmony
+  <button onClick={(event) => this.handleClick(event)}>
+    {'Click me'}
+  </button>
+  ```
 
   **Note:** If the callback is passed as prop to child components, those components might do an extra re-rendering. In those cases, it is preferred to go with `.bind()` or *public class fields syntax* approach considering performance.
 
 
   **[⬆ Back to Top](#table-of-contents)**
 
-15. ### How to pass a parameter to an event handler or callback?
+## 1.14. How to pass a parameter to an event handler or callback?
 
   You can use an *arrow function* to wrap around an *event handler* and pass parameters:
 
@@ -418,17 +421,16 @@ render() {
   };
   ```
 
-
   **[⬆ Back to Top](#table-of-contents)**
 
-16. ### What are synthetic events in React?
+## 1.15. What are synthetic events in React?
 
   `SyntheticEvent` is a cross-browser wrapper around the browser's native event. It's API is same as the browser's native event, including `stopPropagation()` and `preventDefault()`, except the events work identically across all browsers.
 
 
   **[⬆ Back to Top](#table-of-contents)**
 
-17. ### What are inline conditional expressions?
+## 1.16. What are inline conditional expressions?
 
   You can use either *if statements* or *ternary expressions* which are available from JS to conditionally render expressions. Apart from these approaches, you can also embed any expressions in JSX by wrapping them in curly braces and then followed by JS logical operator `&&`.
 
@@ -446,10 +448,9 @@ render() {
   }
   ```
 
-
   **[⬆ Back to Top](#table-of-contents)**
 
-18. ### What is "key" prop and what is the benefit of using it in arrays of elements?
+1.  ### What is "key" prop and what is the benefit of using it in arrays of elements?
 
   A `key` is a special string attribute you **should** include when creating arrays of elements. *Key* prop helps React identify which items have changed, are added, or are removed.
 
@@ -1807,7 +1808,7 @@ render() {
 
   **(OR)**
 
-  ### 1.13.1. Why function is preferred over object for `setState()`?
+  ### 1.16.1. Why function is preferred over object for `setState()`?
 
     React may batch multiple `setState()` calls into a single update for performance. Because `this.props` and `this.state` may be updated asynchronously, you should not rely on their values for calculating the next state.
 
@@ -1944,7 +1945,7 @@ render() {
   ```
 
 
-  #### 1.13.1.1. What are the exceptions on React component naming?
+  #### 1.16.1.1. What are the exceptions on React component naming?
 
   The component names should start with a uppercase letter but there are few exceptions on this convention. The lowercase tag names with a dot (property accessors) are still considered as valid component names.
   For example the below tag can be compiled to a valid component,
@@ -2763,7 +2764,7 @@ render() {
 
     Libraries such as React Router and DownShift are using this pattern.
 
-## 1.14. React Router
+## 1.17. React Router
 
 
   **[⬆ Back to Top](#table-of-contents)**
@@ -3010,7 +3011,7 @@ render() {
     }
     ```
 
-## 1.15. React Internationalization
+## 1.18. React Internationalization
 
 
   **[⬆ Back to Top](#table-of-contents)**
@@ -3133,7 +3134,7 @@ render() {
     export default injectIntl(MyComponent)
     ```
 
-## 1.16. React Testing
+## 1.19. React Testing
 
 
   **[⬆ Back to Top](#table-of-contents)**
@@ -3265,7 +3266,7 @@ render() {
     ✓ adds 1 + 2 to equal 3 (2ms)
     ```
 
-## 1.17. React Redux
+## 1.20. React Redux
 
 
   **[⬆ Back to Top](#table-of-contents)**
@@ -3928,7 +3929,7 @@ render() {
 
   **[⬆ Back to Top](#table-of-contents)**
 
-## 1.18. React Native
+## 1.21. React Native
 
 
   **[⬆ Back to Top](#table-of-contents)**
@@ -3971,7 +3972,7 @@ render() {
     4. Press `Command + Option + I` to open the Chrome Developer tools, or open it via `View` -> `Developer` -> `Developer Tools`.
     5. You should now be able to debug as you normally would.
 
-## 1.19. React supported libraries & Integration
+## 1.22. React supported libraries & Integration
 
 
   **[⬆ Back to Top](#table-of-contents)**
@@ -4197,7 +4198,7 @@ render() {
     └─ tslint.json
     ```
 
-## 1.20. Miscellaneous
+## 1.23. Miscellaneous
 
 
   **[⬆ Back to Top](#table-of-contents)**
@@ -6630,15 +6631,18 @@ const store = createStore(reducer, {}, enhancer)
   - [1.11. Why should we not update the state directly?](#111-why-should-we-not-update-the-state-directly)
   - [1.12. What is the purpose of callback function as an argument of `setState()`?](#112-what-is-the-purpose-of-callback-function-as-an-argument-of-setstate)
   - [1.13. How to bind methods or event handlers in JSX callbacks?](#113-how-to-bind-methods-or-event-handlers-in-jsx-callbacks)
-    - [1.13.1. Why function is preferred over object for `setState()`?](#1131-why-function-is-preferred-over-object-for-setstate)
-      - [1.13.1.1. What are the exceptions on React component naming?](#11311-what-are-the-exceptions-on-react-component-naming)
-  - [1.14. React Router](#114-react-router)
-  - [1.15. React Internationalization](#115-react-internationalization)
-  - [1.16. React Testing](#116-react-testing)
-  - [1.17. React Redux](#117-react-redux)
-  - [1.18. React Native](#118-react-native)
-  - [1.19. React supported libraries & Integration](#119-react-supported-libraries--integration)
-  - [1.20. Miscellaneous](#120-miscellaneous)
+  - [1.14. How to pass a parameter to an event handler or callback?](#114-how-to-pass-a-parameter-to-an-event-handler-or-callback)
+  - [1.15. What are synthetic events in React?](#115-what-are-synthetic-events-in-react)
+  - [1.16. What are inline conditional expressions?](#116-what-are-inline-conditional-expressions)
+    - [1.16.1. Why function is preferred over object for `setState()`?](#1161-why-function-is-preferred-over-object-for-setstate)
+      - [1.16.1.1. What are the exceptions on React component naming?](#11611-what-are-the-exceptions-on-react-component-naming)
+  - [1.17. React Router](#117-react-router)
+  - [1.18. React Internationalization](#118-react-internationalization)
+  - [1.19. React Testing](#119-react-testing)
+  - [1.20. React Redux](#120-react-redux)
+  - [1.21. React Native](#121-react-native)
+  - [1.22. React supported libraries & Integration](#122-react-supported-libraries--integration)
+  - [1.23. Miscellaneous](#123-miscellaneous)
 - [2. Redux Quick Reference](#2-redux-quick-reference)
   - [2.1. Creating a store](#21-creating-a-store)
   - [2.2. Using a store](#22-using-a-store)
