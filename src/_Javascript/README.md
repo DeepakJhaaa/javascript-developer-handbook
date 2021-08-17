@@ -1,6 +1,6 @@
 js-questions
 - [1. Variable and Types](#1-variable-and-types)
-  - [1.1. What's the difference between a variable that is: `null`, `undefined` or `undeclared`?](#11-whats-the-difference-between-a-variable-that-is-null-undefined-or-undeclared)
+  - [1.1. What's the difference between a variable that is: `null`, `undefined` or undeclared? How would you go about checking for any of these states?](#11-whats-the-difference-between-a-variable-that-is-null-undefined-or-undeclared-how-would-you-go-about-checking-for-any-of-these-states)
   - [1.2. What will the code below output? Explain your answer.](#12-what-will-the-code-below-output-explain-your-answer)
   - [1.3. What is NaN? What is its type? How can you reliably test if a value is equal to NaN?](#13-what-is-nan-what-is-its-type-how-can-you-reliably-test-if-a-value-is-equal-to-nan)
   - [1.4. Discuss possible ways to write a function `isInteger(x)` that determines if x is an integer.](#14-discuss-possible-ways-to-write-a-function-isintegerx-that-determines-if-x-is-an-integer)
@@ -12,11 +12,8 @@ js-questions
   - [1.10. What will be the output of the following code?](#110-what-will-be-the-output-of-the-following-code)
   - [1.11. What will be the output of the following code?](#111-what-will-be-the-output-of-the-following-code)
   - [1.12. What will be the output of the following code?](#112-what-will-be-the-output-of-the-following-code)
-  - [1.13. What's the difference between a variable that is: `null`, `undefined` or undeclared? How would you go about checking for any of these states?](#113-whats-the-difference-between-a-variable-that-is-null-undefined-or-undeclared-how-would-you-go-about-checking-for-any-of-these-states)
-  - [1.14. Explain "hoisting".](#114-explain-hoisting)
-  - [1.15. What is the difference between `==` and `===`?](#115-what-is-the-difference-between--and-)
-  - [1.16. What will be the output when the following code is executed? Explain.](#116-what-will-be-the-output-when-the-following-code-is-executed-explain)
-  - [1.17. Variable Hoisting](#117-variable-hoisting)
+  - [1.13. Explain "hoisting".](#113-explain-hoisting)
+  - [1.14. What is the difference between `==` and `===`?](#114-what-is-the-difference-between--and-)
 - [2. Functions](#2-functions)
   - [2.1. Explain why the following doesn't work as an IIFE: `function foo(){ }();`. What needs to be changed to properly make it an IIFE?](#21-explain-why-the-following-doesnt-work-as-an-iife-function-foo--what-needs-to-be-changed-to-properly-make-it-an-iife)
   - [2.2. What's a typical use case for anonymous functions?](#22-whats-a-typical-use-case-for-anonymous-functions)
@@ -125,15 +122,9 @@ js-questions
 
 ## 1. Variable and Types
 
-### 1.1. What's the difference between a variable that is: `null`, `undefined` or `undeclared`?
+### 1.1. What's the difference between a variable that is: `null`, `undefined` or undeclared? How would you go about checking for any of these states?
 
-**Undeclared** - variables are created when you assign a value to an identifier that is not previously created using var, let or const. Undeclared variables will be defined globally, outside of the current scope.
-
-In strict mode, a ReferenceError will be thrown when you try to assign to an undeclared variable.
-
-Undeclared variables are bad just like how global variables are bad.
-
-Avoid them at all cost! To check for them, wrap its usage in a try/catch block
+**Undeclared** variables are created when you assign a value to an identifier that is not previously created using `var`, `let` or `const`. Undeclared variables will be defined globally, outside of the current scope. In strict mode, a `ReferenceError` will be thrown when you try to assign to an undeclared variable. Undeclared variables are bad just like how global variables are bad. Avoid them at all cost! To check for them, wrap its usage in a `try`/`catch` block.
 
 ```js
 function foo() {
@@ -144,13 +135,7 @@ foo();
 console.log(x); // 1
 ```
 
-**undefined** - A variable that is undefined is a variable that has been declared, but not assigned a value. It is of type undefined.
-
-If a function does not return any value as the result of executing it is assigned to a variable, the variable also has the value of undefined.
-
-To check for it, compare using the strict equality (===) operator or `typeof` which will give the '`undefined`'string.
-
-Note that you should not be using the abstract equality operator to check, as it will also return true if the value is null.
+A variable that is `undefined` is a variable that has been declared, but not assigned a value. It is of type `undefined`. If a function does not return any value as the result of executing it is assigned to a variable, the variable also has the value of `undefined`. To check for it, compare using the strict equality (`===`) operator or `typeof` which will give the `'undefined'` string. Note that you should not be using the abstract equality operator to check, as it will also return `true` if the value is `null`.
 
 ```js
 var foo;
@@ -165,11 +150,7 @@ var baz = bar();
 console.log(baz); // undefined
 ```
 
-**null** - A variable that is null will have been explicitly assigned to the null value.
-
-It represents no value and is different from undefined in the sense that it has been explicitly assigned.
-
-To check for null, simply compare using the strict equality operator. Note that like the above, you should not be using the abstract equality operator (==) to check, as it will also return true if the value is undefined.
+A variable that is `null` will have been explicitly assigned to the `null` value. It represents no value and is different from `undefined` in the sense that it has been explicitly assigned. To check for `null,` simply compare using the strict equality operator. Note that like the above, you should not be using the abstract equality operator (`==`) to check, as it will also return `true` if the value is `undefined`.
 
 ```js
 var foo = null;
@@ -179,12 +160,14 @@ console.log(typeof foo === 'object'); // true
 console.log(foo == undefined); // true. Wrong, don't use this to check!
 ```
 
-As a personal habit, I never leave my variables undeclared or unassigned.
+As a personal habit, I never leave my variables undeclared or unassigned. I will explicitly assign `null` to them after declaring if I don't intend to use it yet. If you use a linter in your workflow, it will usually also be able to check that you are not referencing undeclared variables.
 
-I will explicitly assign null to them after declaring if I don't intend to use it yet.
+**References:**
 
-If you use a linter in your workflow, it will usually also be able to check that you are not referencing undeclared variables.
+- https://stackoverflow.com/questions/15985875/effect-of-declared-and-undeclared-variables
+- https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/undefined
 
+[[↑] Back to top](#js-questions)
 
 ### 1.2. What will the code below output? Explain your answer.
 
@@ -476,55 +459,7 @@ var salary = '1000$';
 })();
 ```
 
-
-### 1.13. What's the difference between a variable that is: `null`, `undefined` or undeclared? How would you go about checking for any of these states?
-
-**Undeclared** variables are created when you assign a value to an identifier that is not previously created using `var`, `let` or `const`. Undeclared variables will be defined globally, outside of the current scope. In strict mode, a `ReferenceError` will be thrown when you try to assign to an undeclared variable. Undeclared variables are bad just like how global variables are bad. Avoid them at all cost! To check for them, wrap its usage in a `try`/`catch` block.
-
-```js
-function foo() {
-  x = 1; // Throws a ReferenceError in strict mode
-}
-
-foo();
-console.log(x); // 1
-```
-
-A variable that is `undefined` is a variable that has been declared, but not assigned a value. It is of type `undefined`. If a function does not return any value as the result of executing it is assigned to a variable, the variable also has the value of `undefined`. To check for it, compare using the strict equality (`===`) operator or `typeof` which will give the `'undefined'` string. Note that you should not be using the abstract equality operator to check, as it will also return `true` if the value is `null`.
-
-```js
-var foo;
-console.log(foo); // undefined
-console.log(foo === undefined); // true
-console.log(typeof foo === 'undefined'); // true
-
-console.log(foo == null); // true. Wrong, don't use this to check!
-
-function bar() {}
-var baz = bar();
-console.log(baz); // undefined
-```
-
-A variable that is `null` will have been explicitly assigned to the `null` value. It represents no value and is different from `undefined` in the sense that it has been explicitly assigned. To check for `null,` simply compare using the strict equality operator. Note that like the above, you should not be using the abstract equality operator (`==`) to check, as it will also return `true` if the value is `undefined`.
-
-```js
-var foo = null;
-console.log(foo === null); // true
-console.log(typeof foo === 'object'); // true
-
-console.log(foo == undefined); // true. Wrong, don't use this to check!
-```
-
-As a personal habit, I never leave my variables undeclared or unassigned. I will explicitly assign `null` to them after declaring if I don't intend to use it yet. If you use a linter in your workflow, it will usually also be able to check that you are not referencing undeclared variables.
-
-**References:**
-
-- https://stackoverflow.com/questions/15985875/effect-of-declared-and-undeclared-variables
-- https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/undefined
-
-[[↑] Back to top](#js-questions)
-
-### 1.14. Explain "hoisting".
+### 1.13. Explain "hoisting".
 
 Hoisting is a term used to explain the behavior of variable declarations in your code. Variables declared or initialized with the `var` keyword will have their declaration "moved" up to the top of the current scope, which we refer to as hoisting. However, only the declaration is hoisted, the assignment (if there is one), will stay where it is.
 
@@ -564,7 +499,7 @@ console.log(bar); // [Function: bar]
 
 [[↑] Back to top](#js-questions)
 
-### 1.15. What is the difference between `==` and `===`?
+### 1.14. What is the difference between `==` and `===`?
 
 `==` is the abstract equality operator while `===` is the strict equality operator. The `==` operator will compare for equality after doing any necessary type conversions. The `===` operator will not do type conversion, so if two values are not the same type `===` will simply return `false`. When using `==`, funky things can happen, such as:
 
@@ -585,13 +520,7 @@ console.log(a == null); // true
 console.log(a == undefined); // true
 ```
 
-**References:**
-
-- https://stackoverflow.com/questions/359494/which-equals-operator-vs-should-be-used-in-javascript-comparisons
-
-[[↑] Back to top](#js-questions)
-
-### 1.16. What will be the output when the following code is executed? Explain.
+**What will be the output when the following code is executed? Explain.**
 
 ```js
 console.log(false == '0'); // true
@@ -603,24 +532,6 @@ console.log(false === '0'); // false
 - The double-equal operator, however, tries to coerce the values before comparing them.
 - It is therefore generally good practice to use the === rather than ==.
 - The same holds true for !== vs !=.
-
-### 1.17. Variable Hoisting
-
-```js
-console.log(employeeId);
-// Ans: ReferenceError: employeeId is not defined
-
-console.log(employeeId);
-var employeeId = '19000';
-// Ans: undefined
-
-var employeeId = '1234abe';
-(function() {
-  console.log(employeeId);
-  var employeeId = '122345';
-})();
-// Ans : undefined
-```
 
 ## 2. Functions
 
