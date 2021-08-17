@@ -9,19 +9,15 @@ js-questions
   - [1.7. Explain "hoisting".](#17-explain-hoisting)
   - [1.8. What is the difference between `==` and `===`?](#18-what-is-the-difference-between--and-)
 - [2. Functions](#2-functions)
-  - [2.1. Explain why the following doesn't work as an IIFE: `function foo(){ }();`. What needs to be changed to properly make it an IIFE?](#21-explain-why-the-following-doesnt-work-as-an-iife-function-foo--what-needs-to-be-changed-to-properly-make-it-an-iife)
-  - [2.2. What's a typical use case for anonymous functions?](#22-whats-a-typical-use-case-for-anonymous-functions)
-  - [2.3. Difference between: `function Person(){}`, `var person = Person()`, and `var person = new Person()`?](#23-difference-between-function-person-var-person--person-and-var-person--new-person)
+  - [2.1. What are the difference way of declaring function in javascript?](#21-what-are-the-difference-way-of-declaring-function-in-javascript)
+  - [2.2. Explain why the following doesn't work as an IIFE: `function foo(){ }();`. What needs to be changed to properly make it an IIFE?](#22-explain-why-the-following-doesnt-work-as-an-iife-function-foo--what-needs-to-be-changed-to-properly-make-it-an-iife)
   - [2.4. What is the definition of a higher-order function?](#24-what-is-the-definition-of-a-higher-order-function)
-  - [2.5. Write a mul function which will invoked as below syntax.](#25-write-a-mul-function-which-will-invoked-as-below-syntax)
   - [2.6. Write a sum method which will work properly when invoked using either syntax below.](#26-write-a-sum-method-which-will-work-properly-when-invoked-using-either-syntax-below)
   - [2.7. The following recursive code will cause a stack overflow if the array list is too large. How can you fix this and still retain the recursive pattern?](#27-the-following-recursive-code-will-cause-a-stack-overflow-if-the-array-list-is-too-large-how-can-you-fix-this-and-still-retain-the-recursive-pattern)
   - [2.8. Consider the two functions below. Will they both return the same thing? Why or why not?](#28-consider-the-two-functions-below-will-they-both-return-the-same-thing-why-or-why-not)
   - [2.9. Write a simple function that returns a boolean indicating whether or not a string is a palindrome?](#29-write-a-simple-function-that-returns-a-boolean-indicating-whether-or-not-a-string-is-a-palindrome)
   - [2.10. What is the difference between a method and a function in JavaScript?](#210-what-is-the-difference-between-a-method-and-a-function-in-javascript)
-  - [2.11. What is the difference between declaring a function in below format?](#211-what-is-the-difference-between-declaring-a-function-in-below-format)
-  - [2.12. Can you give an example of a curry function and why this syntax offers an advantage?](#212-can-you-give-an-example-of-a-curry-function-and-why-this-syntax-offers-an-advantage)
-  - [2.13. Explain the differences on the usage of `foo` between `function foo() {}` and `var foo = function() {}`](#213-explain-the-differences-on-the-usage-of-foo-between-function-foo--and-var-foo--function-)
+  - [2.11. What is curry function in javascript and why this syntax offers an advantage?](#211-what-is-curry-function-in-javascript-and-why-this-syntax-offers-an-advantage)
 - [3. Array](#3-array)
   - [3.1. How do you add an element at the beginning of an array? How do you add one at the end?](#31-how-do-you-add-an-element-at-the-beginning-of-an-array-how-do-you-add-one-at-the-end)
   - [3.2. What will the code below output to the console and why?](#32-what-will-the-code-below-output-to-the-console-and-why)
@@ -531,7 +527,113 @@ console.log(false === '0'); // false
 
 ## 2. Functions
 
-### 2.1. Explain why the following doesn't work as an IIFE: `function foo(){ }();`. What needs to be changed to properly make it an IIFE?
+### 2.1. What are the difference way of declaring function in javascript?
+
+```js
+var foo = function() {
+  // Some code
+};
+
+function bar() {
+  // Some code
+}
+```
+
+The main difference is function foo is defined at run-time whereas function bar is defined at parse time. For understanding it in better way let see below code:
+
+```js
+// Run-Time function declaration
+foo(); // Call foo function here, It will give an error
+var foo = function() {
+  console.log('Hi I am inside Foo');
+};
+
+// Parse-Time function declaration
+
+bar(); // Call bar function here, It will not give an Error
+function bar() {
+  console.log('Hi I am inside Foo');
+}
+```
+
+Another advantage of first-one way of declaration that you can declare function based on certain condition for example:
+
+```js
+<script>
+if(testCondition) { // If testCondition is true then
+  function foo() {
+    console.log("inside Foo with testCondition True value");
+  };
+ } else {
+  function foo() {
+    console.log("inside Foo with testCondition false value");
+  };
+ }
+ </script>
+```
+
+But if you try to run similar code in the following format, it would give an error
+
+```js
+if (testCondition) {
+  // If testCondition is true then
+  var foo = function() {
+    console.log('inside Foo with testCondition True value');
+  };
+} else {
+  var foo = function() {
+    console.log('inside Foo with testCondition false value');
+  };
+}
+```
+
+**Difference between: `function Person(){}`, `var person = Person()`, and `var person = new Person()`?**
+
+This question is pretty vague. My best guess at its intention is that it is asking about constructors in JavaScript. Technically speaking, `function Person(){}` is just a normal function declaration. The convention is to use PascalCase for functions that are intended to be used as constructors.
+
+`var person = Person()` invokes the `Person` as a function, and not as a constructor. Invoking as such is a common mistake if it the function is intended to be used as a constructor. Typically, the constructor does not return anything, hence invoking the constructor like a normal function will return `undefined` and that gets assigned to the variable intended as the instance.
+
+`var person = new Person()` creates an instance of the `Person` object using the `new` operator, which inherits from `Person.prototype`. An alternative would be to use `Object.create`, such as: `Object.create(Person.prototype)`.
+
+```js
+function Person(name) {
+  this.name = name;
+}
+
+var person = Person('John');
+console.log(person); // undefined
+console.log(person.name); // Uncaught TypeError: Cannot read property 'name' of undefined
+
+var person = new Person('John');
+console.log(person); // Person { name: "John" }
+console.log(person.name); // "john"
+```
+
+**Explain the differences on the usage of `foo` between `function foo() {}` and `var foo = function() {}`**
+
+The former is a function declaration while the latter is a function expression. The key difference is that function declarations have its body hoisted but the bodies of function expressions are not (they have the same hoisting behavior as variables). For more explanation on hoisting, refer to the question above on hoisting. If you try to invoke a function expression before it is defined, you will get an `Uncaught TypeError: XXX is not a function` error.
+
+**Function Declaration**
+
+```js
+foo(); // 'FOOOOO'
+function foo() {
+  console.log('FOOOOO');
+}
+```
+
+**Function Expression**
+
+```js
+foo(); // Uncaught TypeError: foo is not a function
+var foo = function() {
+  console.log('FOOOOO');
+};
+```
+
+[[↑] Back to top](#js-questions)
+
+### 2.2. Explain why the following doesn't work as an IIFE: `function foo(){ }();`. What needs to be changed to properly make it an IIFE?
 
 IIFE stands for Immediately Invoked Function Expressions. The JavaScript parser reads `function foo(){ }();` as `function foo(){ }` and `();`, where the former is a function declaration and the latter (a pair of brackets) is an attempt at calling a function but there is no name specified, hence it throws `Uncaught SyntaxError: Unexpected token )`.
 
@@ -546,9 +648,7 @@ const foo = void function bar() { return 'foo'; }();
 console.log(foo); // undefined
 ```
 
-[[↑] Back to top](#js-questions)
-
-### 2.2. What's a typical use case for anonymous functions?
+**What's a typical use case for anonymous functions?**
 
 They can be used in IIFEs to encapsulate some code within a local scope so that variables declared in it do not leak to the global scope.
 
@@ -575,39 +675,6 @@ const double = arr.map(function(el) {
 });
 console.log(double); // [2, 4, 6]
 ```
-
-**References:**
-
-- https://www.quora.com/What-is-a-typical-usecase-for-anonymous-functions
-- https://stackoverflow.com/questions/10273185/what-are-the-benefits-to-using-anonymous-functions-instead-of-named-functions-fo
-
-[[↑] Back to top](#js-questions)
-
-### 2.3. Difference between: `function Person(){}`, `var person = Person()`, and `var person = new Person()`?
-
-This question is pretty vague. My best guess at its intention is that it is asking about constructors in JavaScript. Technically speaking, `function Person(){}` is just a normal function declaration. The convention is to use PascalCase for functions that are intended to be used as constructors.
-
-`var person = Person()` invokes the `Person` as a function, and not as a constructor. Invoking as such is a common mistake if it the function is intended to be used as a constructor. Typically, the constructor does not return anything, hence invoking the constructor like a normal function will return `undefined` and that gets assigned to the variable intended as the instance.
-
-`var person = new Person()` creates an instance of the `Person` object using the `new` operator, which inherits from `Person.prototype`. An alternative would be to use `Object.create`, such as: `Object.create(Person.prototype)`.
-
-```js
-function Person(name) {
-  this.name = name;
-}
-
-var person = Person('John');
-console.log(person); // undefined
-console.log(person.name); // Uncaught TypeError: Cannot read property 'name' of undefined
-
-var person = new Person('John');
-console.log(person); // Person { name: "John" }
-console.log(person.name); // "john"
-```
-
-**References:**
-
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new
 
 [[↑] Back to top](#js-questions)
 
@@ -643,33 +710,6 @@ const transformNamesToUppercase = function(names) {
   return names.map(name => name.toUpperCase());
 };
 transformNamesToUppercase(names); // ['IRISH', 'DAISY', 'ANNA']
-```
-
-**References:**
-
-- https://medium.com/javascript-scene/higher-order-functions-composing-software-5365cf2cbe99
-- https://hackernoon.com/effective-functional-javascript-first-class-and-higher-order-functions-713fde8df50a
-- https://eloquentjavascript.net/05_higher_order.html
-
-[[↑] Back to top](#js-questions)
-
-### 2.5. Write a mul function which will invoked as below syntax.
-
-```js
-console.log(mul(2)(3)(4)); // output : 24
-console.log(mul(4)(3)(4)); // output : 48
-```
-
-**Ans:** Below is code followed by an explanation how it works:
-
-```js
-function mul (x) {
-  return function (y) { // anonymous function
-    return function (z) { // anonymous function
-      return x _ y _ z;
-    };
-  };
-}
 ```
 
 Here mul function accept the first argument and return anonymous function which take the second parameter and return anonymous function which take the third parameter and return multiplication of arguments which is being passed in successive.
@@ -882,67 +922,7 @@ methodObject.display();
 Here methodObject is an object and display is a method which is associated with methodObject.
 
 
-### 2.11. What is the difference between declaring a function in below format?
-
-```js
-var foo = function() {
-  // Some code
-};
-
-function bar() {
-  // Some code
-}
-```
-
-The main difference is function foo is defined at run-time whereas function bar is defined at parse time. For understanding it in better way let see below code:
-
-```js
-// Run-Time function declaration
-foo(); // Call foo function here, It will give an error
-var foo = function() {
-  console.log('Hi I am inside Foo');
-};
-
-// Parse-Time function declaration
-
-bar(); // Call bar function here, It will not give an Error
-function bar() {
-  console.log('Hi I am inside Foo');
-}
-```
-
-Another advantage of first-one way of declaration that you can declare function based on certain condition for example:
-
-```js
-<script>
-if(testCondition) { // If testCondition is true then
-  function foo() {
-    console.log("inside Foo with testCondition True value");
-  };
- } else {
-  function foo() {
-    console.log("inside Foo with testCondition false value");
-  };
- }
- </script>
-```
-
-But if you try to run similar code in the following format, it would give an error
-
-```js
-if (testCondition) {
-  // If testCondition is true then
-  var foo = function() {
-    console.log('inside Foo with testCondition True value');
-  };
-} else {
-  var foo = function() {
-    console.log('inside Foo with testCondition false value');
-  };
-}
-```
-
-### 2.12. Can you give an example of a curry function and why this syntax offers an advantage?
+### 2.11. What is curry function in javascript and why this syntax offers an advantage?
 
 Currying is a pattern where a function with more than one parameter is broken into multiple functions that, when called in series, will accumulate all of the required parameters one at a time. This technique can be useful for making code written in a functional style easier to read and compose. It's important to note that for a function to be curried, it needs to start out as one function, then broken out into a sequence of functions that each accepts one parameter.
 
@@ -974,37 +954,6 @@ var addFive = curriedAdd(5);
 var result = [0, 1, 2, 3, 4, 5].map(addFive); // [5, 6, 7, 8, 9, 10]
 ```
 
-**References:**
-
-- https://hackernoon.com/currying-in-js-d9ddc64f162e
-
-[[↑] Back to top](#js-questions)
-
-### 2.13. Explain the differences on the usage of `foo` between `function foo() {}` and `var foo = function() {}`
-
-The former is a function declaration while the latter is a function expression. The key difference is that function declarations have its body hoisted but the bodies of function expressions are not (they have the same hoisting behavior as variables). For more explanation on hoisting, refer to the question above on hoisting. If you try to invoke a function expression before it is defined, you will get an `Uncaught TypeError: XXX is not a function` error.
-
-**Function Declaration**
-
-```js
-foo(); // 'FOOOOO'
-function foo() {
-  console.log('FOOOOO');
-}
-```
-
-**Function Expression**
-
-```js
-foo(); // Uncaught TypeError: foo is not a function
-var foo = function() {
-  console.log('FOOOOO');
-};
-```
-
-**References:**
-
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function
 
 [[↑] Back to top](#js-questions)
 
@@ -1056,6 +1005,26 @@ console.log('array 2: length=' + arr2.length + ' last=' + arr2.slice(-1));
 - Passing an array to the push() method of another array pushes that entire array as a single element onto the end of the array.
 - As a result, the statement arr2.push(arr3); adds arr3 in its entirety as a single element to the end of arr2 (i.e., it does notconcatenate the two arrays, that’s what the concat() method is for).
 - Like Python, JavaScript honors negative subscripts in calls to array methods like slice() as a way of referencing elements at the end of the array; e.g., a subscript of -1 indicates the last element in the array, and so on.
+
+**Write a mul function which will invoked as below syntax.**
+
+```js
+console.log(mul(2)(3)(4)); // output : 24
+console.log(mul(4)(3)(4)); // output : 48
+```
+
+**Ans:** Below is code followed by an explanation how it works:
+
+```js
+function mul (x) {
+  return function (y) { // anonymous function
+    return function (z) { // anonymous function
+      return x _ y _ z;
+    };
+  };
+}
+```
+
 
 
 ### 3.3. Imagine you have this code
