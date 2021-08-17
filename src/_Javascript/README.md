@@ -4,16 +4,10 @@ js-questions
   - [1.2. What will the code below output? Explain your answer.](#12-what-will-the-code-below-output-explain-your-answer)
   - [1.3. What is NaN? What is its type? How can you reliably test if a value is equal to NaN?](#13-what-is-nan-what-is-its-type-how-can-you-reliably-test-if-a-value-is-equal-to-nan)
   - [1.4. Discuss possible ways to write a function `isInteger(x)` that determines if x is an integer.](#14-discuss-possible-ways-to-write-a-function-isintegerx-that-determines-if-x-is-an-integer)
-  - [1.5. What will the code below output to the console and why ?](#15-what-will-the-code-below-output-to-the-console-and-why-)
-  - [1.6. What would the following lines of code output to the console?](#16-what-would-the-following-lines-of-code-output-to-the-console)
-  - [1.7. What is the value of typeof `undefined == typeof NULL`?](#17-what-is-the-value-of-typeof-undefined--typeof-null)
-  - [1.8. What do the following lines output, and why?](#18-what-do-the-following-lines-output-and-why)
-  - [1.9. What would following code return?](#19-what-would-following-code-return)
-  - [1.10. What will be the output of the following code?](#110-what-will-be-the-output-of-the-following-code)
-  - [1.11. What will be the output of the following code?](#111-what-will-be-the-output-of-the-following-code)
-  - [1.12. What will be the output of the following code?](#112-what-will-be-the-output-of-the-following-code)
-  - [1.13. Explain "hoisting".](#113-explain-hoisting)
-  - [1.14. What is the difference between `==` and `===`?](#114-what-is-the-difference-between--and-)
+  - [1.5. Mathematical Operations in javascript](#15-mathematical-operations-in-javascript)
+  - [1.6. typeof Operator in javascript](#16-typeof-operator-in-javascript)
+  - [1.7. Explain "hoisting".](#17-explain-hoisting)
+  - [1.8. What is the difference between `==` and `===`?](#18-what-is-the-difference-between--and-)
 - [2. Functions](#2-functions)
   - [2.1. Explain why the following doesn't work as an IIFE: `function foo(){ }();`. What needs to be changed to properly make it an IIFE?](#21-explain-why-the-following-doesnt-work-as-an-iife-function-foo--what-needs-to-be-changed-to-properly-make-it-an-iife)
   - [2.2. What's a typical use case for anonymous functions?](#22-whats-a-typical-use-case-for-anonymous-functions)
@@ -267,7 +261,9 @@ function isInteger(x) {
 > false
 ```
 
-### 1.5. What will the code below output to the console and why ?
+### 1.5. Mathematical Operations in javascript
+
+**What will the code below output to the console and why ?**
 
 ```js
 console.log(1 + '2' + '2');
@@ -334,7 +330,7 @@ Explanation: Since the - operator cannot be applied to strings, and since neithe
 Explanation: As explained in the previous example, "A" - "B" yields NaN. But any operator applied to NaN with any other numeric operand will still yield NaN.
 
 
-### 1.6. What would the following lines of code output to the console?
+**What would the following lines of code output to the console?**
 
 ```js
 console.log('0 || 1 = ' + (0 || 1));
@@ -366,13 +362,7 @@ Explain your answer.
 - This is fine, since it counts as “true” in logical expressions, but also can be used to return that value when you care to do so.
 - This explains why, somewhat surprisingly, 1 && 2 returns 2 (whereas you might it expect it to return true or 1).
 
-### 1.7. What is the value of typeof `undefined == typeof NULL`?
-
-The expression will be evaluated to true, since NULL will be treated as any other undefined variable.
-
-Note: JavaScript is case-sensitive and here we are using NULL instead of null.
-
-### 1.8. What do the following lines output, and why?
+**What do the following lines output, and why?**
 
 ```js
 console.log(1 < 2 < 3);
@@ -386,17 +376,7 @@ The first statement returns true which is as expected.
 - The second returns false because of how the engine works regarding operator associativity for < and >.
 - It compares left to right, so 3 > 2 > 1 JavaScript translates to true > 1. true has value 1, so it then compares 1 > 1, which is false.
 
-### 1.9. What would following code return?
-
-```js
-console.log(typeof typeof 1);
-// Ans:
-string;
-
-// typeof 1 will return "number" and typeof "number" will return string.
-```
-
-### 1.10. What will be the output of the following code?
+**What will be the output of the following code?**
 
 ```js
 var bar = true;
@@ -412,7 +392,25 @@ console.log(bar + false); // 1
 - String + Boolean -> Concatenation
 - String + String -> Concatenation
 
-### 1.11. What will be the output of the following code?
+### 1.6. typeof Operator in javascript
+
+**What is the value of typeof `undefined == typeof NULL`?**
+
+The expression will be evaluated to true, since NULL will be treated as any other undefined variable.
+
+Note: JavaScript is case-sensitive and here we are using NULL instead of null.
+
+**What would following code return?**
+
+```js
+console.log(typeof typeof 1);
+// Ans:
+string;
+
+// typeof 1 will return "number" and typeof "number" will return string.
+```
+
+**What will be the output of the following code?**
 
 ```js
 var z = 1,
@@ -426,40 +424,7 @@ Above code will output `undefined` as output.
 
 - Here associativity of the assignment operator is Right to Left so first typeof y will evaluate first which is undefined and assigned to z and then y would be assigned the value of z and then z would be assign value 1.
 
-### 1.12. What will be the output of the following code?
-
-```js
-var salary = '1000$';
-
-(function() {
-  console.log('Original salary was ' + salary);
-
-  var salary = '5000$';
-
-  console.log('My New Salary ' + salary);
-})();
-```
-
-Above code will output: `undefined, 5000$`.
-
-- JavaScript has hoisting concept where newbie gets tricked. In above code, you might be expecting salary to retain it values from outer scope until the point that salary was re-declared in the inner scope.
-
-- But due to hoisting salary value was undefined instead. To understand it better have a look of the following code, here salary variable is hoisted and declared at the top in function scope and while doing `console.log()` it's result undefined and after that it's been re-declared and assigned 5000$.
-
-```js
-var salary = '1000$';
-
-(function() {
-  var salary = undefined;
-  console.log('Original salary was ' + salary);
-
-  salary = '5000$';
-
-  console.log('My New Salary ' + salary);
-})();
-```
-
-### 1.13. Explain "hoisting".
+### 1.7. Explain "hoisting".
 
 Hoisting is a term used to explain the behavior of variable declarations in your code. Variables declared or initialized with the `var` keyword will have their declaration "moved" up to the top of the current scope, which we refer to as hoisting. However, only the declaration is hoisted, the assignment (if there is one), will stay where it is.
 
@@ -497,9 +462,40 @@ var bar = function() {
 console.log(bar); // [Function: bar]
 ```
 
-[[↑] Back to top](#js-questions)
+**What will be the output of the following code?**
 
-### 1.14. What is the difference between `==` and `===`?
+```js
+var salary = '1000$';
+
+(function() {
+  console.log('Original salary was ' + salary);
+
+  var salary = '5000$';
+
+  console.log('My New Salary ' + salary);
+})();
+```
+
+Above code will output: `undefined, 5000$`.
+
+- JavaScript has hoisting concept where newbie gets tricked. In above code, you might be expecting salary to retain it values from outer scope until the point that salary was re-declared in the inner scope.
+
+- But due to hoisting salary value was undefined instead. To understand it better have a look of the following code, here salary variable is hoisted and declared at the top in function scope and while doing `console.log()` it's result undefined and after that it's been re-declared and assigned 5000$.
+
+```js
+var salary = '1000$';
+
+(function() {
+  var salary = undefined;
+  console.log('Original salary was ' + salary);
+
+  salary = '5000$';
+
+  console.log('My New Salary ' + salary);
+})();
+```
+
+### 1.8. What is the difference between `==` and `===`?
 
 `==` is the abstract equality operator while `===` is the strict equality operator. The `==` operator will compare for equality after doing any necessary type conversions. The `===` operator will not do type conversion, so if two values are not the same type `===` will simply return `false`. When using `==`, funky things can happen, such as:
 
@@ -549,11 +545,6 @@ const foo = void function bar() { return 'foo'; }();
 
 console.log(foo); // undefined
 ```
-
-**References:**
-
-- http://lucybain.com/blog/2014/immediately-invoked-function-expression/
-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/void
 
 [[↑] Back to top](#js-questions)
 
