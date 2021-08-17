@@ -9,15 +9,13 @@ js-questions
   - [1.7. Explain "hoisting".](#17-explain-hoisting)
   - [1.8. What is the difference between `==` and `===`?](#18-what-is-the-difference-between--and-)
 - [2. Functions](#2-functions)
-  - [2.1. What are the difference way of declaring function in javascript?](#21-what-are-the-difference-way-of-declaring-function-in-javascript)
+  - [2.1. What are the different way of declaring function in javascript?](#21-what-are-the-different-way-of-declaring-function-in-javascript)
   - [2.2. Explain why the following doesn't work as an IIFE: `function foo(){ }();`. What needs to be changed to properly make it an IIFE?](#22-explain-why-the-following-doesnt-work-as-an-iife-function-foo--what-needs-to-be-changed-to-properly-make-it-an-iife)
-  - [2.4. What is the definition of a higher-order function?](#24-what-is-the-definition-of-a-higher-order-function)
-  - [2.6. Write a sum method which will work properly when invoked using either syntax below.](#26-write-a-sum-method-which-will-work-properly-when-invoked-using-either-syntax-below)
-  - [2.7. The following recursive code will cause a stack overflow if the array list is too large. How can you fix this and still retain the recursive pattern?](#27-the-following-recursive-code-will-cause-a-stack-overflow-if-the-array-list-is-too-large-how-can-you-fix-this-and-still-retain-the-recursive-pattern)
-  - [2.8. Consider the two functions below. Will they both return the same thing? Why or why not?](#28-consider-the-two-functions-below-will-they-both-return-the-same-thing-why-or-why-not)
-  - [2.9. Write a simple function that returns a boolean indicating whether or not a string is a palindrome?](#29-write-a-simple-function-that-returns-a-boolean-indicating-whether-or-not-a-string-is-a-palindrome)
-  - [2.10. What is the difference between a method and a function in JavaScript?](#210-what-is-the-difference-between-a-method-and-a-function-in-javascript)
-  - [2.11. What is curry function in javascript and why this syntax offers an advantage?](#211-what-is-curry-function-in-javascript-and-why-this-syntax-offers-an-advantage)
+  - [2.3. What is the definition of a higher-order function?](#23-what-is-the-definition-of-a-higher-order-function)
+  - [2.4. The following recursive code will cause a stack overflow if the array list is too large. How can you fix this and still retain the recursive pattern?](#24-the-following-recursive-code-will-cause-a-stack-overflow-if-the-array-list-is-too-large-how-can-you-fix-this-and-still-retain-the-recursive-pattern)
+  - [2.5. Write a simple function that returns a boolean indicating whether or not a string is a palindrome?](#25-write-a-simple-function-that-returns-a-boolean-indicating-whether-or-not-a-string-is-a-palindrome)
+  - [2.6. What is the difference between a method and a function in JavaScript?](#26-what-is-the-difference-between-a-method-and-a-function-in-javascript)
+  - [2.7. What is curry function in javascript and why this syntax offers an advantage?](#27-what-is-curry-function-in-javascript-and-why-this-syntax-offers-an-advantage)
 - [3. Array](#3-array)
   - [3.1. How do you add an element at the beginning of an array? How do you add one at the end?](#31-how-do-you-add-an-element-at-the-beginning-of-an-array-how-do-you-add-one-at-the-end)
   - [3.2. What will the code below output to the console and why?](#32-what-will-the-code-below-output-to-the-console-and-why)
@@ -527,7 +525,7 @@ console.log(false === '0'); // false
 
 ## 2. Functions
 
-### 2.1. What are the difference way of declaring function in javascript?
+### 2.1. What are the different way of declaring function in javascript?
 
 ```js
 var foo = function() {
@@ -587,7 +585,7 @@ if (testCondition) {
 }
 ```
 
-**Difference between: `function Person(){}`, `var person = Person()`, and `var person = new Person()`?**
+**Q. Difference between: `function Person(){}`, `var person = Person()`, and `var person = new Person()`?**
 
 This question is pretty vague. My best guess at its intention is that it is asking about constructors in JavaScript. Technically speaking, `function Person(){}` is just a normal function declaration. The convention is to use PascalCase for functions that are intended to be used as constructors.
 
@@ -609,7 +607,7 @@ console.log(person); // Person { name: "John" }
 console.log(person.name); // "john"
 ```
 
-**Explain the differences on the usage of `foo` between `function foo() {}` and `var foo = function() {}`**
+**Q. Explain the differences on the usage of `foo` between `function foo() {}` and `var foo = function() {}`**
 
 The former is a function declaration while the latter is a function expression. The key difference is that function declarations have its body hoisted but the bodies of function expressions are not (they have the same hoisting behavior as variables). For more explanation on hoisting, refer to the question above on hoisting. If you try to invoke a function expression before it is defined, you will get an `Uncaught TypeError: XXX is not a function` error.
 
@@ -630,178 +628,7 @@ var foo = function() {
   console.log('FOOOOO');
 };
 ```
-
-[[↑] Back to top](#js-questions)
-
-### 2.2. Explain why the following doesn't work as an IIFE: `function foo(){ }();`. What needs to be changed to properly make it an IIFE?
-
-IIFE stands for Immediately Invoked Function Expressions. The JavaScript parser reads `function foo(){ }();` as `function foo(){ }` and `();`, where the former is a function declaration and the latter (a pair of brackets) is an attempt at calling a function but there is no name specified, hence it throws `Uncaught SyntaxError: Unexpected token )`.
-
-Here are two ways to fix it that involves adding more brackets: `(function foo(){ })()` and `(function foo(){ }())`. These functions are not exposed in the global scope and you can even omit its name if you do not need to reference itself within the body.
-
-You might also use `void` operator: `void function foo(){ }();`. Unfortunately, there is one issue with such approach. The evaluation of given expression is always `undefined`, so if your IIFE function returns anything, you can't use it. An example:
-
-```
-// Don't add JS syntax to this code block to prevent Prettier from formatting it.
-const foo = void function bar() { return 'foo'; }();
-
-console.log(foo); // undefined
-```
-
-**What's a typical use case for anonymous functions?**
-
-They can be used in IIFEs to encapsulate some code within a local scope so that variables declared in it do not leak to the global scope.
-
-```js
-(function() {
-  // Some code here.
-})();
-```
-
-As a callback that is used once and does not need to be used anywhere else. The code will seem more self-contained and readable when handlers are defined right inside the code calling them, rather than having to search elsewhere to find the function body.
-
-```js
-setTimeout(function() {
-  console.log('Hello world!');
-}, 1000);
-```
-
-Arguments to functional programming constructs or Lodash (similar to callbacks).
-
-```js
-const arr = [1, 2, 3];
-const double = arr.map(function(el) {
-  return el * 2;
-});
-console.log(double); // [2, 4, 6]
-```
-
-[[↑] Back to top](#js-questions)
-
-### 2.4. What is the definition of a higher-order function?
-
-A higher-order function is any function that takes one or more functions as arguments, which it uses to operate on some data, and/or returns a function as a result. Higher-order functions are meant to abstract some operation that is performed repeatedly. The classic example of this is `map`, which takes an array and a function as arguments. `map` then uses this function to transform each item in the array, returning a new array with the transformed data. Other popular examples in JavaScript are `forEach`, `filter`, and `reduce`. A higher-order function doesn't just need to be manipulating arrays as there are many use cases for returning a function from another function. `Function.prototype.bind` is one such example in JavaScript.
-
-**Map**
-
-Let say we have an array of names which we need to transform each string to uppercase.
-
-```js
-const names = ['irish', 'daisy', 'anna'];
-```
-
-The imperative way will be as such:
-
-```js
-const transformNamesToUppercase = function(names) {
-  const results = [];
-  for (let i = 0; i < names.length; i++) {
-    results.push(names[i].toUpperCase());
-  }
-  return results;
-};
-transformNamesToUppercase(names); // ['IRISH', 'DAISY', 'ANNA']
-```
-
-Use `.map(transformerFn)` makes the code shorter and more declarative.
-
-```js
-const transformNamesToUppercase = function(names) {
-  return names.map(name => name.toUpperCase());
-};
-transformNamesToUppercase(names); // ['IRISH', 'DAISY', 'ANNA']
-```
-
-Here mul function accept the first argument and return anonymous function which take the second parameter and return anonymous function which take the third parameter and return multiplication of arguments which is being passed in successive.
-
-### 2.6. Write a sum method which will work properly when invoked using either syntax below.
-
-```js
-console.log(sum(2, 3)); // Outputs 5
-console.log(sum(2)(3)); // Outputs 5
-```
-
-**Ans:**
-
-There are (at least) two ways to do this:
-
-**METHOD 1**
-
-```js
-function sum(x) {
-  if (arguments.length == 2) {
-    return arguments[0] + arguments[1];
-  } else {
-    return function(y) {
-      return x + y;
-    };
-  }
-}
-```
-
-- In JavaScript, functions provide access to an arguments object which provides access to the actual arguments passed to a function. This enables us to use the length property to determine at runtime the number of arguments passed to the function.
-- If two arguments are passed, we simply add them together and return.
-- Otherwise, we assume it was called in the form sum(2)(3), so we return an anonymous function that adds together the argument passed to sum() (in this case 2) and the argument passed to the anonymous function (in this case 3).
-
-METHOD 2:
-
-```js
-function sum(x, y) {
-  if (y !== undefined) {
-    return x + y;
-  } else {
-    return function(y) {
-      return x + y;
-    };
-  }
-}
-```
-
-- When a function is invoked, JavaScript does not require the number of arguments to match the number of arguments in the function definition.
-- If the number of arguments passed exceeds the number of arguments in the function definition, the excess arguments will simply be ignored.
-- On the other hand, if the number of arguments passed is less than the number of arguments in the function definition, the missing arguments will have a value of undefined when referenced within the function.
-- So, in the above example, by simply checking if the 2nd argument is undefined, we can determine which way the function was invoked and proceed accordingly.
-
-### 2.7. The following recursive code will cause a stack overflow if the array list is too large. How can you fix this and still retain the recursive pattern?
-
-```js
-var list = readHugeList();
-
-var nextListItem = function() {
-  var item = list.pop();
-
-  if (item) {
-    // process the list item...
-    nextListItem();
-  }
-};
-```
-
-**Ans:**
-
-The potential stack overflow can be avoided by modifying the nextListItem function as follows:
-
-```js
-var list = readHugeList();
-
-var nextListItem = function() {
-  var item = list.pop();
-
-  if (item) {
-    // process the list item...
-    setTimeout(nextListItem, 0);
-  }
-};
-```
-
-- The stack overflow is eliminated because the event loop handles the recursion, not the call stack.
-- When nextListItem runs, if item is not null, the timeout function (nextListItem) is pushed to the event queue and the function exits, thereby leaving the call stack clear.
-- When the event queue runs its timed-out event, the next item is processed and a timer is set to again invoke nextListItem.
-- Accordingly, the method is processed from start to finish without a direct recursive call, so the call stack remains clear, regardless of the number of iterations.
-
-
-
-### 2.8. Consider the two functions below. Will they both return the same thing? Why or why not?
+**Q. Consider the two functions below. Will they both return the same thing? Why or why not?**
 
 ```js
 function foo1() {
@@ -846,7 +673,127 @@ undefined
 
 - This behavior also argues for following the convention of placing an opening curly brace at the end of a line in JavaScript, rather than on the beginning of a new line. As shown here, this becomes more than just a stylistic preference in JavaScript.
 
-### 2.9. Write a simple function that returns a boolean indicating whether or not a string is a palindrome?
+[[↑] Back to top](#js-questions)
+
+### 2.2. Explain why the following doesn't work as an IIFE: `function foo(){ }();`. What needs to be changed to properly make it an IIFE?
+
+IIFE stands for Immediately Invoked Function Expressions. The JavaScript parser reads `function foo(){ }();` as `function foo(){ }` and `();`, where the former is a function declaration and the latter (a pair of brackets) is an attempt at calling a function but there is no name specified, hence it throws `Uncaught SyntaxError: Unexpected token )`.
+
+Here are two ways to fix it that involves adding more brackets: `(function foo(){ })()` and `(function foo(){ }())`. These functions are not exposed in the global scope and you can even omit its name if you do not need to reference itself within the body.
+
+You might also use `void` operator: `void function foo(){ }();`. Unfortunately, there is one issue with such approach. The evaluation of given expression is always `undefined`, so if your IIFE function returns anything, you can't use it. An example:
+
+```
+// Don't add JS syntax to this code block to prevent Prettier from formatting it.
+const foo = void function bar() { return 'foo'; }();
+
+console.log(foo); // undefined
+```
+
+**Q. What's a typical use case for anonymous functions?**
+
+They can be used in IIFEs to encapsulate some code within a local scope so that variables declared in it do not leak to the global scope.
+
+```js
+(function() {
+  // Some code here.
+})();
+```
+
+As a callback that is used once and does not need to be used anywhere else. The code will seem more self-contained and readable when handlers are defined right inside the code calling them, rather than having to search elsewhere to find the function body.
+
+```js
+setTimeout(function() {
+  console.log('Hello world!');
+}, 1000);
+```
+
+Arguments to functional programming constructs or Lodash (similar to callbacks).
+
+```js
+const arr = [1, 2, 3];
+const double = arr.map(function(el) {
+  return el * 2;
+});
+console.log(double); // [2, 4, 6]
+```
+
+[[↑] Back to top](#js-questions)
+
+### 2.3. What is the definition of a higher-order function?
+
+A higher-order function is any function that takes one or more functions as arguments, which it uses to operate on some data, and/or returns a function as a result. Higher-order functions are meant to abstract some operation that is performed repeatedly. The classic example of this is `map`, which takes an array and a function as arguments. `map` then uses this function to transform each item in the array, returning a new array with the transformed data. Other popular examples in JavaScript are `forEach`, `filter`, and `reduce`. A higher-order function doesn't just need to be manipulating arrays as there are many use cases for returning a function from another function. `Function.prototype.bind` is one such example in JavaScript.
+
+**Map**
+
+Let say we have an array of names which we need to transform each string to uppercase.
+
+```js
+const names = ['irish', 'daisy', 'anna'];
+```
+
+The imperative way will be as such:
+
+```js
+const transformNamesToUppercase = function(names) {
+  const results = [];
+  for (let i = 0; i < names.length; i++) {
+    results.push(names[i].toUpperCase());
+  }
+  return results;
+};
+transformNamesToUppercase(names); // ['IRISH', 'DAISY', 'ANNA']
+```
+
+Use `.map(transformerFn)` makes the code shorter and more declarative.
+
+```js
+const transformNamesToUppercase = function(names) {
+  return names.map(name => name.toUpperCase());
+};
+transformNamesToUppercase(names); // ['IRISH', 'DAISY', 'ANNA']
+```
+
+Here mul function accept the first argument and return anonymous function which take the second parameter and return anonymous function which take the third parameter and return multiplication of arguments which is being passed in successive.
+
+### 2.4. The following recursive code will cause a stack overflow if the array list is too large. How can you fix this and still retain the recursive pattern?
+
+```js
+var list = readHugeList();
+
+var nextListItem = function() {
+  var item = list.pop();
+
+  if (item) {
+    // process the list item...
+    nextListItem();
+  }
+};
+```
+
+**Ans:**
+
+The potential stack overflow can be avoided by modifying the nextListItem function as follows:
+
+```js
+var list = readHugeList();
+
+var nextListItem = function() {
+  var item = list.pop();
+
+  if (item) {
+    // process the list item...
+    setTimeout(nextListItem, 0);
+  }
+};
+```
+
+- The stack overflow is eliminated because the event loop handles the recursion, not the call stack.
+- When nextListItem runs, if item is not null, the timeout function (nextListItem) is pushed to the event queue and the function exits, thereby leaving the call stack clear.
+- When the event queue runs its timed-out event, the next item is processed and a timer is set to again invoke nextListItem.
+- Accordingly, the method is processed from start to finish without a direct recursive call, so the call stack remains clear, regardless of the number of iterations.
+
+### 2.5. Write a simple function that returns a boolean indicating whether or not a string is a palindrome?
 
 The following one line function will return true if str is a palindrome; otherwise, it returns false.
 
@@ -869,7 +816,7 @@ console.log(isPalindrome('A car, a man, a maraca')); // logs 'true'
 ```
 
 
-### 2.10. What is the difference between a method and a function in JavaScript?
+### 2.6. What is the difference between a method and a function in JavaScript?
 
 A function is a piece of code that is called by name and function itself not associated with any object and not defined inside any object. It can be passed data to operate on (i.e. parameter) and can optionally return data (the return value).
 
@@ -922,7 +869,7 @@ methodObject.display();
 Here methodObject is an object and display is a method which is associated with methodObject.
 
 
-### 2.11. What is curry function in javascript and why this syntax offers an advantage?
+### 2.7. What is curry function in javascript and why this syntax offers an advantage?
 
 Currying is a pattern where a function with more than one parameter is broken into multiple functions that, when called in series, will accumulate all of the required parameters one at a time. This technique can be useful for making code written in a functional style easier to read and compose. It's important to note that for a function to be curried, it needs to start out as one function, then broken out into a sequence of functions that each accepts one parameter.
 
@@ -954,8 +901,55 @@ var addFive = curriedAdd(5);
 var result = [0, 1, 2, 3, 4, 5].map(addFive); // [5, 6, 7, 8, 9, 10]
 ```
 
-
 [[↑] Back to top](#js-questions)
+
+**Q. Write a sum method which will work properly when invoked using either syntax below.**
+
+```js
+console.log(sum(2, 3)); // Outputs 5
+console.log(sum(2)(3)); // Outputs 5
+```
+
+**Ans:**
+
+There are (at least) two ways to do this:
+
+**METHOD 1**
+
+```js
+function sum(x) {
+  if (arguments.length == 2) {
+    return arguments[0] + arguments[1];
+  } else {
+    return function(y) {
+      return x + y;
+    };
+  }
+}
+```
+
+- In JavaScript, functions provide access to an arguments object which provides access to the actual arguments passed to a function. This enables us to use the length property to determine at runtime the number of arguments passed to the function.
+- If two arguments are passed, we simply add them together and return.
+- Otherwise, we assume it was called in the form sum(2)(3), so we return an anonymous function that adds together the argument passed to sum() (in this case 2) and the argument passed to the anonymous function (in this case 3).
+
+METHOD 2:
+
+```js
+function sum(x, y) {
+  if (y !== undefined) {
+    return x + y;
+  } else {
+    return function(y) {
+      return x + y;
+    };
+  }
+}
+```
+
+- When a function is invoked, JavaScript does not require the number of arguments to match the number of arguments in the function definition.
+- If the number of arguments passed exceeds the number of arguments in the function definition, the excess arguments will simply be ignored.
+- On the other hand, if the number of arguments passed is less than the number of arguments in the function definition, the missing arguments will have a value of undefined when referenced within the function.
+- So, in the above example, by simply checking if the 2nd argument is undefined, we can determine which way the function was invoked and proceed accordingly.
 
 
 ## 3. Array
@@ -1006,7 +1000,7 @@ console.log('array 2: length=' + arr2.length + ' last=' + arr2.slice(-1));
 - As a result, the statement arr2.push(arr3); adds arr3 in its entirety as a single element to the end of arr2 (i.e., it does notconcatenate the two arrays, that’s what the concat() method is for).
 - Like Python, JavaScript honors negative subscripts in calls to array methods like slice() as a way of referencing elements at the end of the array; e.g., a subscript of -1 indicates the last element in the array, and so on.
 
-**Write a mul function which will invoked as below syntax.**
+**Q. Write a mul function which will invoked as below syntax.**
 
 ```js
 console.log(mul(2)(3)(4)); // output : 24
